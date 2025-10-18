@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="TFI">
+  <ClassDiagramComponents>
+    <Class name="Cliente" package="modelo" visibility="public" xPosition="-111.0" yPosition="-184.0">
+      <Fields>
+        <Field name="codCli" type="int" visibility="private"/>
+        <Field name="dni" type="int" visibility="private"/>
+        <Field name="nombreCompleto" type="String" visibility="private"/>
+        <Field name="telefono" type="long" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+        <Field name="afecciones" type="String" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codCli"/>
+          <Argument type="int" name="dni"/>
+          <Argument type="String" name="nombreCompleto"/>
+          <Argument type="long" name="telefono"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="String" name="afecciones"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="dni"/>
+          <Argument type="String" name="nombreCompleto"/>
+          <Argument type="long" name="telefono"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="String" name="afecciones"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getCodCli" returnType="int" visibility="public"/>
+        <Method name="setCodCli" returnType="void" visibility="public">
+          <Argument type="int" name="codCli"/>
+        </Method>
+        <Method name="getDni" returnType="int" visibility="public"/>
+        <Method name="setDni" returnType="void" visibility="public">
+          <Argument type="int" name="dni"/>
+        </Method>
+        <Method name="getNombreCompleto" returnType="String" visibility="public"/>
+        <Method name="setNombreCompleto" returnType="void" visibility="public">
+          <Argument type="String" name="nombreCompleto"/>
+        </Method>
+        <Method name="getTelefono" returnType="long" visibility="public"/>
+        <Method name="setTelefono" returnType="void" visibility="public">
+          <Argument type="long" name="telefono"/>
+        </Method>
+        <Method name="getEdad" returnType="int" visibility="public"/>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="int" name="edad"/>
+        </Method>
+        <Method name="getAfecciones" returnType="String" visibility="public"/>
+        <Method name="setAfecciones" returnType="void" visibility="public">
+          <Argument type="String" name="afecciones"/>
+        </Method>
+        <Method name="isEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DiaDeSpa" package="modelo" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="codPack" type="int" visibility="private"/>
+        <Field name="fechaHora" type="LocalDate" visibility="private"/>
+        <Field name="preferencias" type="String" visibility="private"/>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="sesiones" type="List&lt;Sesion&gt;" visibility="private"/>
+        <Field name="monto" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codPack"/>
+          <Argument type="LocalDate" name="fechaHora"/>
+          <Argument type="String" name="preferencias"/>
+          <Argument type="Cliente" name="cliente"/>
+          <Argument type="boolean" name="estado"/>
+          <Argument type="List&lt;Sesion&gt;" name="sesiones"/>
+          <Argument type="double" name="monto"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="LocalDate" name="fechaHora"/>
+          <Argument type="String" name="preferencias"/>
+          <Argument type="Cliente" name="cliente"/>
+          <Argument type="boolean" name="estado"/>
+          <Argument type="List&lt;Sesion&gt;" name="sesiones"/>
+          <Argument type="double" name="monto"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getCodPack" returnType="int" visibility="public"/>
+        <Method name="setCodPack" returnType="void" visibility="public">
+          <Argument type="int" name="codPack"/>
+        </Method>
+        <Method name="getFechaHora" returnType="LocalDate" visibility="public"/>
+        <Method name="setFechaHora" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="fechaHora"/>
+        </Method>
+        <Method name="getPreferencias" returnType="String" visibility="public"/>
+        <Method name="setPreferencias" returnType="void" visibility="public">
+          <Argument type="String" name="preferencias"/>
+        </Method>
+        <Method name="getCliente" returnType="Cliente" visibility="public"/>
+        <Method name="setCliente" returnType="void" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="isEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="getSesiones" returnType="List&lt;Sesion&gt;" visibility="public"/>
+        <Method name="setSesiones" returnType="void" visibility="public">
+          <Argument type="List&lt;Sesion&gt;" name="sesiones"/>
+        </Method>
+        <Method name="getMonto" returnType="double" visibility="public"/>
+        <Method name="setMonto" returnType="void" visibility="public">
+          <Argument type="double" name="monto"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Instalacion" package="modelo" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="codInstal" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="detalleUso" type="String" visibility="private"/>
+        <Field name="precio30m" type="double" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codInstal"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="detalleUso"/>
+          <Argument type="double" name="precio30m"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCodInstal" returnType="int" visibility="public"/>
+        <Method name="setCodInstal" returnType="void" visibility="public">
+          <Argument type="int" name="codInstal"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getDetalleUso" returnType="String" visibility="public"/>
+        <Method name="setDetalleUso" returnType="void" visibility="public">
+          <Argument type="String" name="detalleUso"/>
+        </Method>
+        <Method name="getPrecio30m" returnType="double" visibility="public"/>
+        <Method name="setPrecio30m" returnType="void" visibility="public">
+          <Argument type="double" name="precio30m"/>
+        </Method>
+        <Method name="isEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Masajista" package="modelo" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="matricula" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="telefono" type="String" visibility="private"/>
+        <Field name="especialidad" type="String" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="matricula"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="telefono"/>
+          <Argument type="String" name="especialidad"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getMatricula" returnType="int" visibility="public"/>
+        <Method name="setMatricula" returnType="void" visibility="public">
+          <Argument type="int" name="matricula"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApellido" returnType="String" visibility="public"/>
+        <Method name="setApellido" returnType="void" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="getTelefono" returnType="String" visibility="public"/>
+        <Method name="setTelefono" returnType="void" visibility="public">
+          <Argument type="String" name="telefono"/>
+        </Method>
+        <Method name="getEspecialidad" returnType="String" visibility="public"/>
+        <Method name="setEspecialidad" returnType="void" visibility="public">
+          <Argument type="String" name="especialidad"/>
+        </Method>
+        <Method name="isEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Sesion" package="modelo" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="codSesion" type="int" visibility="private"/>
+        <Field name="fechaHoraInicio" type="LocalDate" visibility="private"/>
+        <Field name="fechaHoraFin" type="LocalDate" visibility="private"/>
+        <Field name="tratamiento" type="Tratamiento" visibility="private"/>
+        <Field name="masajista" type="Masajista" visibility="private"/>
+        <Field name="instalaciones" type="List&lt;Instalacion&gt;" visibility="private"/>
+        <Field name="diaDeSpa" type="DiaDeSpa" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codSesion"/>
+          <Argument type="LocalDate" name="fechaHoraInicio"/>
+          <Argument type="LocalDate" name="fechaHoraFin"/>
+          <Argument type="Tratamiento" name="tratamiento"/>
+          <Argument type="Masajista" name="masajista"/>
+          <Argument type="List&lt;Instalacion&gt;" name="instalaciones"/>
+          <Argument type="DiaDeSpa" name="diaDeSpa"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="LocalDate" name="fechaHoraInicio"/>
+          <Argument type="LocalDate" name="fechaHoraFin"/>
+          <Argument type="Tratamiento" name="tratamiento"/>
+          <Argument type="Masajista" name="masajista"/>
+          <Argument type="List&lt;Instalacion&gt;" name="instalaciones"/>
+          <Argument type="DiaDeSpa" name="diaDeSpa"/>
+          <Argument type="boolean" name="estado"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getCodSesion" returnType="int" visibility="public"/>
+        <Method name="setCodSesion" returnType="void" visibility="public">
+          <Argument type="int" name="codSesion"/>
+        </Method>
+        <Method name="getFechaHoraInicio" returnType="LocalDate" visibility="public"/>
+        <Method name="setFechaHoraInicio" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="fechaHoraInicio"/>
+        </Method>
+        <Method name="getFechaHoraFin" returnType="LocalDate" visibility="public"/>
+        <Method name="setFechaHoraFin" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="fechaHoraFin"/>
+        </Method>
+        <Method name="getTratamiento" returnType="Tratamiento" visibility="public"/>
+        <Method name="setTratamiento" returnType="void" visibility="public">
+          <Argument type="Tratamiento" name="tratamiento"/>
+        </Method>
+        <Method name="getMasajista" returnType="Masajista" visibility="public"/>
+        <Method name="setMasajista" returnType="void" visibility="public">
+          <Argument type="Masajista" name="masajista"/>
+        </Method>
+        <Method name="getInstalaciones" returnType="List&lt;Instalacion&gt;" visibility="public"/>
+        <Method name="setInstalaciones" returnType="void" visibility="public">
+          <Argument type="List&lt;Instalacion&gt;" name="instalaciones"/>
+        </Method>
+        <Method name="getDiaDeSpa" returnType="DiaDeSpa" visibility="public"/>
+        <Method name="setDiaDeSpa" returnType="void" visibility="public">
+          <Argument type="DiaDeSpa" name="diaDeSpa"/>
+        </Method>
+        <Method name="isEstado" returnType="boolean" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="boolean" name="estado"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Tratamiento" package="modelo" visibility="public" xPosition="1516.0" yPosition="77.0">
+      <Fields>
+        <Field name="codTratam" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="tipo" type="String" visibility="private"/>
+        <Field name="detalle" type="String" visibility="private"/>
+        <Field name="productos" type="List&lt;String&gt;" visibility="private"/>
+        <Field name="duracion" type="int" visibility="private"/>
+        <Field name="costo" type="double" visibility="private"/>
+        <Field name="activo" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codTratam"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="tipo"/>
+          <Argument type="String" name="detalle"/>
+          <Argument type="List&lt;String&gt;" name="productos"/>
+          <Argument type="int" name="duracion"/>
+          <Argument type="double" name="costo"/>
+          <Argument type="boolean" name="activo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCodTratam" returnType="int" visibility="public"/>
+        <Method name="setCodTratam" returnType="void" visibility="public">
+          <Argument type="int" name="codTratam"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getTipo" returnType="String" visibility="public"/>
+        <Method name="setTipo" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+        <Method name="getDetalle" returnType="String" visibility="public"/>
+        <Method name="setDetalle" returnType="void" visibility="public">
+          <Argument type="String" name="detalle"/>
+        </Method>
+        <Method name="getProductos" returnType="List&lt;String&gt;" visibility="public"/>
+        <Method name="setProductos" returnType="void" visibility="public">
+          <Argument type="List&lt;String&gt;" name="productos"/>
+        </Method>
+        <Method name="getDuracion" returnType="int" visibility="public"/>
+        <Method name="setDuracion" returnType="void" visibility="public">
+          <Argument type="int" name="duracion"/>
+        </Method>
+        <Method name="getCosto" returnType="double" visibility="public"/>
+        <Method name="setCosto" returnType="void" visibility="public">
+          <Argument type="double" name="costo"/>
+        </Method>
+        <Method name="isActivo" returnType="boolean" visibility="public"/>
+        <Method name="setActivo" returnType="void" visibility="public">
+          <Argument type="boolean" name="activo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Conectar" package="persistencia" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Conexion" package="persistencia" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="conexion" type="Conexion" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getConexion" returnType="Connection" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="TFI" package="tfi" visibility="public" xPosition="675.0" yPosition="620.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="modelo.Sesion" target="modelo.DiaDeSpa" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sesiones" source="modelo.DiaDeSpa" target="modelo.Sesion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Sesion&gt;"/>
+    <UseRelation source="modelo.Sesion" target="modelo.Tratamiento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="conexion" source="persistencia.Conexion" target="persistencia.Conexion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Sesion" target="modelo.Masajista" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.DiaDeSpa" target="modelo.Sesion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="masajista" source="modelo.Sesion" target="modelo.Masajista" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Sesion" target="modelo.Instalacion" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tratamiento" source="modelo.Sesion" target="modelo.Tratamiento" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="diaDeSpa" source="modelo.Sesion" target="modelo.DiaDeSpa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.DiaDeSpa" target="modelo.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instalaciones" source="modelo.Sesion" target="modelo.Instalacion" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Instalacion&gt;"/>
+    <HasRelation name="cliente" source="modelo.DiaDeSpa" target="modelo.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
