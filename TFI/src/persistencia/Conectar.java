@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import modelo.Cliente;
 
 
 public class Conectar {
@@ -28,10 +29,10 @@ public class Conectar {
             
             while(rs.next()){
                 cliente = new Cliente();
-                cliente.setcodCli(rs.getInt("codCli"));
+                cliente.setCodCli(rs.getInt("codCli"));
                 cliente.setDni(rs.getInt("dni"));
-                cliente.setnombreC(rs.getString("nombre_completo"));
-                cliente.setTelefono(rs.getString("telefono"));
+                cliente.setNombreCompleto(rs.getString("nombre_completo"));
+                cliente.setTelefono(rs.getInt("telefono"));
                 cliente.setEdad(rs.getInt("edad"));
                 cliente.setAfecciones(rs.getString("afecciones"));
                 cliente.setEstado(rs.getBoolean("estado"));

@@ -2,7 +2,7 @@
 package modelo;
 
 
-public class masajista {
+public class Masajista {
    
     private int matricula;
     private String nombre;
@@ -11,7 +11,7 @@ public class masajista {
     private String especialidad;
     private boolean estado;
 
-    public masajista(int matricula, String nombre, String apellido, String telefono, String especialidad, boolean estado) {
+    public Masajista(int matricula, String nombre, String apellido, String telefono, String especialidad, boolean estado) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;

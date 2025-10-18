@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Alan
  */
-public class tratamiento {
+public class Tratamiento {
     
     private int codTratam;
     private String nombre;
@@ -21,7 +21,7 @@ public class tratamiento {
     private double costo;
     private boolean activo;
 
-    public tratamiento(int codTratam, String nombre, String tipo, String detalle, List<String> productos, int duracion, double costo, boolean activo) {
+    public Tratamiento(int codTratam, String nombre, String tipo, String detalle, List<String> productos, int duracion, double costo, boolean activo) {
         this.codTratam = codTratam;
         this.nombre = nombre;
         this.tipo = tipo;
