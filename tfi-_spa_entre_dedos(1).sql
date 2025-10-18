@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2025 a las 00:28:24
+-- Tiempo de generación: 19-10-2025 a las 00:36:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tfi- spa entre dedos`
 --
+CREATE DATABASE IF NOT EXISTS `tfi- spa entre dedos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `tfi- spa entre dedos`;
 
 -- --------------------------------------------------------
 
