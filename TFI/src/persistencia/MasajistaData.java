@@ -121,6 +121,33 @@ public class MasajistaData {
         }  
     }
     
+    public Masajista buscarMasajista(int matricula){
+        Masajista m = null;
+        String sql = "SELECT * FROM masajista WHERE matricula = ?";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, matricula);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                m = new Masajista();
+                m.setMatricula(rs.getInt("matricula"));
+                m.setNombre_completo(rs.getString("nombre_completo"));
+                m.setTelefono(rs.getLong("telefono"));
+                m.setEspecialidad(rs.getString("especialidad"));
+                m.setEstado(rs.getBoolean("estado"));
+                
+            }
+            System.out.println(m.toString());
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("No existe esa matricula" + ex);
+        }
+        
+        return m;
+    }
+    
     public void eliminarMasajista(int matricula){
         
         String sql = "DELETE from masajista WHERE matricula = ?";

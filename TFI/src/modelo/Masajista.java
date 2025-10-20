@@ -65,6 +65,14 @@ public class Masajista {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Masajista{" + "matricula=" + matricula + ", nombre_completo=" + nombre_completo + ", telefono=" + telefono + ", especialidad=" + especialidad + ", estado=" + estado + '}';
+    }
+    
+    
+    
     
     
 
