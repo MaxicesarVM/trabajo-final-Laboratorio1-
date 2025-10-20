@@ -5,21 +5,26 @@ package modelo;
 public class Masajista {
    
     private int matricula;
-    private String nombre;
-    private String apellido;
-    private String telefono;
+    private String nombre_completo;
+    private Long telefono;
     private String especialidad;
     private boolean estado;
 
-    public Masajista(int matricula, String nombre, String apellido, String telefono, String especialidad, boolean estado) {
+    public Masajista(int matricula, String nombre_completo, Long telefono, String especialidad, boolean estado) {
         this.matricula = matricula;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.nombre_completo = nombre_completo;
         this.telefono = telefono;
         this.especialidad = especialidad;
         this.estado = estado;
     }
 
+    
+    public Masajista() {
+        
+    }
+
+    
+    
     public int getMatricula() {
         return matricula;
     }
@@ -28,27 +33,20 @@ public class Masajista {
         this.matricula = matricula;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombre_completo() {
+        return nombre_completo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre_completo(String nombre_completo) {
+        this.nombre_completo = nombre_completo;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 

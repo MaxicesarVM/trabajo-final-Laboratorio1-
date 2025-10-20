@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
 import java.util.List;
 
-/**
- *
- * @author Alan
- */
+
 public class Tratamiento {
     
     private int codTratam;
@@ -31,7 +25,26 @@ public class Tratamiento {
         this.costo = costo;
         this.activo = activo;
     }
+    
+    public Tratamiento(String nombre, String tipo, String detalle, List<String> productos, int duracion, double costo, boolean activo) {
+        this.codTratam = -1;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.detalle = detalle;
+        this.productos = productos;
+        this.duracion = duracion;
+        this.costo = costo;
+        this.activo = activo;
+    }
+    
 
+    public Tratamiento() {
+        this.codTratam = -1;
+    }
+
+    
+    
+    
     public int getCodTratam() {
         return codTratam;
     }
