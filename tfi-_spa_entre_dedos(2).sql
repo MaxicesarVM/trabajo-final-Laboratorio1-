@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2025 a las 00:25:21
+-- Tiempo de generación: 21-10-2025 a las 00:44:54
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -131,10 +131,10 @@ CREATE TABLE `sesion/pack` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tramamiento/masaje`
+-- Estructura de tabla para la tabla `tratamiento`
 --
 
-CREATE TABLE `tramamiento/masaje` (
+CREATE TABLE `tratamiento` (
   `codTratamiento` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `tipo` varchar(50) NOT NULL,
@@ -185,9 +185,9 @@ ALTER TABLE `sesion/pack`
   ADD KEY `codInstalacion` (`codInstalacion`);
 
 --
--- Indices de la tabla `tramamiento/masaje`
+-- Indices de la tabla `tratamiento`
 --
-ALTER TABLE `tramamiento/masaje`
+ALTER TABLE `tratamiento`
   ADD PRIMARY KEY (`codTratamiento`);
 
 --
@@ -219,9 +219,9 @@ ALTER TABLE `sesion/pack`
   MODIFY `codSesion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tramamiento/masaje`
+-- AUTO_INCREMENT de la tabla `tratamiento`
 --
-ALTER TABLE `tramamiento/masaje`
+ALTER TABLE `tratamiento`
   MODIFY `codTratamiento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -238,7 +238,7 @@ ALTER TABLE `dia_de_spa`
 -- Filtros para la tabla `sesion/pack`
 --
 ALTER TABLE `sesion/pack`
-  ADD CONSTRAINT `sesion/pack_ibfk_1` FOREIGN KEY (`codTratamiento`) REFERENCES `tramamiento/masaje` (`codTratamiento`),
+  ADD CONSTRAINT `sesion/pack_ibfk_1` FOREIGN KEY (`codTratamiento`) REFERENCES `tratamiento` (`codTratamiento`),
   ADD CONSTRAINT `sesion/pack_ibfk_2` FOREIGN KEY (`codPack`) REFERENCES `dia_de_spa` (`codPack`),
   ADD CONSTRAINT `sesion/pack_ibfk_3` FOREIGN KEY (`codMasajista`) REFERENCES `masajista` (`matricula`),
   ADD CONSTRAINT `sesion/pack_ibfk_4` FOREIGN KEY (`codInstalacion`) REFERENCES `instalacion` (`codInstalacion`);
