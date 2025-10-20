@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2025 a las 23:51:20
+-- Tiempo de generación: 21-10-2025 a las 00:25:21
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -124,7 +124,8 @@ CREATE TABLE `sesion/pack` (
   `codTratamiento` int(11) NOT NULL,
   `codMasajista` int(11) NOT NULL,
   `codPack` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` tinyint(1) NOT NULL,
+  `codInstalacion` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -180,7 +181,8 @@ ALTER TABLE `sesion/pack`
   ADD PRIMARY KEY (`codSesion`),
   ADD KEY `codTratamiento` (`codTratamiento`),
   ADD KEY `codMasajista` (`codMasajista`),
-  ADD KEY `sesion/pack_ibfk_2` (`codPack`);
+  ADD KEY `sesion/pack_ibfk_2` (`codPack`),
+  ADD KEY `codInstalacion` (`codInstalacion`);
 
 --
 -- Indices de la tabla `tramamiento/masaje`
@@ -238,7 +240,8 @@ ALTER TABLE `dia_de_spa`
 ALTER TABLE `sesion/pack`
   ADD CONSTRAINT `sesion/pack_ibfk_1` FOREIGN KEY (`codTratamiento`) REFERENCES `tramamiento/masaje` (`codTratamiento`),
   ADD CONSTRAINT `sesion/pack_ibfk_2` FOREIGN KEY (`codPack`) REFERENCES `dia_de_spa` (`codPack`),
-  ADD CONSTRAINT `sesion/pack_ibfk_3` FOREIGN KEY (`codMasajista`) REFERENCES `masajista` (`matricula`);
+  ADD CONSTRAINT `sesion/pack_ibfk_3` FOREIGN KEY (`codMasajista`) REFERENCES `masajista` (`matricula`),
+  ADD CONSTRAINT `sesion/pack_ibfk_4` FOREIGN KEY (`codInstalacion`) REFERENCES `instalacion` (`codInstalacion`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
