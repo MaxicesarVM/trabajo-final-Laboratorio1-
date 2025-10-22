@@ -13,6 +13,7 @@ public class DiaDeSpa {
     private boolean estado;
     private List <Sesion> sesiones;
     private double monto;
+    
 
     public DiaDeSpa(int codPack, LocalDate fechaHora, String preferencias, Cliente cliente, boolean estado, List<Sesion> sesiones, double monto) {
         this.codPack = codPack;
@@ -70,7 +71,7 @@ public class DiaDeSpa {
         this.cliente = cliente;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
@@ -97,6 +98,10 @@ public class DiaDeSpa {
     @Override
     public String toString() {
         return "DiaDeSpa{" + "codPack=" + codPack + ", fechaHora=" + fechaHora + ", preferencias=" + preferencias + ", cliente=" + cliente + ", estado=" + estado + ", sesiones=" + sesiones + ", monto=" + monto + '}';
+    }
+
+    public void setDate(LocalDate toLocalDate) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     
