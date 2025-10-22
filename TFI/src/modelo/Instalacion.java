@@ -18,6 +18,11 @@ public class Instalacion {
         this.estado = estado;
     }
 
+    public Instalacion() {
+    }
+
+    
+    
     public int getCodInstal() {
         return codInstal;
     }
