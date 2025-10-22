@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asus%20X515EA/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/persistencia/ClienteData.java</file>
-            <file>file:/C:/Users/Asus%20X515EA/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/persistencia/MasajistaData.java</file>
-            <file>file:/C:/Users/Asus%20X515EA/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/persistencia/TratamientoData.java</file>
-            <file>file:/C:/Users/Asus%20X515EA/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/modelo/Cliente.java</file>
-            <file>file:/C:/Users/Asus%20X515EA/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/modelo/Sesion.java</file>
-            <file>file:/C:/Users/Asus%20X515EA/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/modelo/Masajista.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/persistencia/SesionData.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/persistencia/TratamientoData.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/modelo/Tratamiento.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/modelo/DiaDeSpa.java</file>
         </group>
     </open-files>
 </project-private>
