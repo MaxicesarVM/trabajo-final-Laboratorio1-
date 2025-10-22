@@ -110,13 +110,13 @@ public class SesionData {
         Sesion s = null;
         List<Sesion> Sesiones = new ArrayList<>();
         String sql = "SELECT * from sesion/pack";
-
+        
         try {
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             TratamientoData td = new TratamientoData((Conexion) con);
-
+            DiaDeSpaData dd = new DiaDeSpaData((Conexion) con);
             MasajistaData md = new MasajistaData((Conexion) con);
 
             while (rs.next()) {
@@ -130,7 +130,8 @@ public class SesionData {
                 s.setTratamiento(ta);
                 Masajista ma = md.buscarMasajista(rs.getInt("codMasajista"));
                 s.setMasajista(ma);
-                s.setDiaDeSpa(rs.getInt("codPack"));
+                DiaDeSpa ds = dd.buscarDia(rs.getInt("codPack"));
+                s.setDiaDeSpa(ds);
 
                 s.setEstado(rs.getBoolean("estado"));
 
@@ -176,7 +177,7 @@ public class SesionData {
                 s.setTratamiento(t);
                 Masajista m = md.buscarMasajista(rs.getInt("codMasajista"));
                 s.setMasajista(m);
-                DiaDeSpa dp = dd.buscarDiaDeSpa(rs.getInt("codPack"));
+                DiaDeSpa dp = dd.buscarDia(rs.getInt("codPack"));
                 s.setDiaDeSpa(dp);// arreglar o revisar llegado el momento
                 s.setEstado(rs.getBoolean("estado"));
                 Instalacion i = id.buscarInstalacion(rs.getInt("codInstalacion"));
