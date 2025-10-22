@@ -11,6 +11,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Cliente;
+import modelo.DiaDeSpa;
+import modelo.Instalacion;
 import modelo.Masajista;
 import modelo.Sesion;
 import modelo.Tratamiento;
@@ -173,6 +175,51 @@ public List<Sesion> listarSesiones(){
         return Sesiones; 
     }
           
+
+        public Sesion buscarSesion(int codSesion){
+        Sesion s = null;
+        String sql = "SELECT * FROM sesion/pack WHERE codSesion = ?";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, codSesion);
+            ResultSet rs = ps.executeQuery();
+            TratamientoData td = new TratamientoData((Conexion) con);
+            MasajistaData md = new MasajistaData((Conexion) con);
+            InstalacionData id = new InstalacionData((Conexion) con);
+            DiaDeSpaData dd = new DiaDeSpaData((Conexion) con);
+            while(rs.next()){
+                s = new Sesion();
+                s.setCodSesion(rs.getInt("codSesion"));
+                s.setFechaHoraInicio(rs.getDate("fecha_hora_inicio").toLocalDate());
+                s.setFechaHoraFin(rs.getDate("fecha_hora_fin").toLocalDate());
+                Tratamiento t = td.buscarTratamiento(rs.getInt("codTratamiento"));
+                s.setTratamiento(t);
+                Masajista m = md.buscarMasajista(rs.getInt("codMasajista"));
+                s.setMasajista(m);
+                DiaDeSpa dp = dd.buscarDiaDeSpa(rs.getInt("codPack"));
+                s.setDiaDeSpa(dp);// arreglar o revisar llegado el momento
+                s.setEstado(rs.getBoolean("estado"));
+                Instalacion i = id.buscarInstalacion(rs.getInt("codInstalacion"));
+                s.setInstalaciones((List<Instalacion>) i);
+                
+            }
+            System.out.println(s.toString());
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("No existe ese cliente" + ex);
+        }
+        
+        return s;
+    }
+
+
+
+
+
+
+
      public void altaLogica(Sesion s){
         
         String sql = "UPDATE sesion/pack SET estado=1 WHERE codSesion=?";
