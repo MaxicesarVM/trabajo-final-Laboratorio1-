@@ -130,9 +130,11 @@ public List<Sesion> listarSesiones(){
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             TratamientoData td = new TratamientoData((Conexion)con);
-            Tratamiento ta = 
+            
             MasajistaData md = new MasajistaData((Conexion)con);
-            Masajista ma =
+            
+            
+            
             
                     
             while(rs.next()){
@@ -142,10 +144,10 @@ public List<Sesion> listarSesiones(){
                 s.setFechaHoraInicio(rs.getDate("fecha_hora_inicio").toLocalDate());
                 s.setFechaHoraFin(rs.getDate("fecha_hora_fin").toLocalDate());
                 
-                s.setTratamiento(rs.getInt("codTratamiento"));
-                
-                s.setMasajista(rs.getInt("codMasajista"));
-                
+                Tratamiento ta = td.buscarTratamiento(rs.getInt("codTratamiento"));
+                s.setTratamiento(ta);
+                Masajista ma = md.buscarMasajista(rs.getInt("codMasajista"));
+                s.setMasajista(ma); 
                 s.setDiaDeSpa(rs.getInt("codPack"));
                 
                 s.setEstado(rs.getBoolean("estado"));
