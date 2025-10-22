@@ -56,6 +56,35 @@ public class TratamientoData {
               
     }
     
+    public Tratamiento buscarTratamiento(int codTratam){
+        Tratamiento t = null;
+        String sql = "SELECT * FROM tratamiento WHERE codTratam = ?";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, codTratam);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                t = new Tratamiento();
+                t.setCodTratam(rs.getInt("codTratamiento"));
+                t.setNombre(rs.getString("nombre"));
+                t.setTipo(rs.getString("tipo"));
+                t.setDetalle(rs.getString("detalle"));
+                t.setDuracion(rs.getInt("duracion"));
+                t.setCosto(rs.getDouble("costo"));
+                t.setActivo(rs.getBoolean("estado"));
+                
+            }
+            System.out.println(t.toString());
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("No existe ese cliente" + ex);
+        }
+        
+        return t;
+    }
+    
     public List<Tratamiento> listarTratamientos(){
         
         Tratamiento t = null;
