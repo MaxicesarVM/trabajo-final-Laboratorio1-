@@ -26,17 +26,88 @@ public class JF_inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jmCliente = new javax.swing.JMenu();
+        jmitem_Cliente = new javax.swing.JMenuItem();
+        jmMasajistas = new javax.swing.JMenu();
+        jmitem_MasajistaList = new javax.swing.JMenuItem();
+        jmitem_MasajistaContrato = new javax.swing.JMenuItem();
+        jmInstalaciones = new javax.swing.JMenu();
+        jmitem_InstalacionesList = new javax.swing.JMenuItem();
+        jmTratamiento = new javax.swing.JMenu();
+        jmitem_TratamientoList = new javax.swing.JMenuItem();
+        jmSesiones = new javax.swing.JMenu();
+        jmitem_SesionNueva = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 883, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 566, Short.MAX_VALUE)
+        );
+
+        jmCliente.setText("Cliente");
+
+        jmitem_Cliente.setText("Registro");
+        jmCliente.add(jmitem_Cliente);
+
+        jMenuBar1.add(jmCliente);
+
+        jmMasajistas.setText("Masajistas");
+
+        jmitem_MasajistaList.setText("Listado");
+        jmMasajistas.add(jmitem_MasajistaList);
+
+        jmitem_MasajistaContrato.setText("Contratar");
+        jmMasajistas.add(jmitem_MasajistaContrato);
+
+        jMenuBar1.add(jmMasajistas);
+
+        jmInstalaciones.setText("Intalaciones");
+
+        jmitem_InstalacionesList.setText("Listado ");
+        jmInstalaciones.add(jmitem_InstalacionesList);
+
+        jMenuBar1.add(jmInstalaciones);
+
+        jmTratamiento.setText("Tratamientos");
+
+        jmitem_TratamientoList.setText("Listado");
+        jmTratamiento.add(jmitem_TratamientoList);
+
+        jMenuBar1.add(jmTratamiento);
+
+        jmSesiones.setText("Sesiones");
+
+        jmitem_SesionNueva.setText("Sacar Turno");
+        jmSesiones.add(jmitem_SesionNueva);
+
+        jMenuBar1.add(jmSesiones);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
 
         pack();
@@ -78,5 +149,18 @@ public class JF_inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jmCliente;
+    private javax.swing.JMenu jmInstalaciones;
+    private javax.swing.JMenu jmMasajistas;
+    private javax.swing.JMenu jmSesiones;
+    private javax.swing.JMenu jmTratamiento;
+    private javax.swing.JMenuItem jmitem_Cliente;
+    private javax.swing.JMenuItem jmitem_InstalacionesList;
+    private javax.swing.JMenuItem jmitem_MasajistaContrato;
+    private javax.swing.JMenuItem jmitem_MasajistaList;
+    private javax.swing.JMenuItem jmitem_SesionNueva;
+    private javax.swing.JMenuItem jmitem_TratamientoList;
     // End of variables declaration//GEN-END:variables
 }
