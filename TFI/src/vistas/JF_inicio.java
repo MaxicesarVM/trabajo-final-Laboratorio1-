@@ -37,6 +37,7 @@ public class JF_inicio extends javax.swing.JFrame {
         jmitem_InstalacionesList = new javax.swing.JMenuItem();
         jmTratamiento = new javax.swing.JMenu();
         jmitem_TratamientoList = new javax.swing.JMenuItem();
+        jmitem_TratamientoRegistro = new javax.swing.JMenuItem();
         jmSesiones = new javax.swing.JMenu();
         jmitem_SesionNueva = new javax.swing.JMenuItem();
 
@@ -46,11 +47,11 @@ public class JF_inicio extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 883, Short.MAX_VALUE)
+            .addGap(0, 884, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 566, Short.MAX_VALUE)
+            .addGap(0, 578, Short.MAX_VALUE)
         );
 
         jmCliente.setText("Cliente");
@@ -82,6 +83,9 @@ public class JF_inicio extends javax.swing.JFrame {
         jmitem_TratamientoList.setText("Listado");
         jmTratamiento.add(jmitem_TratamientoList);
 
+        jmitem_TratamientoRegistro.setText("Registro ");
+        jmTratamiento.add(jmitem_TratamientoRegistro);
+
         jMenuBar1.add(jmTratamiento);
 
         jmSesiones.setText("Sesiones");
@@ -97,17 +101,11 @@ public class JF_inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+            .addComponent(jDesktopPane1)
         );
 
         pack();
@@ -162,5 +160,6 @@ public class JF_inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmitem_MasajistaList;
     private javax.swing.JMenuItem jmitem_SesionNueva;
     private javax.swing.JMenuItem jmitem_TratamientoList;
+    private javax.swing.JMenuItem jmitem_TratamientoRegistro;
     // End of variables declaration//GEN-END:variables
 }
