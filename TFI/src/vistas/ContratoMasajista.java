@@ -51,7 +51,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         lbl_titulo.setBackground(new java.awt.Color(0, 204, 204));
         lbl_titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_titulo.setText("  Contratación de masajista");
-        lbl_titulo.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 204, 204)));
+        lbl_titulo.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 102, 102)));
 
         lbl_matricula.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_matricula.setText("Matricula:");
@@ -74,7 +74,9 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         lbl_activo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_activo.setText("Activo");
 
-        btn_buscarMasajista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_buscarMasajista.setBackground(new java.awt.Color(0, 102, 102));
+        btn_buscarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_buscarMasajista.setForeground(new java.awt.Color(204, 204, 204));
         btn_buscarMasajista.setText("Buscar");
         btn_buscarMasajista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,22 +84,34 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_guardarMasajista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_guardarMasajista.setBackground(new java.awt.Color(0, 102, 102));
+        btn_guardarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_guardarMasajista.setForeground(new java.awt.Color(204, 204, 204));
         btn_guardarMasajista.setText("Guardar");
 
-        btn_borrarMasajista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_borrarMasajista.setBackground(new java.awt.Color(0, 102, 102));
+        btn_borrarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_borrarMasajista.setForeground(new java.awt.Color(204, 204, 204));
         btn_borrarMasajista.setText("Borrar");
 
-        btn_actualizarMasajista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_actualizarMasajista.setBackground(new java.awt.Color(0, 102, 102));
+        btn_actualizarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_actualizarMasajista.setForeground(new java.awt.Color(204, 204, 204));
         btn_actualizarMasajista.setText("Actualizar");
 
-        btn_limpiarMasajista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_limpiarMasajista.setBackground(new java.awt.Color(0, 102, 102));
+        btn_limpiarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_limpiarMasajista.setForeground(new java.awt.Color(204, 204, 204));
         btn_limpiarMasajista.setText("Limpiar");
 
-        btn_bajaLogicaMasajista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_bajaLogicaMasajista.setBackground(new java.awt.Color(0, 102, 102));
+        btn_bajaLogicaMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_bajaLogicaMasajista.setForeground(new java.awt.Color(204, 204, 204));
         btn_bajaLogicaMasajista.setText("Baja Lógica");
 
-        btn_altaLogicaMasajista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_altaLogicaMasajista.setBackground(new java.awt.Color(0, 102, 102));
+        btn_altaLogicaMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_altaLogicaMasajista.setForeground(new java.awt.Color(204, 204, 204));
         btn_altaLogicaMasajista.setText("Alta Lógica");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -207,7 +221,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
