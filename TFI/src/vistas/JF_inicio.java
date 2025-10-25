@@ -37,6 +37,7 @@ public class JF_inicio extends javax.swing.JFrame {
         jmitem_InstalacionesList = new javax.swing.JMenuItem();
         jmTratamiento = new javax.swing.JMenu();
         jmitem_TratamientoList = new javax.swing.JMenuItem();
+        jmitem_TratamientoRegistro = new javax.swing.JMenuItem();
         jmSesiones = new javax.swing.JMenu();
         jmitem_SesionNueva = new javax.swing.JMenuItem();
 
@@ -81,6 +82,9 @@ public class JF_inicio extends javax.swing.JFrame {
 
         jmitem_TratamientoList.setText("Listado");
         jmTratamiento.add(jmitem_TratamientoList);
+
+        jmitem_TratamientoRegistro.setText("Registro ");
+        jmTratamiento.add(jmitem_TratamientoRegistro);
 
         jMenuBar1.add(jmTratamiento);
 
@@ -162,5 +166,6 @@ public class JF_inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmitem_MasajistaList;
     private javax.swing.JMenuItem jmitem_SesionNueva;
     private javax.swing.JMenuItem jmitem_TratamientoList;
+    private javax.swing.JMenuItem jmitem_TratamientoRegistro;
     // End of variables declaration//GEN-END:variables
 }

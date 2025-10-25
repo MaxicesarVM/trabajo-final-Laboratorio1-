@@ -55,6 +55,11 @@
                 <Property name="text" type="java.lang.String" value="Listado"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmitem_TratamientoRegistro">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registro "/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmSesiones">
