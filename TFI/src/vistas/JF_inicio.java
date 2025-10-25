@@ -26,7 +26,7 @@ public class JF_inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        dsktp_principal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmCliente = new javax.swing.JMenu();
         jmitem_Cliente = new javax.swing.JMenuItem();
@@ -43,20 +43,25 @@ public class JF_inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout dsktp_principalLayout = new javax.swing.GroupLayout(dsktp_principal);
+        dsktp_principal.setLayout(dsktp_principalLayout);
+        dsktp_principalLayout.setHorizontalGroup(
+            dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 884, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        dsktp_principalLayout.setVerticalGroup(
+            dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 578, Short.MAX_VALUE)
         );
 
         jmCliente.setText("Cliente");
 
         jmitem_Cliente.setText("Registro");
+        jmitem_Cliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmitem_ClienteMouseClicked(evt);
+            }
+        });
         jmCliente.add(jmitem_Cliente);
 
         jMenuBar1.add(jmCliente);
@@ -64,9 +69,19 @@ public class JF_inicio extends javax.swing.JFrame {
         jmMasajistas.setText("Masajistas");
 
         jmitem_MasajistaList.setText("Listado");
+        jmitem_MasajistaList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmitem_MasajistaListMouseClicked(evt);
+            }
+        });
         jmMasajistas.add(jmitem_MasajistaList);
 
         jmitem_MasajistaContrato.setText("Contratar");
+        jmitem_MasajistaContrato.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmitem_MasajistaContratoMouseClicked(evt);
+            }
+        });
         jmMasajistas.add(jmitem_MasajistaContrato);
 
         jMenuBar1.add(jmMasajistas);
@@ -81,9 +96,19 @@ public class JF_inicio extends javax.swing.JFrame {
         jmTratamiento.setText("Tratamientos");
 
         jmitem_TratamientoList.setText("Listado");
+        jmitem_TratamientoList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmitem_TratamientoListMouseClicked(evt);
+            }
+        });
         jmTratamiento.add(jmitem_TratamientoList);
 
         jmitem_TratamientoRegistro.setText("Registro ");
+        jmitem_TratamientoRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmitem_TratamientoRegistroMouseClicked(evt);
+            }
+        });
         jmTratamiento.add(jmitem_TratamientoRegistro);
 
         jMenuBar1.add(jmTratamiento);
@@ -101,15 +126,66 @@ public class JF_inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(dsktp_principal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(dsktp_principal)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmitem_ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_ClienteMouseClicked
+        
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ClienteRegistro vistaRegistroCliente = new ClienteRegistro();
+        vistaRegistroCliente.setVisible(true);
+        dsktp_principal.add(vistaRegistroCliente);
+        dsktp_principal.moveToFront(vistaRegistroCliente);
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jmitem_ClienteMouseClicked
+
+    private void jmitem_MasajistaListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_MasajistaListMouseClicked
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ListadoMasajista listadoMasajistas = new ListadoMasajista();
+        listadoMasajistas.setVisible(true);
+        dsktp_principal.add(listadoMasajistas);
+        dsktp_principal.moveToFront(listadoMasajistas);
+    }//GEN-LAST:event_jmitem_MasajistaListMouseClicked
+
+    private void jmitem_MasajistaContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_MasajistaContratoMouseClicked
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ContratoMasajista contratoMasajista = new ContratoMasajista();
+        contratoMasajista.setVisible(true);
+        dsktp_principal.add(contratoMasajista);
+        dsktp_principal.moveToFront(contratoMasajista);
+    }//GEN-LAST:event_jmitem_MasajistaContratoMouseClicked
+
+    private void jmitem_TratamientoListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_TratamientoListMouseClicked
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ListadoTratamientos listadoTratamientos = new ListadoTratamientos();
+        listadoTratamientos.setVisible(true);
+        dsktp_principal.add(listadoTratamientos);
+        dsktp_principal.moveToFront(listadoTratamientos);
+    }//GEN-LAST:event_jmitem_TratamientoListMouseClicked
+
+    private void jmitem_TratamientoRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_TratamientoRegistroMouseClicked
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        RegistroTratamiento registoTratamiento = new RegistroTratamiento();
+        registoTratamiento.setVisible(true);
+        dsktp_principal.add(registoTratamiento);
+        dsktp_principal.moveToFront(registoTratamiento);
+    }//GEN-LAST:event_jmitem_TratamientoRegistroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -147,7 +223,7 @@ public class JF_inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane dsktp_principal;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jmCliente;
     private javax.swing.JMenu jmInstalaciones;

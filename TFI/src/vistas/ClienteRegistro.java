@@ -8,12 +8,12 @@ package vistas;
  *
  * @author Maxi
  */
-public class Cliente extends javax.swing.JInternalFrame {
+public class ClienteRegistro extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Cliente
      */
-    public Cliente() {
+    public ClienteRegistro() {
         initComponents();
     }
 

@@ -13,6 +13,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registro"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmitem_ClienteMouseClicked"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -25,11 +28,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmitem_MasajistaListMouseClicked"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmitem_MasajistaContrato">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Contratar"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmitem_MasajistaContratoMouseClicked"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -54,11 +63,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmitem_TratamientoListMouseClicked"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmitem_TratamientoRegistro">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registro "/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmitem_TratamientoRegistroMouseClicked"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -100,17 +115,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jDesktopPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="dsktp_principal" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jDesktopPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="dsktp_principal" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">
+    <Container class="javax.swing.JDesktopPane" name="dsktp_principal">
 
       <Layout>
         <DimensionLayout dim="0">
