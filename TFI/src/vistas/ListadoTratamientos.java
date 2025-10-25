@@ -34,6 +34,8 @@ public class ListadoTratamientos extends javax.swing.JInternalFrame {
         tbl_tablaTratamientos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
+        setClosable(true);
+
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
 
         lbl_tituloListTratam.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
@@ -47,7 +49,6 @@ public class ListadoTratamientos extends javax.swing.JInternalFrame {
 
         jcb_listadoTratam.setBackground(new java.awt.Color(204, 204, 204));
         jcb_listadoTratam.setForeground(new java.awt.Color(51, 51, 51));
-        jcb_listadoTratam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcb_listadoTratam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcb_listadoTratamActionPerformed(evt);

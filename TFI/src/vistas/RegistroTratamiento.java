@@ -52,6 +52,8 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
 
+        setClosable(true);
+
         pnl_RegistroTrat.setBackground(new java.awt.Color(0, 153, 153));
 
         lbl_titulovista.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

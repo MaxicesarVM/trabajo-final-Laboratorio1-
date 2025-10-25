@@ -46,6 +46,8 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         btn_bajaLogicaMasajista = new javax.swing.JButton();
         btn_altaLogicaMasajista = new javax.swing.JButton();
 
+        setClosable(true);
+
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
         lbl_titulo.setBackground(new java.awt.Color(0, 204, 204));

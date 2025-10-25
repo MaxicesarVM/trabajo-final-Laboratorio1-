@@ -47,11 +47,11 @@ public class JF_inicio extends javax.swing.JFrame {
         dsktp_principal.setLayout(dsktp_principalLayout);
         dsktp_principalLayout.setHorizontalGroup(
             dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 884, Short.MAX_VALUE)
+            .addGap(0, 1188, Short.MAX_VALUE)
         );
         dsktp_principalLayout.setVerticalGroup(
             dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 728, Short.MAX_VALUE)
         );
 
         jmCliente.setText("Cliente");
@@ -60,6 +60,11 @@ public class JF_inicio extends javax.swing.JFrame {
         jmitem_Cliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmitem_ClienteMouseClicked(evt);
+            }
+        });
+        jmitem_Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_ClienteActionPerformed(evt);
             }
         });
         jmCliente.add(jmitem_Cliente);
@@ -74,12 +79,22 @@ public class JF_inicio extends javax.swing.JFrame {
                 jmitem_MasajistaListMouseClicked(evt);
             }
         });
+        jmitem_MasajistaList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_MasajistaListActionPerformed(evt);
+            }
+        });
         jmMasajistas.add(jmitem_MasajistaList);
 
         jmitem_MasajistaContrato.setText("Contratar");
         jmitem_MasajistaContrato.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmitem_MasajistaContratoMouseClicked(evt);
+            }
+        });
+        jmitem_MasajistaContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_MasajistaContratoActionPerformed(evt);
             }
         });
         jmMasajistas.add(jmitem_MasajistaContrato);
@@ -89,6 +104,11 @@ public class JF_inicio extends javax.swing.JFrame {
         jmInstalaciones.setText("Intalaciones");
 
         jmitem_InstalacionesList.setText("Listado ");
+        jmitem_InstalacionesList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_InstalacionesListActionPerformed(evt);
+            }
+        });
         jmInstalaciones.add(jmitem_InstalacionesList);
 
         jMenuBar1.add(jmInstalaciones);
@@ -101,12 +121,22 @@ public class JF_inicio extends javax.swing.JFrame {
                 jmitem_TratamientoListMouseClicked(evt);
             }
         });
+        jmitem_TratamientoList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_TratamientoListActionPerformed(evt);
+            }
+        });
         jmTratamiento.add(jmitem_TratamientoList);
 
         jmitem_TratamientoRegistro.setText("Registro ");
         jmitem_TratamientoRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmitem_TratamientoRegistroMouseClicked(evt);
+            }
+        });
+        jmitem_TratamientoRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_TratamientoRegistroActionPerformed(evt);
             }
         });
         jmTratamiento.add(jmitem_TratamientoRegistro);
@@ -126,29 +156,31 @@ public class JF_inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dsktp_principal)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(dsktp_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dsktp_principal)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(dsktp_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmitem_ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_ClienteMouseClicked
-        
+
         dsktp_principal.removeAll();
         dsktp_principal.repaint();
         ClienteRegistro vistaRegistroCliente = new ClienteRegistro();
         vistaRegistroCliente.setVisible(true);
         dsktp_principal.add(vistaRegistroCliente);
         dsktp_principal.moveToFront(vistaRegistroCliente);
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jmitem_ClienteMouseClicked
 
     private void jmitem_MasajistaListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_MasajistaListMouseClicked
@@ -186,6 +218,55 @@ public class JF_inicio extends javax.swing.JFrame {
         dsktp_principal.add(registoTratamiento);
         dsktp_principal.moveToFront(registoTratamiento);
     }//GEN-LAST:event_jmitem_TratamientoRegistroMouseClicked
+
+    private void jmitem_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_ClienteActionPerformed
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ClienteRegistro vistaRegistroCliente = new ClienteRegistro();
+        vistaRegistroCliente.setVisible(true);
+        dsktp_principal.add(vistaRegistroCliente);
+        dsktp_principal.moveToFront(vistaRegistroCliente);
+    }//GEN-LAST:event_jmitem_ClienteActionPerformed
+
+    private void jmitem_MasajistaListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_MasajistaListActionPerformed
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ListadoMasajista listadoMasajistas = new ListadoMasajista();
+        listadoMasajistas.setVisible(true);
+        dsktp_principal.add(listadoMasajistas);
+        dsktp_principal.moveToFront(listadoMasajistas);
+    }//GEN-LAST:event_jmitem_MasajistaListActionPerformed
+
+    private void jmitem_MasajistaContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_MasajistaContratoActionPerformed
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ContratoMasajista contratoMasajista = new ContratoMasajista();
+        contratoMasajista.setVisible(true);
+        dsktp_principal.add(contratoMasajista);
+        dsktp_principal.moveToFront(contratoMasajista);
+    }//GEN-LAST:event_jmitem_MasajistaContratoActionPerformed
+
+    private void jmitem_InstalacionesListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_InstalacionesListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmitem_InstalacionesListActionPerformed
+
+    private void jmitem_TratamientoListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_TratamientoListActionPerformed
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ListadoTratamientos listadoTratamientos = new ListadoTratamientos();
+        listadoTratamientos.setVisible(true);
+        dsktp_principal.add(listadoTratamientos);
+        dsktp_principal.moveToFront(listadoTratamientos);
+    }//GEN-LAST:event_jmitem_TratamientoListActionPerformed
+
+    private void jmitem_TratamientoRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_TratamientoRegistroActionPerformed
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        RegistroTratamiento registoTratamiento = new RegistroTratamiento();
+        registoTratamiento.setVisible(true);
+        dsktp_principal.add(registoTratamiento);
+        dsktp_principal.moveToFront(registoTratamiento);
+    }//GEN-LAST:event_jmitem_TratamientoRegistroActionPerformed
 
     /**
      * @param args the command line arguments

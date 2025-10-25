@@ -33,6 +33,8 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_listadoMasajistas = new javax.swing.JTable();
 
+        setClosable(true);
+
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
         lbl_titulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
