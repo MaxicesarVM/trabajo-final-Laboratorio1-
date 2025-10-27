@@ -13,7 +13,7 @@ public class MasajistaData {
     
     public MasajistaData (Conexion conexion){
         
-        this.con = (Connection) conexion.getConexion();
+        this.con = conexion.getConexion();
               
         
     }
