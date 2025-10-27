@@ -4,18 +4,101 @@
  */
 package vistas;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.Masajista;
+import persistencia.Conexion;
+import persistencia.MasajistaData;
+
 /**
  *
  * @author Asus X515EA
  */
 public class ListadoMasajista extends javax.swing.JInternalFrame {
 
+    
+    private ArrayList<Masajista> listaM;
+    private MasajistaData masajistaData;
+    
+    private DefaultTableModel modeloTabla;
+    
+    Conexion con = new Conexion();
+    
+    
+    public ListadoMasajista() {
+        initComponents();
+        
+        masajistaData = new MasajistaData(con);
+        listaM = (ArrayList<Masajista>)masajistaData.listarMasajistas();
+        
+        
+        modeloTabla = new DefaultTableModel();
+        
+        
+        
+        
+    }
+    
+    private void cargarMasajistas(){
+        
+        for(Masajista masajista: listaM){
+            
+            cb_especialidades.addItem(masajista);
+            
+            
+        }
+        
+       
+    }
+    
+    private void cargarColumnasTablas(){
+        
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("Matricula");
+        filaCabecera.add("Nombre y Apellido");
+        filaCabecera.add("Especialidad");
+        for(Object it: filaCabecera){
+            modeloTabla.addColumn(it);
+        }
+        tbl_listadoMasajistas.setModel(modeloTabla);
+        
+    }
+    
+    private void borrarFilaTabla(){
+        
+        int indice = modeloTabla.getRowCount() - 1;
+        for(int i = indice; i >= 0 ; i-- ){
+        
+            modeloTabla.removeRow(i);
+            
+        
+        }
+         
+    }
+    
+    private void masajistaTablaEspecialidades(){
+    
+        borrarFilaTabla();
+        Masajista seleccion = (Masajista) cb_especialidades.getSelectedItem();
+        listaM = (ArrayList) masajistaData.listarMasajistas();
+        
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * Creates new form ListadoMasajista
      */
-    public ListadoMasajista() {
-        initComponents();
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,7 +128,6 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
         lbl_especialidades.setText("Especialidades:");
 
         cb_especialidades.setBackground(new java.awt.Color(204, 204, 204));
-        cb_especialidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cb_especialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_especialidadesActionPerformed(evt);
@@ -125,7 +207,7 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cb_especialidades;
+    private javax.swing.JComboBox<Masajista> cb_especialidades;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_especialidades;
