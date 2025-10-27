@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2025 a las 00:44:54
+-- Tiempo de generación: 28-10-2025 a las 00:54:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -145,6 +145,26 @@ CREATE TABLE `tratamiento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `tratamiento`
+--
+
+INSERT INTO `tratamiento` (`codTratamiento`, `nombre`, `tipo`, `detalle`, `duracion`, `costo`, `estado`) VALUES
+(1, 'Facial básico', 'Facial', 'Limpieza profunda, exfoliación y mascarilla para refrescar el cutis.', 60, 3500, 1),
+(2, 'Faciales avanzados', 'Facial', 'Pueden incluir tratamientos antienvejecimiento, microdermoabrasión o hidrafaciales.', 90, 7000, 1),
+(3, 'Microdermoabrasión', 'Facial', 'Exfolia la capa superficial de la piel usando puntas de diamante o microcristales.', 45, 4500, 1),
+(4, 'Radiofrecuencia', 'Facial', 'Usa ondas de radio para generar calor en la piel, estimulando la producción de colágeno y elastina.', 60, 5500, 1),
+(5, 'Ultrasonido', 'Facial', 'Usa ondas sonoras de alta frecuencia para limpiar la piel, penetrar activos o hacer masajes profundo', 45, 4800, 1),
+(6, 'Luz Pulsada Intensa (IPL)', 'Facial', 'Utilizada para fotodepilación, rejuvenecimiento de la piel y tratamiento de manchas.', 30, 6000, 1),
+(7, 'Vaporizador facial', 'Facial', 'Produce vapor para abrir los poros y limpiar la piel profundamente.', 20, 2000, 1),
+(8, 'Exfoliación corporal', 'Corporal', 'Elimina las células muertas de la piel con el uso de sales o azúcares.', 45, 4000, 1),
+(9, 'Envolturas corporales', 'Corporal', 'Hidratan y desintoxican la piel con ingredientes como algas, barro o chocolate.', 60, 5200, 1),
+(10, 'Hidroterapia', 'Corporal', 'Sesiones en saunas, jacuzzis o baños de vapor.', 60, 4500, 1),
+(11, 'Vacumterapia', 'Corporal', 'Es una succión corporal que mejora la circulación sanguínea y el drenaje linfático.', 45, 5000, 1),
+(12, 'Manicura', 'Estético', 'Cuidado y embellecimiento de las uñas de las manos.', 45, 2500, 1),
+(13, 'Pedicura', 'Estético', 'Cuidado y embellecimiento de las uñas de los pies.', 45, 3000, 1),
+(14, 'Tratamiento capilar', 'Estético', 'Procedimientos para mejorar la salud y apariencia del cabello.', 60, 5500, 1);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -222,7 +242,7 @@ ALTER TABLE `sesion/pack`
 -- AUTO_INCREMENT de la tabla `tratamiento`
 --
 ALTER TABLE `tratamiento`
-  MODIFY `codTratamiento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codTratamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

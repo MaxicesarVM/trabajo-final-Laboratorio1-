@@ -52,14 +52,14 @@ public class MasajistaData {
               
     }
     public List<Masajista> listaMasajistaEspecialidad(String a){
-            Masajista m = null;
+        Masajista m = null;
         List<Masajista> masajistas = new ArrayList<>();
         String sql = "SELECT * from masajista WHERE especialidad= ? ";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps = con.prepareStatement(sql);
-            ps.setString(1, m.getEspecialidad());
+            ps.setString(1, a);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
