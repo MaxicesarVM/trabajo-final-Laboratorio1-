@@ -34,12 +34,13 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
         
         modeloTabla = new DefaultTableModel();
         
-        
+        cargarColumnasTablas();
+        masajistaTablaEspecialidades();
         
         
     }
     
-    private void cargarMasajistas(){
+   /* private void cargarMasajistas(){
         
         for(Masajista masajista: listaM){
             
@@ -49,7 +50,7 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
         }
         
        
-    }
+    }*/
     
     private void cargarColumnasTablas(){
         
@@ -80,7 +81,7 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
     
         borrarFilaTabla();
         Masajista seleccion = (Masajista) cb_especialidades.getSelectedItem();
-        listaM = (ArrayList) masajistaData.listarMasajistas();
+        listaM = (ArrayList) masajistaData.listaMasajistaEspecialidad(cb_especialidades.toString());
         
     
     
@@ -128,6 +129,7 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
         lbl_especialidades.setText("Especialidades:");
 
         cb_especialidades.setBackground(new java.awt.Color(204, 204, 204));
+        cb_especialidades.setToolTipText("facial,estetico,corporales");
         cb_especialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_especialidadesActionPerformed(evt);
@@ -207,7 +209,7 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Masajista> cb_especialidades;
+    private javax.swing.JComboBox<String> cb_especialidades;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_especialidades;
