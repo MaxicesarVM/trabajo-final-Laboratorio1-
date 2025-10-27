@@ -44,7 +44,7 @@ public class ListadoIntalaciones extends javax.swing.JInternalFrame {
         );
 
         jTable1.setBackground(new java.awt.Color(0, 153, 153));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 255, 255), 5));
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153), 5));
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

@@ -38,8 +38,9 @@ public class JF_inicio extends javax.swing.JFrame {
         jmTratamiento = new javax.swing.JMenu();
         jmitem_TratamientoList = new javax.swing.JMenuItem();
         jmitem_TratamientoRegistro = new javax.swing.JMenuItem();
-        jmSesiones = new javax.swing.JMenu();
-        jmitem_SesionNueva = new javax.swing.JMenuItem();
+        jmReserva = new javax.swing.JMenu();
+        jmitem_reservaTratamiento = new javax.swing.JMenuItem();
+        jmitem_reservaIntalaciones = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,11 +48,11 @@ public class JF_inicio extends javax.swing.JFrame {
         dsktp_principal.setLayout(dsktp_principalLayout);
         dsktp_principalLayout.setHorizontalGroup(
             dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1188, Short.MAX_VALUE)
+            .addGap(0, 573, Short.MAX_VALUE)
         );
         dsktp_principalLayout.setVerticalGroup(
             dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 728, Short.MAX_VALUE)
+            .addGap(0, 447, Short.MAX_VALUE)
         );
 
         jmCliente.setText("Cliente");
@@ -143,12 +144,15 @@ public class JF_inicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jmTratamiento);
 
-        jmSesiones.setText("Sesiones");
+        jmReserva.setText("Reservas");
 
-        jmitem_SesionNueva.setText("Sacar Turno");
-        jmSesiones.add(jmitem_SesionNueva);
+        jmitem_reservaTratamiento.setText("reserva tratamiento");
+        jmReserva.add(jmitem_reservaTratamiento);
 
-        jMenuBar1.add(jmSesiones);
+        jmitem_reservaIntalaciones.setText("reserva instalacion");
+        jmReserva.add(jmitem_reservaIntalaciones);
+
+        jMenuBar1.add(jmReserva);
 
         setJMenuBar(jMenuBar1);
 
@@ -156,15 +160,11 @@ public class JF_inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(dsktp_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(dsktp_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(dsktp_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(dsktp_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -309,14 +309,15 @@ public class JF_inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jmCliente;
     private javax.swing.JMenu jmInstalaciones;
     private javax.swing.JMenu jmMasajistas;
-    private javax.swing.JMenu jmSesiones;
+    private javax.swing.JMenu jmReserva;
     private javax.swing.JMenu jmTratamiento;
     private javax.swing.JMenuItem jmitem_Cliente;
     private javax.swing.JMenuItem jmitem_InstalacionesList;
     private javax.swing.JMenuItem jmitem_MasajistaContrato;
     private javax.swing.JMenuItem jmitem_MasajistaList;
-    private javax.swing.JMenuItem jmitem_SesionNueva;
     private javax.swing.JMenuItem jmitem_TratamientoList;
     private javax.swing.JMenuItem jmitem_TratamientoRegistro;
+    private javax.swing.JMenuItem jmitem_reservaIntalaciones;
+    private javax.swing.JMenuItem jmitem_reservaTratamiento;
     // End of variables declaration//GEN-END:variables
 }
