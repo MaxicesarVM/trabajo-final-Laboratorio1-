@@ -33,24 +33,28 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
         
         
         modeloTabla = new DefaultTableModel();
-        
+        cargarMasajistas();
         cargarColumnasTablas();
         masajistaTablaEspecialidades();
         
         
     }
     
-   /* private void cargarMasajistas(){
+    private void cargarMasajistas(){
         
-        for(Masajista masajista: listaM){
+        
+        
             
-            cb_especialidades.addItem(masajista);
+        cb_especialidades.addItem("facial");
+        cb_especialidades.addItem("estetico");
+        cb_especialidades.addItem("corporales");
+        
             
             
-        }
+        
         
        
-    }*/
+    }
     
     private void cargarColumnasTablas(){
         
@@ -80,12 +84,29 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
     private void masajistaTablaEspecialidades(){
     
         borrarFilaTabla();
-        Masajista seleccion = (Masajista) cb_especialidades.getSelectedItem();
-        listaM = (ArrayList) masajistaData.listaMasajistaEspecialidad(cb_especialidades.toString());
+        String seleccion = (String) cb_especialidades.getSelectedItem();
+        listaM = (ArrayList<Masajista>) masajistaData.listaMasajistaEspecialidad(seleccion);
+        
+        for(Masajista masajista: listaM){
+            
+            modeloTabla.addRow(new Object[]{
+            
+            masajista.getMatricula(),
+            masajista.getNombre_completo(),
+            masajista.getEspecialidad()
+            
+            
+            });
+            
+            
+            
+        }
+        
         
     
-    
     }
+    
+    
     
     
     
@@ -129,7 +150,7 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
         lbl_especialidades.setText("Especialidades:");
 
         cb_especialidades.setBackground(new java.awt.Color(204, 204, 204));
-        cb_especialidades.setToolTipText("facial,estetico,corporales");
+        cb_especialidades.setToolTipText("");
         cb_especialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_especialidadesActionPerformed(evt);
@@ -167,7 +188,7 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +201,7 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
                     .addComponent(cb_especialidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,7 +222,7 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
 
     private void cb_especialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_especialidadesActionPerformed
         
-        
+        masajistaTablaEspecialidades();
         
         
         
