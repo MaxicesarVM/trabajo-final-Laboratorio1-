@@ -4,6 +4,10 @@
  */
 package vistas;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import persistencia.MasajistaData;
 import modelo.Masajista;
 import persistencia.Conexion;
@@ -87,26 +91,56 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         btn_guardarMasajista.setBackground(new java.awt.Color(0, 102, 102));
         btn_guardarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_guardarMasajista.setText("Guardar");
+        btn_guardarMasajista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarMasajistaActionPerformed(evt);
+            }
+        });
 
         btn_borrarMasajista.setBackground(new java.awt.Color(0, 102, 102));
         btn_borrarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_borrarMasajista.setText("Borrar");
+        btn_borrarMasajista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_borrarMasajistaActionPerformed(evt);
+            }
+        });
 
         btn_actualizarMasajista.setBackground(new java.awt.Color(0, 102, 102));
         btn_actualizarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_actualizarMasajista.setText("Actualizar");
+        btn_actualizarMasajista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarMasajistaActionPerformed(evt);
+            }
+        });
 
         btn_limpiarMasajista.setBackground(new java.awt.Color(0, 102, 102));
         btn_limpiarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_limpiarMasajista.setText("Limpiar");
+        btn_limpiarMasajista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarMasajistaActionPerformed(evt);
+            }
+        });
 
         btn_bajaLogicaMasajista.setBackground(new java.awt.Color(0, 102, 102));
         btn_bajaLogicaMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_bajaLogicaMasajista.setText("Baja Lógica");
+        btn_bajaLogicaMasajista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bajaLogicaMasajistaActionPerformed(evt);
+            }
+        });
 
         btn_altaLogicaMasajista.setBackground(new java.awt.Color(0, 102, 102));
         btn_altaLogicaMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_altaLogicaMasajista.setText("Alta Lógica");
+        btn_altaLogicaMasajista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_altaLogicaMasajistaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -227,6 +261,90 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_btn_buscarMasajistaActionPerformed
+
+    private void btn_guardarMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarMasajistaActionPerformed
+
+        int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
+        String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEspecialidad = txt_especialidad.getText();
+        boolean seleccionEstado = check_ActivoMas.isSelected();
+        
+        Masajista masajistaCreado = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
+        operacionesMasajista.agregarMasajista(masajistaCreado);
+        JOptionPane.showMessageDialog(this, "Se agrego el masajista: " + seleccionNombreCompleto + " correctamente");
+
+      
+    }//GEN-LAST:event_btn_guardarMasajistaActionPerformed
+
+    private void btn_borrarMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarMasajistaActionPerformed
+         int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
+        
+        operacionesMasajista.eliminarMasajista(seleccionMatricula);
+        JOptionPane.showMessageDialog(this, "Se elimino el masajista correctamente");
+
+
+
+    }//GEN-LAST:event_btn_borrarMasajistaActionPerformed
+
+    private void btn_actualizarMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarMasajistaActionPerformed
+        
+        int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
+        String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEspecialidad = txt_especialidad.getText();
+        boolean seleccionEstado = check_ActivoMas.isSelected();
+        
+        Masajista masajistaActualizado = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
+        operacionesMasajista.agregarMasajista(masajistaActualizado);
+        JOptionPane.showMessageDialog(this, "Se actualizó el masajista correctamente");
+        
+
+    
+    }//GEN-LAST:event_btn_actualizarMasajistaActionPerformed
+
+    private void btn_limpiarMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarMasajistaActionPerformed
+
+         txt_matricula.setText("");
+        txt_nombreCompleto.setText("");
+        txt_telefono.setText("");
+        txt_especialidad.setText("");
+        check_ActivoMas.setSelected(false);
+
+       
+    }//GEN-LAST:event_btn_limpiarMasajistaActionPerformed
+
+    private void btn_bajaLogicaMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bajaLogicaMasajistaActionPerformed
+
+        int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
+         String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEspecialidad = txt_especialidad.getText();
+        boolean seleccionEstado = check_ActivoMas.isSelected();
+        
+        Masajista masajistaBaja = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
+        operacionesMasajista.agregarMasajista(masajistaBaja);
+        JOptionPane.showMessageDialog(this, "Se dio de baja al masajista correctamente");
+
+       
+    }//GEN-LAST:event_btn_bajaLogicaMasajistaActionPerformed
+
+    private void btn_altaLogicaMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_altaLogicaMasajistaActionPerformed
+
+        int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
+        String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEspecialidad = txt_especialidad.getText();
+        boolean seleccionEstado = check_ActivoMas.isSelected();
+        
+        Masajista masajistaAlta = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
+        operacionesMasajista.agregarMasajista(masajistaAlta);
+        JOptionPane.showMessageDialog(this, "Se dio de alta al masajista correctamente");
+
+
+
+       
+    }//GEN-LAST:event_btn_altaLogicaMasajistaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

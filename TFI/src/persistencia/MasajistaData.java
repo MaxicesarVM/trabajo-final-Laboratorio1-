@@ -18,7 +18,7 @@ public class MasajistaData {
         
     }
     
-    public void agregarTratamiento(Masajista m){
+    public void agregarMasajista(Masajista m){
         
         String sql = "INSERT into masajista(matricula, nombre_completo, telefono, especialidad, estado) VALUES(?,?,?,?,?)";
         
