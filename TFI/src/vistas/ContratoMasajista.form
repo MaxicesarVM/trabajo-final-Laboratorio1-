@@ -54,7 +54,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="lbl_activo" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_activo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="check_ActivoMas" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="lbl_nombreCompleto" min="-2" max="-2" attributes="0"/>
@@ -137,9 +137,9 @@
                       <Component id="txt_especialidad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="lbl_activo" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_activo" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbl_activo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="check_ActivoMas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -208,11 +208,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Especialidad:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_activo">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_activoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_activo">
           <Properties>
@@ -309,6 +304,8 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Alta L&#xf3;gica"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="check_ActivoMas">
         </Component>
       </SubComponents>
     </Container>
