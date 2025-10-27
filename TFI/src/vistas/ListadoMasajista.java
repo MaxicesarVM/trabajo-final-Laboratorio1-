@@ -116,7 +116,11 @@ public class ListadoMasajista extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cb_especialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_especialidadesActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
+        
+        
     }//GEN-LAST:event_cb_especialidadesActionPerformed
 
 
