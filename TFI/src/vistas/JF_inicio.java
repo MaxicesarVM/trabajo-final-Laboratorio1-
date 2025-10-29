@@ -147,9 +147,19 @@ public class JF_inicio extends javax.swing.JFrame {
         jmReserva.setText("Reservas");
 
         jmitem_reservaTratamiento.setText("reserva tratamiento");
+        jmitem_reservaTratamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_reservaTratamientoActionPerformed(evt);
+            }
+        });
         jmReserva.add(jmitem_reservaTratamiento);
 
         jmitem_reservaIntalaciones.setText("reserva instalacion");
+        jmitem_reservaIntalaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_reservaIntalacionesActionPerformed(evt);
+            }
+        });
         jmReserva.add(jmitem_reservaIntalaciones);
 
         jMenuBar1.add(jmReserva);
@@ -272,6 +282,24 @@ public class JF_inicio extends javax.swing.JFrame {
         dsktp_principal.add(registoTratamiento);
         dsktp_principal.moveToFront(registoTratamiento);
     }//GEN-LAST:event_jmitem_TratamientoRegistroActionPerformed
+
+    private void jmitem_reservaTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_reservaTratamientoActionPerformed
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        Sesiones vistaSesiones = new Sesiones();
+        vistaSesiones.setVisible(true);
+        dsktp_principal.add(vistaSesiones);
+        dsktp_principal.moveToFront(vistaSesiones);
+    }//GEN-LAST:event_jmitem_reservaTratamientoActionPerformed
+
+    private void jmitem_reservaIntalacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_reservaIntalacionesActionPerformed
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        Sesiones_instalaciones vistaSesiones_instalaciones = new Sesiones_instalaciones();
+        vistaSesiones_instalaciones.setVisible(true);
+        dsktp_principal.add(vistaSesiones_instalaciones);
+        dsktp_principal.moveToFront(vistaSesiones_instalaciones);
+    }//GEN-LAST:event_jmitem_reservaIntalacionesActionPerformed
 
     /**
      * @param args the command line arguments
