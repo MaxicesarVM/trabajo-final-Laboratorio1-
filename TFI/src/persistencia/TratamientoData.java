@@ -125,7 +125,7 @@ public class TratamientoData {
     
     public Tratamiento buscarTratamiento(int codTratam){
         Tratamiento t = null;
-        String sql = "SELECT * FROM tratamiento WHERE codTratam = ?";
+        String sql = "SELECT * FROM tratamiento WHERE codTratamiento = ?";
         PreparedStatement ps;
         try{
             ps = con.prepareStatement(sql);
