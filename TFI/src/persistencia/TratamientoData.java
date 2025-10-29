@@ -34,7 +34,7 @@ public class TratamientoData {
             ps.setString(3, t.getDetalle());
             ps.setInt(4, t.getDuracion());
             ps.setDouble(5, t.getCosto());
-            ps.setBoolean(6, t.isActivo());
+            ps.setBoolean(6, t.getActivo());
             
             int registros = ps.executeUpdate();
             System.out.println(registros);
@@ -55,6 +55,73 @@ public class TratamientoData {
         }
               
     }
+    
+
+    
+    public List<Tratamiento> listarTratamientoTipo(String tp){
+        Tratamiento t = null;
+        List<Tratamiento> tratamientos = new ArrayList<>();
+        String sql = "SELECT * from tratamiento WHERE tipo = ?";
+        
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
+            ps.setString(1, tp);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                t = new Tratamiento();
+                t.setCodTratam(rs.getInt("codTratamiento"));
+                t.setNombre(rs.getString("nombre"));
+                t.setTipo(rs.getString("tipo"));
+                t.setDetalle(rs.getString("detalle"));
+                t.setDuracion(rs.getInt("duracion"));
+                t.setCosto(rs.getDouble("costo"));
+                t.setActivo(rs.getBoolean("estado"));
+                
+                
+                tratamientos.add(t);
+                 
+            }
+            
+            for(Tratamiento tratamiento: tratamientos){
+                
+                System.out.println(tratamiento);
+                 
+            }
+            
+            ps.close();
+             
+        } catch(SQLException ex){
+            
+            System.out.println("Error al listar tratamientos: " + ex);
+            
+        }
+        
+        return tratamientos; 
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public Tratamiento buscarTratamiento(int codTratam){
         Tratamiento t = null;
@@ -140,7 +207,7 @@ public class TratamientoData {
             ps.setString(3, t.getDetalle());
             ps.setInt(4, t.getDuracion());
             ps.setDouble(5, t.getCosto());
-            ps.setBoolean(6, t.isActivo());
+            ps.setBoolean(6, t.getActivo());
             
             
             ps.executeUpdate();

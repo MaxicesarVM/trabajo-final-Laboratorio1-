@@ -51,7 +51,7 @@ public class ListadoTratamientos extends javax.swing.JInternalFrame {
             
         jcb_listadoTratam.addItem("Facial");
         jcb_listadoTratam.addItem("Estetico");
-        jcb_listadoTratam.addItem("Corporales");
+        jcb_listadoTratam.addItem("Corporal");
         
             
             
@@ -64,17 +64,56 @@ public class ListadoTratamientos extends javax.swing.JInternalFrame {
     private void cargarColumnasTablas(){
         
         ArrayList<Object> filaCabecera = new ArrayList<>();
-        filaCabecera.add("Matricula");
-        filaCabecera.add("Nombre y Apellido");
-        filaCabecera.add("Especialidad");
+        filaCabecera.add("Nombre");
+        filaCabecera.add("Tipo");
+        filaCabecera.add("Detalle");
+        filaCabecera.add("Duracion");
+        filaCabecera.add("Costo");
         for(Object it: filaCabecera){
             modeloTabla.addColumn(it);
         }
-        tbl_listadoMasajistas.setModel(modeloTabla);
+        tbl_tablaTratamientos.setModel(modeloTabla);
         
     }
     
+    private void borrarFilaTabla(){
+        
+        int indice = modeloTabla.getRowCount() - 1;
+        for(int i = indice; i >= 0 ; i-- ){
+        
+            modeloTabla.removeRow(i);
+            
+        
+        }
+         
+    }
     
+    private void tratamientoTablaTipos(){
+    
+        borrarFilaTabla();
+        String seleccion = (String) jcb_listadoTratam.getSelectedItem();
+        listaT = (ArrayList<Tratamiento>) tratamientoData.listarTratamientoTipo(seleccion);
+        
+        for(Tratamiento tratamiento: listaT){
+            
+            modeloTabla.addRow(new Object[]{
+            
+            tratamiento.getNombre(),
+            tratamiento.getTipo(),
+            tratamiento.getDetalle(),
+            tratamiento.getDuracion(),
+            tratamiento.getCosto()
+            
+            
+            });
+            
+            
+            
+        }
+        
+        
+    
+    }
     
     
     /**
@@ -183,7 +222,7 @@ public class ListadoTratamientos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcb_listadoTratamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_listadoTratamActionPerformed
-        // TODO add your handling code here:
+        tratamientoTablaTipos();
     }//GEN-LAST:event_jcb_listadoTratamActionPerformed
 
 

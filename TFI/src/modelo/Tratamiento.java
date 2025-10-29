@@ -101,7 +101,7 @@ public class Tratamiento {
         this.costo = costo;
     }
 
-    public boolean isActivo() {
+    public boolean getActivo() {
         return activo;
     }
 
