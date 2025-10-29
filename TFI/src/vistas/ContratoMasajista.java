@@ -270,7 +270,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         String seleccionEspecialidad = txt_especialidad.getText();
         boolean seleccionEstado = check_ActivoMas.isSelected();
         
-        Masajista masajistaCreado = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
+        Masajista masajistaCreado = new Masajista(seleccionMatricula, seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
         operacionesMasajista.agregarMasajista(masajistaCreado);
         JOptionPane.showMessageDialog(this, "Se agrego el masajista: " + seleccionNombreCompleto + " correctamente");
 
@@ -296,7 +296,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         boolean seleccionEstado = check_ActivoMas.isSelected();
         
         Masajista masajistaActualizado = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
-        operacionesMasajista.agregarMasajista(masajistaActualizado);
+        operacionesMasajista.actualizarMasajista(masajistaActualizado);
         JOptionPane.showMessageDialog(this, "Se actualizó el masajista correctamente");
         
 
@@ -323,7 +323,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         boolean seleccionEstado = check_ActivoMas.isSelected();
         
         Masajista masajistaBaja = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
-        operacionesMasajista.agregarMasajista(masajistaBaja);
+        operacionesMasajista.bajaLogica(masajistaBaja);
         JOptionPane.showMessageDialog(this, "Se dio de baja al masajista correctamente");
 
        
@@ -338,7 +338,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         boolean seleccionEstado = check_ActivoMas.isSelected();
         
         Masajista masajistaAlta = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
-        operacionesMasajista.agregarMasajista(masajistaAlta);
+        operacionesMasajista.altaLogica(masajistaAlta);
         JOptionPane.showMessageDialog(this, "Se dio de alta al masajista correctamente");
 
 

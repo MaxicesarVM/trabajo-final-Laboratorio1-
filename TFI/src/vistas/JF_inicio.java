@@ -247,7 +247,12 @@ public class JF_inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jmitem_MasajistaContratoActionPerformed
 
     private void jmitem_InstalacionesListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_InstalacionesListActionPerformed
-        // TODO add your handling code here:
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ListadoInstalaciones listadoInstalaciones = new ListadoInstalaciones();
+        listadoInstalaciones.setVisible(true);
+        dsktp_principal.add(listadoInstalaciones);
+        dsktp_principal.moveToFront(listadoInstalaciones);
     }//GEN-LAST:event_jmitem_InstalacionesListActionPerformed
 
     private void jmitem_TratamientoListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_TratamientoListActionPerformed

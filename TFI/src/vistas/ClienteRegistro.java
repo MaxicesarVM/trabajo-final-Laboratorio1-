@@ -4,6 +4,12 @@
  */
 package vistas;
 
+import javax.swing.JOptionPane;
+import modelo.Cliente;
+import modelo.Masajista;
+import persistencia.ClienteData;
+import persistencia.Conexion;
+
 /**
  *
  * @author Maxi
@@ -17,6 +23,11 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    
+    Conexion con = new Conexion();
+     ClienteData operacionesCliente = new ClienteData(con);
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,22 +45,22 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         jl_edad = new javax.swing.JLabel();
         jl_afecciones = new javax.swing.JLabel();
         jl_estado = new javax.swing.JLabel();
-        ck_activoCliente = new java.awt.Checkbox();
         txt_codCli = new java.awt.TextField();
         txt_nombreCompleto = new java.awt.TextField();
         txt_documento = new java.awt.TextField();
         txt_telefono = new java.awt.TextField();
         txt_edad = new java.awt.TextField();
         txt_afecciones = new java.awt.TextField();
-        button1 = new java.awt.Button();
+        btn_regisCli = new java.awt.Button();
         btn_buscarCli = new java.awt.Button();
-        button3 = new java.awt.Button();
-        button4 = new java.awt.Button();
-        button5 = new java.awt.Button();
+        btn_limpiarCli = new java.awt.Button();
+        btn_actuCli = new java.awt.Button();
+        btn_borrarCli = new java.awt.Button();
         btn_bajaLogica = new java.awt.Button();
-        button7 = new java.awt.Button();
+        btn_altaLogica = new java.awt.Button();
         jb_notaCodCli = new javax.swing.JLabel();
         jb_notaCodCli1 = new javax.swing.JLabel();
+        ck_clienteActivo = new javax.swing.JCheckBox();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
@@ -85,8 +96,6 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         jl_estado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jl_estado.setForeground(new java.awt.Color(0, 0, 0));
         jl_estado.setText("Activo");
-
-        ck_activoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         txt_codCli.setBackground(new java.awt.Color(153, 255, 255));
         txt_codCli.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -136,12 +145,12 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
             }
         });
 
-        button1.setBackground(new java.awt.Color(153, 255, 255));
-        button1.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        button1.setLabel("Registrar");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        btn_regisCli.setBackground(new java.awt.Color(153, 255, 255));
+        btn_regisCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
+        btn_regisCli.setLabel("Registrar");
+        btn_regisCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                btn_regisCliActionPerformed(evt);
             }
         });
 
@@ -154,30 +163,30 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
             }
         });
 
-        button3.setBackground(new java.awt.Color(153, 255, 255));
-        button3.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        button3.setLabel("Limpiar campos");
-        button3.addActionListener(new java.awt.event.ActionListener() {
+        btn_limpiarCli.setBackground(new java.awt.Color(153, 255, 255));
+        btn_limpiarCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
+        btn_limpiarCli.setLabel("Limpiar campos");
+        btn_limpiarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button3ActionPerformed(evt);
+                btn_limpiarCliActionPerformed(evt);
             }
         });
 
-        button4.setBackground(new java.awt.Color(153, 255, 255));
-        button4.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        button4.setLabel("Actualizar");
-        button4.addActionListener(new java.awt.event.ActionListener() {
+        btn_actuCli.setBackground(new java.awt.Color(153, 255, 255));
+        btn_actuCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
+        btn_actuCli.setLabel("Actualizar");
+        btn_actuCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button4ActionPerformed(evt);
+                btn_actuCliActionPerformed(evt);
             }
         });
 
-        button5.setBackground(new java.awt.Color(153, 255, 255));
-        button5.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        button5.setLabel("Borrar registro");
-        button5.addActionListener(new java.awt.event.ActionListener() {
+        btn_borrarCli.setBackground(new java.awt.Color(153, 255, 255));
+        btn_borrarCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
+        btn_borrarCli.setLabel("Borrar registro");
+        btn_borrarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button5ActionPerformed(evt);
+                btn_borrarCliActionPerformed(evt);
             }
         });
 
@@ -190,12 +199,12 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
             }
         });
 
-        button7.setBackground(new java.awt.Color(153, 255, 255));
-        button7.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        button7.setLabel("Alta");
-        button7.addActionListener(new java.awt.event.ActionListener() {
+        btn_altaLogica.setBackground(new java.awt.Color(153, 255, 255));
+        btn_altaLogica.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
+        btn_altaLogica.setLabel("Alta");
+        btn_altaLogica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button7ActionPerformed(evt);
+                btn_altaLogicaActionPerformed(evt);
             }
         });
 
@@ -206,6 +215,9 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         jb_notaCodCli1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jb_notaCodCli1.setForeground(new java.awt.Color(0, 0, 0));
         jb_notaCodCli1.setText("SPA ENTRE DEDOS                                   CLIENTES");
+
+        ck_clienteActivo.setBackground(new java.awt.Color(255, 255, 255));
+        ck_clienteActivo.setForeground(new java.awt.Color(0, 153, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -223,13 +235,13 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                                         .addGap(8, 8, 8)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jl_estado)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(ck_activoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(btn_bajaLogica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(button7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(btn_altaLogica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jl_estado)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(ck_clienteActivo))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(36, 36, 36)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -244,12 +256,12 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                                     .addComponent(jl_nombreCompleto, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txt_codCli, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_buscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jb_notaCodCli)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -258,12 +270,12 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                                         .addComponent(txt_nombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(btn_actuCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn_borrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn_regisCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn_limpiarCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(txt_afecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,24 +286,26 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                 .addComponent(jb_notaCodCli)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btn_buscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jl_codCli)
-                        .addComponent(txt_codCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jl_dni, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(btn_buscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jl_codCli)
+                                .addComponent(txt_codCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jl_dni)))
+                .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_regisCli, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
-                        .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_actuCli, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -300,7 +314,7 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_borrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -314,30 +328,29 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                                 .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 23, Short.MAX_VALUE)
+                                .addComponent(btn_limpiarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 22, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txt_afecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jl_afecciones)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(button7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(ck_activoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn_altaLogica, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(btn_bajaLogica, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jl_estado)))))
-                        .addContainerGap(20, Short.MAX_VALUE))))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jl_estado)
+                                            .addComponent(ck_clienteActivo))))))
+                        .addContainerGap(23, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,44 +384,130 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_afeccionesActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    private void btn_regisCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regisCliActionPerformed
+        
+        
+        String seleccionDocumento = txt_documento.getText();
+        String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEdad = txt_edad.getText();
+        String seleccionAfecciones = txt_afecciones.getText();
+        boolean seleccionEstado = ck_clienteActivo.isSelected();
+        
+        Cliente clienteCreado = new Cliente(Integer.parseInt(seleccionDocumento), seleccionNombreCompleto, Long.valueOf(seleccionTelefono), Integer.parseInt(seleccionEdad), seleccionAfecciones, seleccionEstado);
+        operacionesCliente.agregarCliente(clienteCreado);
+        JOptionPane.showMessageDialog(this, "Se agrego el cliente: " + seleccionNombreCompleto + " correctamente");
+        
+        
+    }//GEN-LAST:event_btn_regisCliActionPerformed
 
     private void btn_buscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarCliActionPerformed
-        // TODO add your handling code here:
+        
+        
+        int seleccion = Integer.parseInt(txt_codCli.getText().trim());
+        txt_codCli.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getCodCli()));
+        txt_documento.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getDni()));
+        txt_nombreCompleto.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getNombreCompleto()));
+        txt_telefono.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getTelefono()));
+        txt_edad.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getEdad()));
+        txt_afecciones.setText(operacionesCliente.buscarCliente(seleccion).getAfecciones());
+        ck_clienteActivo.setSelected(operacionesCliente.buscarCliente(seleccion).isEstado());
+        
+        
     }//GEN-LAST:event_btn_buscarCliActionPerformed
 
-    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button3ActionPerformed
+    private void btn_limpiarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarCliActionPerformed
+        
+        txt_codCli.setText("");
+        txt_documento.setText("");      
+        txt_nombreCompleto.setText("");
+        txt_telefono.setText("");
+        txt_edad.setText("");  
+        txt_afecciones.setText("");
+        ck_clienteActivo.setSelected(false);
+        
+                
+                
+        
+    }//GEN-LAST:event_btn_limpiarCliActionPerformed
 
-    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button4ActionPerformed
+    private void btn_actuCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actuCliActionPerformed
+        
+        int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
+        String seleccionDocumento = txt_documento.getText();
+        String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEdad = txt_edad.getText();
+        String seleccionAfecciones = txt_afecciones.getText();
+        boolean seleccionEstado = ck_clienteActivo.isSelected();
+        
+        Cliente clienteActualizado = new Cliente(seleccionCodigoCliente, Integer.parseInt(seleccionDocumento), seleccionNombreCompleto, Long.valueOf(seleccionTelefono), Integer.parseInt(seleccionEdad), seleccionAfecciones, seleccionEstado);
+        operacionesCliente.actualizarCliente(clienteActualizado);
+        JOptionPane.showMessageDialog(this, "Se actualizo el cliente: " + seleccionNombreCompleto + " correctamente");
+        
+        
+    }//GEN-LAST:event_btn_actuCliActionPerformed
 
-    private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button5ActionPerformed
+    private void btn_borrarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarCliActionPerformed
+        
+        int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
+        
+        operacionesCliente.eliminarCliente(seleccionCodigoCliente);
+        JOptionPane.showMessageDialog(this, "Cliente borrado actualmente"); 
+        
+        
+        
+    }//GEN-LAST:event_btn_borrarCliActionPerformed
 
     private void btn_bajaLogicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bajaLogicaActionPerformed
-        // TODO add your handling code here:
+        
+        
+        int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
+        String seleccionDocumento = txt_documento.getText();
+        String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEdad = txt_edad.getText();
+        String seleccionAfecciones = txt_afecciones.getText();
+        boolean seleccionEstado = ck_clienteActivo.isSelected();
+        
+        Cliente clienteCreado = new Cliente(seleccionCodigoCliente, Integer.parseInt(seleccionDocumento), seleccionNombreCompleto, Long.valueOf(seleccionTelefono), Integer.parseInt(seleccionEdad), seleccionAfecciones, seleccionEstado);
+        operacionesCliente.bajaLogica(clienteCreado);
+        JOptionPane.showMessageDialog(this, "Cliente dado de baja correctamente");
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btn_bajaLogicaActionPerformed
 
-    private void button7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button7ActionPerformed
+    private void btn_altaLogicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_altaLogicaActionPerformed
+        
+        int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
+        String seleccionDocumento = txt_documento.getText();
+        String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEdad = txt_edad.getText();
+        String seleccionAfecciones = txt_afecciones.getText();
+        boolean seleccionEstado = ck_clienteActivo.isSelected();
+        
+        Cliente clienteCreado = new Cliente(seleccionCodigoCliente, Integer.parseInt(seleccionDocumento), seleccionNombreCompleto, Long.valueOf(seleccionTelefono), Integer.parseInt(seleccionEdad), seleccionAfecciones, seleccionEstado);
+        operacionesCliente.altaLogica(clienteCreado);
+        JOptionPane.showMessageDialog(this, "Cliente dado de alta correctamente");
+        
+        
+        
+    }//GEN-LAST:event_btn_altaLogicaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button btn_actuCli;
+    private java.awt.Button btn_altaLogica;
     private java.awt.Button btn_bajaLogica;
+    private java.awt.Button btn_borrarCli;
     private java.awt.Button btn_buscarCli;
-    private java.awt.Button button1;
-    private java.awt.Button button3;
-    private java.awt.Button button4;
-    private java.awt.Button button5;
-    private java.awt.Button button7;
-    private java.awt.Checkbox ck_activoCliente;
+    private java.awt.Button btn_limpiarCli;
+    private java.awt.Button btn_regisCli;
+    private javax.swing.JCheckBox ck_clienteActivo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jb_notaCodCli;
     private javax.swing.JLabel jb_notaCodCli1;

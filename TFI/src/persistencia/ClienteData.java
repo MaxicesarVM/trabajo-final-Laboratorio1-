@@ -21,7 +21,7 @@ public class ClienteData {
     
         public void agregarCliente(Cliente c){
         
-        String sql = "INSERT into cliente (dni, nombreCompleto, telefono, edad, afecciones, estado) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT into cliente (dni, nombre_completo, telefono, edad, afecciones, estado) VALUES(?,?,?,?,?,?)";
         
         try{
                 
@@ -57,7 +57,7 @@ public class ClienteData {
         
         public void actualizarCliente(Cliente c){
         
-        String sql = "UPDATE cliente SET dni = ?, nombreCompleto = ?, telefono = ?, edad = ?, afecciones = ?, estado = ? WHERE codCli = ?";
+        String sql = "UPDATE cliente SET dni = ?, nombre_completo = ?, telefono = ?, edad = ?, afecciones = ?, estado = ? WHERE codCliente = ?";
         
         try{
             
@@ -68,6 +68,7 @@ public class ClienteData {
             ps.setInt(4, c.getEdad());
             ps.setString(5, c.getAfecciones());
             ps.setBoolean(6, c.isEstado());
+            ps.setInt(7, c.getCodCli());
             
             
             ps.executeUpdate();
@@ -85,7 +86,7 @@ public class ClienteData {
         
          public void eliminarCliente(int codCli){
         
-        String sql = "DELETE from cliente WHERE codCli = ?";
+        String sql = "DELETE from cliente WHERE codCliente = ?";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);
@@ -108,7 +109,7 @@ public class ClienteData {
          
          public Cliente buscarCliente(int codCli){
         Cliente c = null;
-        String sql = "SELECT * FROM cliente WHERE codCli = ?";
+        String sql = "SELECT * FROM cliente WHERE codCliente = ?";
         PreparedStatement ps;
         try{
             ps = con.prepareStatement(sql);
@@ -182,7 +183,7 @@ public class ClienteData {
           
      public void altaLogica(Cliente c){
         
-        String sql = "UPDATE cliente SET estado=1 WHERE codCli=?";
+        String sql = "UPDATE cliente SET estado = 1 WHERE codCliente=?";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);
@@ -203,7 +204,7 @@ public class ClienteData {
     
     public void bajaLogica(Cliente c){
         
-        String sql = "UPDATE cliente SET estado=0 WHERE codCli=?";
+        String sql = "UPDATE cliente SET estado = 0 WHERE codCliente=?";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);

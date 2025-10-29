@@ -8,12 +8,12 @@ package vistas;
  *
  * @author Maxi
  */
-public class ListadoIntalaciones extends javax.swing.JInternalFrame {
+public class ListadoInstalaciones extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ListadoIntalaciones
      */
-    public ListadoIntalaciones() {
+    public ListadoInstalaciones() {
         initComponents();
     }
 
