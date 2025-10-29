@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2025 a las 00:54:49
+-- Tiempo de generación: 29-10-2025 a las 23:37:33
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -149,20 +149,20 @@ CREATE TABLE `tratamiento` (
 --
 
 INSERT INTO `tratamiento` (`codTratamiento`, `nombre`, `tipo`, `detalle`, `duracion`, `costo`, `estado`) VALUES
-(1, 'Facial básico', 'Facial', 'Limpieza profunda, exfoliación y mascarilla para refrescar el cutis.', 60, 3500, 1),
-(2, 'Faciales avanzados', 'Facial', 'Pueden incluir tratamientos antienvejecimiento, microdermoabrasión o hidrafaciales.', 90, 7000, 1),
-(3, 'Microdermoabrasión', 'Facial', 'Exfolia la capa superficial de la piel usando puntas de diamante o microcristales.', 45, 4500, 1),
-(4, 'Radiofrecuencia', 'Facial', 'Usa ondas de radio para generar calor en la piel, estimulando la producción de colágeno y elastina.', 60, 5500, 1),
-(5, 'Ultrasonido', 'Facial', 'Usa ondas sonoras de alta frecuencia para limpiar la piel, penetrar activos o hacer masajes profundo', 45, 4800, 1),
-(6, 'Luz Pulsada Intensa (IPL)', 'Facial', 'Utilizada para fotodepilación, rejuvenecimiento de la piel y tratamiento de manchas.', 30, 6000, 1),
-(7, 'Vaporizador facial', 'Facial', 'Produce vapor para abrir los poros y limpiar la piel profundamente.', 20, 2000, 1),
-(8, 'Exfoliación corporal', 'Corporal', 'Elimina las células muertas de la piel con el uso de sales o azúcares.', 45, 4000, 1),
-(9, 'Envolturas corporales', 'Corporal', 'Hidratan y desintoxican la piel con ingredientes como algas, barro o chocolate.', 60, 5200, 1),
-(10, 'Hidroterapia', 'Corporal', 'Sesiones en saunas, jacuzzis o baños de vapor.', 60, 4500, 1),
-(11, 'Vacumterapia', 'Corporal', 'Es una succión corporal que mejora la circulación sanguínea y el drenaje linfático.', 45, 5000, 1),
-(12, 'Manicura', 'Estético', 'Cuidado y embellecimiento de las uñas de las manos.', 45, 2500, 1),
-(13, 'Pedicura', 'Estético', 'Cuidado y embellecimiento de las uñas de los pies.', 45, 3000, 1),
-(14, 'Tratamiento capilar', 'Estético', 'Procedimientos para mejorar la salud y apariencia del cabello.', 60, 5500, 1);
+(1, 'Facial básico', 'facial', 'Limpieza profunda, exfoliación y mascarilla para refrescar el cutis.', 60, 3500, 1),
+(2, 'Faciales avanzados', 'facial', 'Pueden incluir tratamientos antienvejecimiento, microdermoabrasión o hidrafaciales.', 90, 7000, 1),
+(3, 'Microdermoabrasión', 'facial', 'Exfolia la capa superficial de la piel usando puntas de diamante o microcristales.', 45, 4500, 1),
+(4, 'Radiofrecuencia', 'facial', 'Usa ondas de radio para generar calor en la piel, estimulando la producción de colágeno y elastina.', 60, 5500, 1),
+(5, 'Ultrasonido', 'facial', 'Usa ondas sonoras de alta frecuencia para limpiar la piel, penetrar activos o hacer masajes profundo', 45, 4800, 1),
+(6, 'Luz Pulsada Intensa (IPL)', 'facial', 'Utilizada para fotodepilación, rejuvenecimiento de la piel y tratamiento de manchas.', 30, 6000, 1),
+(7, 'Vaporizador facial', 'facial', 'Produce vapor para abrir los poros y limpiar la piel profundamente.', 20, 2000, 1),
+(8, 'Exfoliación corporal', 'corporal', 'Elimina las células muertas de la piel con el uso de sales o azúcares.', 45, 4000, 1),
+(9, 'Envolturas corporales', 'corporal', 'Hidratan y desintoxican la piel con ingredientes como algas, barro o chocolate.', 60, 5200, 1),
+(10, 'Hidroterapia', 'corporal', 'Sesiones en saunas, jacuzzis o baños de vapor.', 60, 4500, 1),
+(11, 'Vacumterapia', 'corporal', 'Es una succión corporal que mejora la circulación sanguínea y el drenaje linfático.', 45, 5000, 1),
+(12, 'Manicura', 'estetico', 'Cuidado y embellecimiento de las uñas de las manos.', 45, 2500, 1),
+(13, 'Pedicura', 'estetico', 'Cuidado y embellecimiento de las uñas de los pies.', 45, 3000, 1),
+(14, 'Tratamiento capilar', 'estetico', 'Procedimientos para mejorar la salud y apariencia del cabello.', 60, 5500, 1);
 
 --
 -- Índices para tablas volcadas
