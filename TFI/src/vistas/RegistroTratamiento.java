@@ -49,8 +49,8 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         btn_limpiarTrat = new javax.swing.JButton();
         btn_bajaTrat = new javax.swing.JButton();
         btn_altaTrat = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        ck_estadoTratamiento = new javax.swing.JCheckBox();
+        btn_buscarTratamiento = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -136,63 +136,24 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         btn_altaTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_altaTrat.setText("Alta Logica");
 
-        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setForeground(new java.awt.Color(0, 153, 255));
+        ck_estadoTratamiento.setBackground(new java.awt.Color(255, 255, 255));
+        ck_estadoTratamiento.setForeground(new java.awt.Color(0, 153, 255));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Buscar");
+        btn_buscarTratamiento.setBackground(new java.awt.Color(255, 255, 255));
+        btn_buscarTratamiento.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_buscarTratamiento.setForeground(new java.awt.Color(0, 0, 0));
+        btn_buscarTratamiento.setText("Buscar");
 
         javax.swing.GroupLayout pnl_RegistroTratLayout = new javax.swing.GroupLayout(pnl_RegistroTrat);
         pnl_RegistroTrat.setLayout(pnl_RegistroTratLayout);
         pnl_RegistroTratLayout.setHorizontalGroup(
             pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
-                .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
-                                .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_codTrat)
-                                    .addComponent(lbl_nombreTrat)
-                                    .addComponent(lbl_tipotrat)
-                                    .addComponent(lbl_detalleTrat))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_codTrat, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                                    .addComponent(txt_nombreTrat)
-                                    .addComponent(txt_tipoTrat)
-                                    .addComponent(txt_detalleTrat)))
-                            .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
-                                .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_productosTrat)
-                                    .addComponent(lbl_duracionTrat))
-                                .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl_RegistroTratLayout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(jcb_productosTrat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txt_duracionTrat, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                                            .addComponent(txt_costoTrat)))))
-                            .addComponent(lbl_costoTrat)
-                            .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btn_guardarTrat)
-                                .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
-                                    .addComponent(lbl_estadoTrat)
-                                    .addGap(33, 33, 33)
-                                    .addComponent(jCheckBox1))))
-                        .addGap(53, 53, 53)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(btn_bajaTrat)
-                        .addGap(127, 127, 127)
-                        .addComponent(btn_altaTrat)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addGap(107, 107, 107)
+                .addComponent(btn_bajaTrat)
+                .addGap(127, 127, 127)
+                .addComponent(btn_altaTrat)
+                .addContainerGap(160, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_RegistroTratLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,6 +167,44 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_RegistroTratLayout.createSequentialGroup()
                         .addComponent(lbl_titulovista)
                         .addGap(184, 184, 184))))
+            .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
+                        .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_codTrat)
+                            .addComponent(lbl_nombreTrat)
+                            .addComponent(lbl_tipotrat)
+                            .addComponent(lbl_detalleTrat))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_nombreTrat, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                            .addComponent(txt_tipoTrat)
+                            .addComponent(txt_detalleTrat)
+                            .addComponent(txt_codTrat)))
+                    .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
+                        .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_productosTrat)
+                            .addComponent(lbl_duracionTrat))
+                        .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl_RegistroTratLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jcb_productosTrat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_duracionTrat, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                    .addComponent(txt_costoTrat)))))
+                    .addComponent(lbl_costoTrat)
+                    .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btn_guardarTrat)
+                        .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
+                            .addComponent(lbl_estadoTrat)
+                            .addGap(33, 33, 33)
+                            .addComponent(ck_estadoTratamiento))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_buscarTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
         );
         pnl_RegistroTratLayout.setVerticalGroup(
             pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +221,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                         .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_nombreTrat)
                             .addComponent(txt_nombreTrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_buscarTratamiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_tipotrat)
@@ -246,7 +245,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbl_estadoTrat)
-                    .addComponent(jCheckBox1))
+                    .addComponent(ck_estadoTratamiento))
                 .addGap(40, 40, 40)
                 .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardarTrat)
@@ -280,10 +279,10 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_altaTrat;
     private javax.swing.JButton btn_bajaTrat;
     private javax.swing.JButton btn_borrarTrat;
+    private javax.swing.JButton btn_buscarTratamiento;
     private javax.swing.JButton btn_guardarTrat;
     private javax.swing.JButton btn_limpiarTrat;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox ck_estadoTratamiento;
     private javax.swing.JComboBox<String> jcb_productosTrat;
     private javax.swing.JLabel lbl_codTrat;
     private javax.swing.JLabel lbl_costoTrat;

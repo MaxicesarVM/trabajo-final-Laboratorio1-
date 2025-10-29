@@ -4,19 +4,79 @@
  */
 package vistas;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.Masajista;
+
+import modelo.Tratamiento;
+import persistencia.Conexion;
+import persistencia.MasajistaData;
+import persistencia.TratamientoData;
+
 /**
  *
  * @author Alan
  */
 public class ListadoTratamientos extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ListadoTratamientos
-     */
+    
+    private ArrayList<Tratamiento> listaT;
+    private TratamientoData tratamientoData;
+    
+    private DefaultTableModel modeloTabla;
+    
+    Conexion con = new Conexion();
+    
+    
     public ListadoTratamientos() {
+        
+        
         initComponents();
+        
+        tratamientoData = new TratamientoData(con);
+        listaT = (ArrayList<Tratamiento>)tratamientoData.listarTratamientos();
+        
+        
+        modeloTabla = new DefaultTableModel();
+        cargarTratamiento();
+        cargarColumnasTablas();
+        tratamientoTablaTipos();
+        
     }
 
+    private void cargarTratamiento(){
+        
+        
+        
+            
+        jcb_listadoTratam.addItem("Facial");
+        jcb_listadoTratam.addItem("Estetico");
+        jcb_listadoTratam.addItem("Corporales");
+        
+            
+            
+        
+        
+       
+    }
+    
+    
+    private void cargarColumnasTablas(){
+        
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("Matricula");
+        filaCabecera.add("Nombre y Apellido");
+        filaCabecera.add("Especialidad");
+        for(Object it: filaCabecera){
+            modeloTabla.addColumn(it);
+        }
+        tbl_listadoMasajistas.setModel(modeloTabla);
+        
+    }
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
