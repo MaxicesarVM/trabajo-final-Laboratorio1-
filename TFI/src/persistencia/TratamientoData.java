@@ -23,7 +23,7 @@ public class TratamientoData {
     
     public void agregarTratamiento(Tratamiento t){
         
-        String sql = "INSERT into tratamiento(nombre, tipo, detalle, duracion, costo, estado) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT into tratamiento(nombre, tipo, detalle,producto, duracion, costo, estado) VALUES(?,?,?,?,?,?,?)";
         
         try{
                 
@@ -32,9 +32,10 @@ public class TratamientoData {
             ps.setString(1, t.getNombre());
             ps.setString(2, t.getTipo());
             ps.setString(3, t.getDetalle());
-            ps.setInt(4, t.getDuracion());
-            ps.setDouble(5, t.getCosto());
-            ps.setBoolean(6, t.getActivo());
+            ps.setString(4, t.getProductos());
+            ps.setInt(5, t.getDuracion());
+            ps.setDouble(6, t.getCosto());
+            ps.setBoolean(7, t.getActivo());
             
             int registros = ps.executeUpdate();
             System.out.println(registros);
@@ -76,6 +77,7 @@ public class TratamientoData {
                 t.setNombre(rs.getString("nombre"));
                 t.setTipo(rs.getString("tipo"));
                 t.setDetalle(rs.getString("detalle"));
+                t.setProductos(rs.getString("producto"));
                 t.setDuracion(rs.getInt("duracion"));
                 t.setCosto(rs.getDouble("costo"));
                 t.setActivo(rs.getBoolean("estado"));
@@ -137,6 +139,7 @@ public class TratamientoData {
                 t.setNombre(rs.getString("nombre"));
                 t.setTipo(rs.getString("tipo"));
                 t.setDetalle(rs.getString("detalle"));
+                t.setProductos(rs.getString("producto"));
                 t.setDuracion(rs.getInt("duracion"));
                 t.setCosto(rs.getDouble("costo"));
                 t.setActivo(rs.getBoolean("estado"));
@@ -146,7 +149,7 @@ public class TratamientoData {
             
             
         } catch (SQLException ex) {
-            System.out.println("No existe ese cliente" + ex);
+            System.out.println("No existe ese tratamiento" + ex);
         }
         
         return t;
@@ -170,6 +173,7 @@ public class TratamientoData {
                 t.setNombre(rs.getString("nombre"));
                 t.setTipo(rs.getString("tipo"));
                 t.setDetalle(rs.getString("detalle"));
+                t.setProductos(rs.getString("producto"));
                 t.setDuracion(rs.getInt("duracion"));
                 t.setCosto(rs.getDouble("costo"));
                 t.setActivo(rs.getBoolean("estado"));
@@ -197,7 +201,7 @@ public class TratamientoData {
     
     public void actualizarTratamiento(Tratamiento t){
         
-        String sql = "UPDATE tratamiento SET nombre = ?, tipo = ?, detalle = ?, duracion = ?, costo = ?, estado = ? WHERE cod_tratamiento = ?";
+        String sql = "UPDATE tratamiento SET nombre = ?, tipo = ?, detalle = ?, producto = ?, duracion = ?, costo = ?, estado = ? WHERE cod_tratamiento = ?";
         
         try{
             
@@ -205,9 +209,10 @@ public class TratamientoData {
             ps.setString(1, t.getNombre());
             ps.setString(2, t.getTipo());
             ps.setString(3, t.getDetalle());
-            ps.setInt(4, t.getDuracion());
-            ps.setDouble(5, t.getCosto());
-            ps.setBoolean(6, t.getActivo());
+            ps.setString(4,t.getProductos());
+            ps.setInt(5, t.getDuracion());
+            ps.setDouble(6, t.getCosto());
+            ps.setBoolean(7, t.getActivo());
             
             
             ps.executeUpdate();
