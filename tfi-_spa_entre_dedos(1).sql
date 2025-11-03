@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-11-2025 a las 22:41:45
+-- Tiempo de generación: 04-11-2025 a las 00:15:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -47,7 +47,7 @@ CREATE TABLE `cliente` (
 
 CREATE TABLE `dia_de_spa` (
   `codPack` int(11) NOT NULL,
-  `fecha_hora` datetime NOT NULL,
+  `fecha` date NOT NULL,
   `preferencias` varchar(50) NOT NULL,
   `codCli` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL,
@@ -119,8 +119,9 @@ INSERT INTO `masajista` (`matricula`, `nombre_completo`, `telefono`, `especialid
 
 CREATE TABLE `sesion/pack` (
   `codSesion` int(11) NOT NULL,
-  `fecha_hora_inicio` datetime NOT NULL,
-  `fecha_hora_fin` datetime NOT NULL,
+  `fecha` date DEFAULT NULL,
+  `hora_inicio` time NOT NULL,
+  `hora_fin` time NOT NULL,
   `codTratamiento` int(11) NOT NULL,
   `codMasajista` int(11) NOT NULL,
   `codPack` int(11) NOT NULL,
