@@ -27,7 +27,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
         modeloTabla = new DefaultTableModel();
         
         cargarColumnasTablas();
-        
+        generarHorariosSesion();
     }
 
     
@@ -57,30 +57,44 @@ public class Sesiones extends javax.swing.JInternalFrame {
     }
      
     
-    private void tablaHorariosCargar(){
-    
-        borrarFilaTabla();
-        String seleccion = (String) cb_especialidades.getSelectedItem();
-        listaM = (ArrayList<Masajista>) masajistaData.listaMasajistaEspecialidad(seleccion);
+    private void generarHorariosSesion(){
         
-        for(Masajista masajista: listaM){
+        String[] horariosInicio = {
+            "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", 
+            "11:00", "11:30", "12:00", "12:30", "13:00", "13:30"
+        };
+        String[] horariosFin = {
+            
+            "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", 
+            "11:30", "12:00", "12:30", "13:00", "13:30", "14:00"
+            
+        };
+        
+        for(int i = 0; i < horariosInicio.length; i++){
             
             modeloTabla.addRow(new Object[]{
-            
-            masajista.getMatricula(),
-            masajista.getNombre_completo(),
-            masajista.getEspecialidad()
-            
-            
+                horariosInicio[i],
+                horariosFin[i]
+                   
+                
+                
             });
-            
-            
+                
             
         }
         
         
-    
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
     
     
     @SuppressWarnings("unchecked")

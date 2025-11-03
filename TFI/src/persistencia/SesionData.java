@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Cliente;
@@ -29,18 +30,20 @@ public class SesionData {
 
     public void crearSesion(Sesion s) throws SQLException {
 
-        String sql = "INSERT into sesion (fecha_hora_inicio, fecha_hora_fin, codTratamiento, codMasajista, codPack, estado) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT into sesion (fecha, hora_inicio, hora_fin, codTratamiento, codMasajista, codPack, estado, codInstalacion) VALUES(?,?,?,?,?,?,?,?)";
 
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setDate(1, Date.valueOf(s.getFechaHoraInicio()));
-            ps.setDate(2, Date.valueOf(s.getFechaHoraFin()));
-            ps.setInt(3, s.getTratamiento().getCodTratam());
-            ps.setInt(4, s.getMasajista().getMatricula());
-            ps.setInt(5, s.getDiaDeSpa().getCodPack());
-            ps.setBoolean(6, s.isEstado());
+            ps.setDate(1, Date.valueOf(s.getFecha()));
+            ps.setTime(2, Time.valueOf(s.getHoraInicio()));
+            ps.setTime(3, Time.valueOf(s.getHoraFin()));
+            ps.setInt(4, s.getTratamiento().getCodTratam());
+            ps.setInt(5, s.getMasajista().getMatricula());
+            ps.setInt(6, s.getDiaDeSpa().getCodPack());
+            ps.setBoolean(7, s.isEstado());
+            ps.setInt(8, s.getInstalaciones().getCodInstal());
 
             int creacion = ps.executeUpdate();
             System.out.println(creacion);
@@ -84,17 +87,20 @@ public class SesionData {
 
     public void actualizarSesion(Sesion s) throws SQLException {
 
-        String sql = "UPDATE sesion SET fecha_hora_inicio = ?, fecha_hora_fin = ?, codTratamiento = ?, codMasajista = ?, codPack = ?, estado = ? WHERE = codSesion = ?";
+        String sql = "UPDATE sesion SET fecha = ?, hora_inicio = ?, hora_fin = ?, codTratamiento = ?, codMasajista = ?, codPack = ?, estado = ?, codInstalacion = ? WHERE codSesion = ?";
 
         try {
 
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, Date.valueOf(s.getFechaHoraInicio()));
-            ps.setDate(2, Date.valueOf(s.getFechaHoraFin()));
-            ps.setInt(3, s.getTratamiento().getCodTratam());
-            ps.setInt(4, s.getMasajista().getMatricula());
-            ps.setInt(5, s.getDiaDeSpa().getCodPack());
-            ps.setBoolean(6, s.isEstado());
+            ps.setDate(1, Date.valueOf(s.getFecha()));
+            ps.setTime(2, Time.valueOf(s.getHoraInicio()));
+            ps.setTime(3, Time.valueOf(s.getHoraFin()));
+            ps.setInt(4, s.getTratamiento().getCodTratam());
+            ps.setInt(5, s.getMasajista().getMatricula());
+            ps.setInt(6, s.getDiaDeSpa().getCodPack());
+            ps.setBoolean(7, s.isEstado());
+            ps.setInt(8, s.getInstalaciones().getCodInstal());
+            ps.setInt(9, s.getCodSesion());
 
             ps.executeUpdate();
             ps.close();
@@ -109,7 +115,7 @@ public class SesionData {
 
         Sesion s = null;
         List<Sesion> Sesiones = new ArrayList<>();
-        String sql = "SELECT * from sesion/pack";
+        String sql = "SELECT * from sesion/pack WHERE estado = 1";
         
         try {
 
@@ -118,13 +124,15 @@ public class SesionData {
             TratamientoData td = new TratamientoData((Conexion) con);
             DiaDeSpaData dd = new DiaDeSpaData((Conexion) con);
             MasajistaData md = new MasajistaData((Conexion) con);
-
+            InstalacionData id = new InstalacionData((Conexion) con);
+            
             while (rs.next()) {
 
                 s = new Sesion();
                 s.setCodSesion(rs.getInt("codSesion"));
-                s.setFechaHoraInicio(rs.getDate("fecha_hora_inicio").toLocalDate());
-                s.setFechaHoraFin(rs.getDate("fecha_hora_fin").toLocalDate());
+                s.setFecha(rs.getDate("fecha").toLocalDate());
+                s.setHoraInicio(rs.getTime("hora_inicio").toLocalTime());
+                s.setHoraFin(rs.getTime("hora_fin").toLocalTime());
 
                 Tratamiento ta = td.buscarTratamiento(rs.getInt("codTratamiento"));
                 s.setTratamiento(ta);
@@ -132,9 +140,11 @@ public class SesionData {
                 s.setMasajista(ma);
                 DiaDeSpa ds = dd.buscarDia(rs.getInt("codPack"));
                 s.setDiaDeSpa(ds);
-
                 s.setEstado(rs.getBoolean("estado"));
-
+                Instalacion ic = id.buscarInstalacion(rs.getInt("codInstalacion"));
+                s.setInstalaciones(ic);
+                    
+                
                 Sesiones.add(s);
 
             }
@@ -171,23 +181,24 @@ public class SesionData {
             while (rs.next()) {
                 s = new Sesion();
                 s.setCodSesion(rs.getInt("codSesion"));
-                s.setFechaHoraInicio(rs.getDate("fecha_hora_inicio").toLocalDate());
-                s.setFechaHoraFin(rs.getDate("fecha_hora_fin").toLocalDate());
-                Tratamiento t = td.buscarTratamiento(rs.getInt("codTratamiento"));
-                s.setTratamiento(t);
-                Masajista m = md.buscarMasajista(rs.getInt("codMasajista"));
-                s.setMasajista(m);
-                DiaDeSpa dp = dd.buscarDia(rs.getInt("codPack"));
-                s.setDiaDeSpa(dp);// arreglar o revisar llegado el momento
+                s.setFecha(rs.getDate("fecha").toLocalDate());
+                s.setHoraInicio(rs.getTime("hora_inicio").toLocalTime());
+                s.setHoraFin(rs.getTime("hora_fin").toLocalTime());
+                Tratamiento ta = td.buscarTratamiento(rs.getInt("codTratamiento"));
+                s.setTratamiento(ta);
+                Masajista ma = md.buscarMasajista(rs.getInt("codMasajista"));
+                s.setMasajista(ma);
+                DiaDeSpa ds = dd.buscarDia(rs.getInt("codPack"));
+                s.setDiaDeSpa(ds);
                 s.setEstado(rs.getBoolean("estado"));
-                Instalacion i = id.buscarInstalacion(rs.getInt("codInstalacion"));
-                s.setInstalaciones((List<Instalacion>) i);
+                Instalacion ic = id.buscarInstalacion(rs.getInt("codInstalacion"));
+                s.setInstalaciones(ic);
 
             }
             System.out.println(s.toString());
 
         } catch (SQLException ex) {
-            System.out.println("No existe ese cliente" + ex);
+            System.out.println("No existe esa sesion" + ex);
         }
 
         return s;

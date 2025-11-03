@@ -8,15 +8,8 @@ import java.util.logging.Logger;
 import modelo.Cliente;
 import modelo.DiaDeSpa;
 
-/*.
-dia de spa
-buscar - lo hizo ale
-actualizar- listo
-alta baja
-listar- LISTO
-agregar dia de spa-LISTO
-borrar*LISTO
- */
+
+
 public class DiaDeSpaData {
 
     private Connection con = null;
@@ -31,12 +24,12 @@ public class DiaDeSpaData {
 
     public void agregarDiaSpa(DiaDeSpa ds) {
 
-        String sql = "INSERT into dia_de_spa (fecha_hora, preferencias, codCli, estado, monto) VALUES(?,?,?,?,?)";
+        String sql = "INSERT into dia_de_spa (fecha, preferencias, codCli, estado, monto) VALUES(?,?,?,?,?)";
 
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setDate(1, Date.valueOf(ds.getFechaHora()));
+            ps.setDate(1, Date.valueOf(ds.getFecha()));
             ps.setString(2, ds.getPreferencias());
             ps.setInt(3, ds.getCliente().getCodCli());
             ps.setBoolean(4, ds.getEstado());
@@ -65,7 +58,7 @@ public class DiaDeSpaData {
     public List<DiaDeSpa> listarDiaSpa() {
         DiaDeSpa unDiasdeSpa = null;
         List<DiaDeSpa> listadoDiaDeSpa = new ArrayList<>();
-        String sql = "SELECT * from dia_de_spa";
+        String sql = "SELECT * from dia_de_spa WHERE estado = 1";
 
         try {
 
@@ -77,7 +70,7 @@ public class DiaDeSpaData {
 
                 unDiasdeSpa = new DiaDeSpa();
                 unDiasdeSpa.setCodPack(rs.getInt("codPack"));
-                unDiasdeSpa.setFechaHora(rs.getDate("fecha_hora").toLocalDate());
+                unDiasdeSpa.setFecha(rs.getDate("fecha").toLocalDate());
                 unDiasdeSpa.setPreferencias(rs.getString("preferencias"));
                 Cliente cliente = cd.buscarCliente(rs.getInt("codCli"));
                 unDiasdeSpa.setCliente(cliente);
@@ -126,13 +119,13 @@ public class DiaDeSpaData {
 
     public void actualizarDiaSpa(DiaDeSpa c) {
 
-        String sql = "UPDATE dia_de_spa SET fecha_hora= ? ,preferencias= ? , codCli = ? , estado= ?, monto = ? WHERE codPack = ?";
+        String sql = "UPDATE dia_de_spa SET fecha= ? ,preferencias= ? , codCli = ? , estado= ?, monto = ? WHERE codPack = ?";
 
         try {
             ClienteData cd = new ClienteData(this.conexion);
 
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, Date.valueOf(c.getFechaHora()));
+            ps.setDate(1, Date.valueOf(c.getFecha()));
             ps.setString(2, c.getPreferencias());
             ps.setInt(3, c.getCliente().getCodCli());
             ps.setBoolean(4, c.getEstado());
@@ -195,7 +188,7 @@ public class DiaDeSpaData {
             while (rs.next()) {
 
                 unDiasdeSpa.setCodPack(rs.getInt("codPack"));
-                unDiasdeSpa.setFechaHora(rs.getDate("fecha_hora").toLocalDate());
+                unDiasdeSpa.setFecha(rs.getDate("fecha").toLocalDate());
                 unDiasdeSpa.setPreferencias(rs.getString("preferencias"));
                 Cliente cliente = cd.buscarCliente(rs.getInt("codCli"));
                 unDiasdeSpa.setCliente(cliente);
@@ -206,7 +199,7 @@ public class DiaDeSpaData {
             System.out.println(c.toString());
 
         } catch (SQLException ex) {
-            System.out.println("No existe ese cliente" + ex);
+            System.out.println("No existe ese dia" + ex);
         }
 
         return unDiasdeSpa;
