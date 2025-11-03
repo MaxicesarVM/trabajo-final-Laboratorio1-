@@ -26,7 +26,7 @@ public class SesionData {
         this.con = (Connection) conexion.getConexion();
     }
 
-//ssssssssssssssssssssssss
+
     public void crearSesion(Sesion s) throws SQLException {
 
         String sql = "INSERT into sesion (fecha_hora_inicio, fecha_hora_fin, codTratamiento, codMasajista, codPack, estado) VALUES(?,?,?,?,?,?)";

@@ -44,8 +44,6 @@ public class Sesiones_instalaciones extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jcombo_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jL_codCli.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jL_codCli.setForeground(new java.awt.Color(0, 0, 0));
         jL_codCli.setText("Cliente");
@@ -57,10 +55,6 @@ public class Sesiones_instalaciones extends javax.swing.JInternalFrame {
         jl_instalaciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jl_instalaciones.setForeground(new java.awt.Color(0, 0, 0));
         jl_instalaciones.setText("Instalacion");
-
-        jcombo_tiempo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jcombo_instalacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
