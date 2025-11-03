@@ -1,6 +1,8 @@
 
 package vistas;
 
+import java.util.ArrayList;
+import modelo.Tratamiento;
 import persistencia.Conexion;
 import persistencia.TratamientoData;
 
@@ -10,17 +12,24 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
 
     
     
-    
-    
+    Conexion con = new Conexion();
+    TratamientoData operacionesTratamiento = new TratamientoData(con);
+    private ArrayList<String> listaP;
     
     
     
     public RegistroTratamiento() {
         initComponents();
+        
+        
+        listaP = (ArrayList<String>)operacionesTratamiento.listarProductos();
+        cargarProducto();
+        
+        
+        
     }
 
-    Conexion con = new Conexion();
-    TratamientoData operacionesTratamiento = new TratamientoData(con);
+    
     
     
     
@@ -205,7 +214,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                 .addComponent(btn_guardarTrat)
                 .addGap(81, 81, 81)
                 .addComponent(btn_borrarTrat)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addComponent(btn_actuTrat)
                 .addGap(49, 49, 49)
                 .addComponent(btn_limpiarTrat)
@@ -246,7 +255,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                     .addComponent(lbl_detalleTrat)
                     .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(txt_detalleTrat, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
+                        .addComponent(txt_detalleTrat, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_productosTrat)
@@ -297,6 +306,17 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         jcb_productosTrat.addItem("Corporal");
         
             
+    }
+    
+    private void cargarProducto(){
+            
+        for(String producto: listaP){
+            
+            jcb_productosTrat.addItem(producto);
+            
+        }
+        
+        
     }
     
     
