@@ -59,6 +59,49 @@ public class TratamientoData {
     
 
     
+    public List<String> listarProductos(){
+        
+        List<String> productos = new ArrayList<>();
+        String sql = "SELECT producto from tratamiento";
+        
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            
+            while(rs.next()){
+                
+                
+                String p = rs.getString("producto");
+                
+                
+                
+                productos.add(p);
+                 
+            }
+            
+            for(String producto: productos){
+                
+                System.out.println(producto);
+                 
+            }
+            
+            ps.close();
+             
+        } catch(SQLException ex){
+            
+            System.out.println("Error al listar productos: " + ex);
+            
+        }
+        
+        
+        return productos;
+        
+    }
+    
+    
+    
     public List<Tratamiento> listarTratamientoTipo(String tp){
         Tratamiento t = null;
         List<Tratamiento> tratamientos = new ArrayList<>();
