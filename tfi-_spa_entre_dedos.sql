@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2025 a las 00:35:58
+-- Tiempo de generación: 03-11-2025 a las 22:41:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -154,7 +154,7 @@ INSERT INTO `tratamiento` (`codTratamiento`, `nombre`, `tipo`, `detalle`, `produ
 (2, 'Faciales avanzados', 'facial', 'Pueden incluir tratamientos antienvejecimiento, microdermoabrasión o hidrafaciales.', 'Sérum Antiedad (acido hialuronico)', 90, 7000, 1),
 (3, 'Microdermoabrasión', 'facial', 'Exfolia la capa superficial de la piel usando puntas de diamante o microcristales.', 'Puntas de Diamante (insumo)', 45, 4500, 1),
 (4, 'Radiofrecuencia', 'facial', 'Usa ondas de radio para generar calor en la piel, estimulando la producción de colágeno y elastina.', 'Gel Conductor (AloeVera)', 60, 5500, 1),
-(5, 'Ultrasonido', 'facial', 'Usa ondas sonoras de alta frecuencia para limpiar la piel, penetrar activos o hacer masajes profundo', 'Ninguno', 45, 4800, 1),
+(5, 'Ultrasonido', 'facial', 'Usa ondas sonoras de alta frecuencia para limpiar la piel, penetrar activos o hacer masajes profundo', 'Crema humectante', 45, 4800, 1),
 (6, 'Luz Pulsada Intensa (IPL)', 'facial', 'Utilizada para fotodepilación, rejuvenecimiento de la piel y tratamiento de manchas.', 'Gel de Enfriamiento (a base de agua)', 30, 6000, 1),
 (7, 'Vaporizador facial', 'facial', 'Produce vapor para abrir los poros y limpiar la piel profundamente.', 'Agua Destilada', 20, 2000, 1),
 (8, 'Exfoliación corporal', 'corporal', 'Elimina las células muertas de la piel con el uso de sales o azúcares.', 'Sales Marinas Exfoliantes', 45, 4000, 1),
