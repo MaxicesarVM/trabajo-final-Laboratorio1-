@@ -105,7 +105,7 @@ public class TratamientoData {
     public List<Tratamiento> listarTratamientoTipo(String tp){
         Tratamiento t = null;
         List<Tratamiento> tratamientos = new ArrayList<>();
-        String sql = "SELECT * from tratamiento WHERE tipo = ?";
+        String sql = "SELECT * from tratamiento WHERE tipo = ? AND estado = 1";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);
@@ -151,23 +151,7 @@ public class TratamientoData {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     public Tratamiento buscarTratamiento(int codTratam){
         Tratamiento t = null;
         String sql = "SELECT * FROM tratamiento WHERE codTratamiento = ?";
@@ -242,9 +226,58 @@ public class TratamientoData {
         return tratamientos; 
     }
     
+    
+    public List<Tratamiento> listarTratamientosActivos(){
+        
+        Tratamiento t = null;
+        List<Tratamiento> tratamientos = new ArrayList<>();
+        String sql = "SELECT * from tratamiento WHERE estado = 1";
+        
+        try{
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                t = new Tratamiento();
+                t.setCodTratam(rs.getInt("codTratamiento"));
+                t.setNombre(rs.getString("nombre"));
+                t.setTipo(rs.getString("tipo"));
+                t.setDetalle(rs.getString("detalle"));
+                t.setProductos(rs.getString("producto"));
+                t.setDuracion(rs.getInt("duracion"));
+                t.setCosto(rs.getDouble("costo"));
+                t.setActivo(rs.getBoolean("estado"));
+                
+                tratamientos.add(t);
+                 
+            }
+            
+            for(Tratamiento tratamiento: tratamientos){
+                
+                System.out.println(tratamiento);
+                 
+            }
+            
+            ps.close();
+             
+        } catch(SQLException ex){
+            
+            System.out.println("Error al listar tratamientos: " + ex);
+            
+        }
+        
+        return tratamientos; 
+    }
+    
+    
+    
+    
+    
     public void actualizarTratamiento(Tratamiento t){
         
-        String sql = "UPDATE tratamiento SET nombre = ?, tipo = ?, detalle = ?, producto = ?, duracion = ?, costo = ?, estado = ? WHERE cod_tratamiento = ?";
+        String sql = "UPDATE tratamiento SET nombre = ?, tipo = ?, detalle = ?, producto = ?, duracion = ?, costo = ?, estado = ? WHERE codTratamiento = ?";
         
         try{
             
@@ -256,7 +289,7 @@ public class TratamientoData {
             ps.setInt(5, t.getDuracion());
             ps.setDouble(6, t.getCosto());
             ps.setBoolean(7, t.getActivo());
-            
+            ps.setInt(8, t.getCodTratam());
             
             ps.executeUpdate();
             ps.close();
@@ -271,13 +304,13 @@ public class TratamientoData {
         }  
     }
     
-    public void eliminarTratamiento(String nombre){
+    public void eliminarTratamiento(int codigo){
         
-        String sql = "DELETE from tratamiento WHERE nombre = ?";
+        String sql = "DELETE from tratamiento WHERE codTratamiento = ?";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, nombre);
+            ps.setInt(1, codigo);
             ps.executeUpdate();
             ps.close();
             System.out.println("Tratamiento eliminado correctamente");
@@ -295,11 +328,11 @@ public class TratamientoData {
     
     public void altaLogica(Tratamiento t){
         
-        String sql = "UPDATE tratamiento SET estado=1 WHERE nombre=?";
+        String sql = "UPDATE tratamiento SET estado=1 WHERE codTratamiento=?";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, t.getNombre());
+            ps.setInt(1, t.getCodTratam());
             ps.executeUpdate();
             ps.close();
             System.out.println("Tratamiento dado de alta correctamente");
@@ -316,14 +349,14 @@ public class TratamientoData {
     
     public void bajaLogica(Tratamiento t){
         
-        String sql = "UPDATE tratamiento SET estado=0 WHERE nombre=?";
+        String sql = "UPDATE tratamiento SET estado=0 WHERE codTratamiento=?";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, t.getNombre());
+            ps.setInt(1, t.getCodTratam());
             ps.executeUpdate();
             ps.close();
-            System.out.println("Tratamiento dado de  correctamente");
+            System.out.println("Tratamiento dado de baja correctamente");
             
             
             

@@ -2,6 +2,9 @@
 package vistas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import modelo.Cliente;
+import modelo.Masajista;
 import modelo.Tratamiento;
 import persistencia.Conexion;
 import persistencia.TratamientoData;
@@ -135,26 +138,51 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         btn_borrarTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_borrarTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_borrarTrat.setText("Borrar");
+        btn_borrarTrat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_borrarTratActionPerformed(evt);
+            }
+        });
 
         btn_actuTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_actuTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_actuTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_actuTrat.setText("Actualizar");
+        btn_actuTrat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actuTratActionPerformed(evt);
+            }
+        });
 
         btn_limpiarTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_limpiarTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_limpiarTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_limpiarTrat.setText("Limpiar");
+        btn_limpiarTrat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarTratActionPerformed(evt);
+            }
+        });
 
         btn_bajaTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_bajaTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_bajaTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_bajaTrat.setText("Baja Logica");
+        btn_bajaTrat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bajaTratActionPerformed(evt);
+            }
+        });
 
         btn_altaTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_altaTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_altaTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_altaTrat.setText("Alta Logica");
+        btn_altaTrat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_altaTratActionPerformed(evt);
+            }
+        });
 
         ck_estadoTratamiento.setBackground(new java.awt.Color(255, 255, 255));
         ck_estadoTratamiento.setForeground(new java.awt.Color(0, 153, 255));
@@ -299,14 +327,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cargarTratamiento(){
-   
-        jcb_productosTrat.addItem("Facial");
-        jcb_productosTrat.addItem("Estetico");
-        jcb_productosTrat.addItem("Corporal");
-        
-            
-    }
+    
     
     private void cargarProducto(){
             
@@ -319,9 +340,21 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         
     }
     
+    private void borrarProductos(){
+            
+        for(String producto: listaP){
+            
+            jcb_productosTrat.removeItem(producto);
+            
+        }
+        
+    }
+    
     
     private void btn_buscarTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarTratamientoActionPerformed
         
+        
+        borrarProductos();
         int seleccion = Integer.parseInt(txt_codTrat.getText().trim());
         txt_nombreTrat.setText(String.valueOf(operacionesTratamiento.buscarTratamiento(seleccion).getNombre()));
         txt_tipoTrat.setText(String.valueOf(operacionesTratamiento.buscarTratamiento(seleccion).getTipo()));
@@ -340,10 +373,113 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
     private void btn_guardarTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarTratActionPerformed
         
         
+        String seleccionNombre = txt_nombreTrat.getText();
+        String seleccionTipoTrat = txt_tipoTrat.getText();
+        String seleccionDetalle = txt_detalleTrat.getText();
+        String seleccionProductos = String.valueOf(jcb_productosTrat.getSelectedItem());
+        int seleccionDuracion = Integer.parseInt(txt_duracionTrat.getText());
+        double seleccionCosto = Double.parseDouble(txt_costoTrat.getText());
+        boolean seleccionEstado = ck_estadoTratamiento.isSelected();
+        
+        Tratamiento tratamientoCreado = new Tratamiento(seleccionNombre, seleccionTipoTrat, seleccionDetalle, seleccionProductos, seleccionDuracion, seleccionCosto, seleccionEstado);
+        operacionesTratamiento.agregarTratamiento(tratamientoCreado);
+        JOptionPane.showMessageDialog(this, "Se agrego el tratamiento: " + seleccionNombre + " correctamente");
+        
+        
+        
+        
+        
+        
+        
         
         
         
     }//GEN-LAST:event_btn_guardarTratActionPerformed
+
+    private void btn_borrarTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarTratActionPerformed
+        
+        int seleccionCodigoTratamiento = Integer.parseInt(txt_codTrat.getText());
+        
+        operacionesTratamiento.eliminarTratamiento(seleccionCodigoTratamiento);
+        JOptionPane.showMessageDialog(this, "Tratamiento borrado actualmente"); 
+        
+        
+    }//GEN-LAST:event_btn_borrarTratActionPerformed
+
+    private void btn_actuTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actuTratActionPerformed
+        
+        
+        int seleccionCodigoTratamiento = Integer.parseInt(txt_codTrat.getText());
+        String seleccionNombre = txt_nombreTrat.getText();
+        String seleccionTipoTrat = txt_tipoTrat.getText();
+        String seleccionDetalle = txt_detalleTrat.getText();
+        String seleccionProductos = String.valueOf(jcb_productosTrat.getSelectedItem());
+        int seleccionDuracion = Integer.parseInt(txt_duracionTrat.getText());
+        double seleccionCosto = Double.parseDouble(txt_costoTrat.getText());
+        boolean seleccionEstado = ck_estadoTratamiento.isSelected();
+        
+        Tratamiento tratamientoActualizado = new Tratamiento(seleccionCodigoTratamiento, seleccionNombre, seleccionTipoTrat, seleccionDetalle, seleccionProductos, seleccionDuracion, seleccionCosto, seleccionEstado);
+        operacionesTratamiento.actualizarTratamiento(tratamientoActualizado);
+        JOptionPane.showMessageDialog(this, "Se actualizo el tratamiento: " + seleccionNombre + " correctamente");
+        
+        
+        
+        
+    }//GEN-LAST:event_btn_actuTratActionPerformed
+
+    private void btn_bajaTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bajaTratActionPerformed
+        
+        int seleccionCodigoTratamiento = Integer.parseInt(txt_codTrat.getText());
+        String seleccionNombre = txt_nombreTrat.getText();
+        String seleccionTipoTrat = txt_tipoTrat.getText();
+        String seleccionDetalle = txt_detalleTrat.getText();
+        String seleccionProductos = String.valueOf(jcb_productosTrat.getSelectedItem());
+        int seleccionDuracion = Integer.parseInt(txt_duracionTrat.getText());
+        double seleccionCosto = Double.parseDouble(txt_costoTrat.getText());
+        boolean seleccionEstado = ck_estadoTratamiento.isSelected();
+        
+        Tratamiento tratamientoActualizado = new Tratamiento(seleccionCodigoTratamiento, seleccionNombre, seleccionTipoTrat, seleccionDetalle, seleccionProductos, seleccionDuracion, seleccionCosto, seleccionEstado);
+        operacionesTratamiento.bajaLogica(tratamientoActualizado);
+        JOptionPane.showMessageDialog(this, "Se actualizo el tratamiento: " + seleccionNombre + " correctamente");
+        
+        
+        
+    }//GEN-LAST:event_btn_bajaTratActionPerformed
+
+    private void btn_altaTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_altaTratActionPerformed
+        
+        int seleccionCodigoTratamiento = Integer.parseInt(txt_codTrat.getText());
+        String seleccionNombre = txt_nombreTrat.getText();
+        String seleccionTipoTrat = txt_tipoTrat.getText();
+        String seleccionDetalle = txt_detalleTrat.getText();
+        String seleccionProductos = String.valueOf(jcb_productosTrat.getSelectedItem());
+        int seleccionDuracion = Integer.parseInt(txt_duracionTrat.getText());
+        double seleccionCosto = Double.parseDouble(txt_costoTrat.getText());
+        boolean seleccionEstado = ck_estadoTratamiento.isSelected();
+        
+        Tratamiento tratamientoActualizado = new Tratamiento(seleccionCodigoTratamiento, seleccionNombre, seleccionTipoTrat, seleccionDetalle, seleccionProductos, seleccionDuracion, seleccionCosto, seleccionEstado);
+        operacionesTratamiento.altaLogica(tratamientoActualizado);
+        JOptionPane.showMessageDialog(this, "Se actualizo el tratamiento: " + seleccionNombre + " correctamente");
+        
+        
+        
+    }//GEN-LAST:event_btn_altaTratActionPerformed
+
+    private void btn_limpiarTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarTratActionPerformed
+        
+        borrarProductos();
+        
+        txt_codTrat.setText("");
+        txt_nombreTrat.setText("");
+        txt_tipoTrat.setText("");
+        txt_detalleTrat.setText("");
+        txt_duracionTrat.setText("");
+        txt_costoTrat.setText("");
+        ck_estadoTratamiento.setSelected(false);
+        
+        cargarProducto();
+        
+    }//GEN-LAST:event_btn_limpiarTratActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

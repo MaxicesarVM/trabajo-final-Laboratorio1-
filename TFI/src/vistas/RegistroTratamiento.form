@@ -370,6 +370,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Borrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_borrarTratActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_actuTrat">
           <Properties>
@@ -384,6 +387,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_actuTratActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_limpiarTrat">
           <Properties>
@@ -398,6 +404,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_limpiarTratActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_bajaTrat">
           <Properties>
@@ -412,6 +421,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Baja Logica"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bajaTratActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_altaTrat">
           <Properties>
@@ -426,6 +438,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Alta Logica"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_altaTratActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="ck_estadoTratamiento">
           <Properties>

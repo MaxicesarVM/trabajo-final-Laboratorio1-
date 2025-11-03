@@ -54,7 +54,7 @@ public class MasajistaData {
     public List<Masajista> listaMasajistaEspecialidad(String a){
         Masajista m = null;
         List<Masajista> masajistas = new ArrayList<>();
-        String sql = "SELECT * from masajista WHERE especialidad= ? ";
+        String sql = "SELECT * from masajista WHERE especialidad= ? AND estado = 1";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql);
