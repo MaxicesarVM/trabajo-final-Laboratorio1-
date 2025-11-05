@@ -3,6 +3,7 @@ package modelo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,6 +14,26 @@ public class DiaDeSpa {
     private Cliente cliente;
     private boolean estado;
     private double monto;
+    private List<Sesion> sesiones;
+
+    public List<Sesion> getSesiones() {
+        return sesiones;
+    }
+
+    public void setSesiones(List<Sesion> sesiones) {
+        this.sesiones = sesiones;
+    }
+    
+    public DiaDeSpa(int codPack, LocalDate fecha, String preferencias, Cliente cliente, boolean estado, double monto, List<Sesion>sesiones) {
+        this.codPack = codPack;
+        this.fecha = fecha;
+        this.preferencias = preferencias;
+        this.cliente = cliente;
+        this.estado = estado;
+        this.monto = monto;
+        this.sesiones = sesiones;
+    }
+    
 
     public DiaDeSpa(int codPack, LocalDate fecha, String preferencias, Cliente cliente, boolean estado, double monto) {
         this.codPack = codPack;
@@ -21,6 +42,7 @@ public class DiaDeSpa {
         this.cliente = cliente;
         this.estado = estado;
         this.monto = monto;
+        this.sesiones = new ArrayList<>();
     }
     
 
@@ -31,6 +53,7 @@ public class DiaDeSpa {
         this.cliente = cliente;
         this.estado = estado;
         this.monto = monto;
+        this.sesiones = new ArrayList<>();
     }
 
     public LocalDate getFecha() {
@@ -45,6 +68,7 @@ public class DiaDeSpa {
    
     public DiaDeSpa() {
         this.codPack = -1;
+        this.sesiones = new ArrayList<>();
     }
 
     public int getCodPack() {

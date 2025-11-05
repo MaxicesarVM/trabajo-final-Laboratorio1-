@@ -107,7 +107,7 @@ public class ClienteData {
     }
          
          
-         public Cliente buscarCliente(int codCli){
+        public Cliente buscarCliente(int codCli){
         Cliente c = null;
         String sql = "SELECT * FROM cliente WHERE codCliente = ?";
         PreparedStatement ps;
@@ -138,7 +138,7 @@ public class ClienteData {
     
          
          
-          public List<Cliente> listarClientes(){
+        public List<Cliente> listarClientes(){
         
         Cliente c = null;
         List<Cliente> clientes = new ArrayList<>();

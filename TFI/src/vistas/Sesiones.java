@@ -8,10 +8,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Masajista;
 
-/**
- *
- * @author Maxi
- */
+
 public class Sesiones extends javax.swing.JInternalFrame {
 
     
@@ -102,11 +99,9 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jcombo_cliente = new javax.swing.JComboBox<>();
-        jL_codCli = new javax.swing.JLabel();
+        jL_codSesion = new javax.swing.JLabel();
         jl_masajista = new javax.swing.JLabel();
         jl_tratamiento = new javax.swing.JLabel();
-        jc_diaTratamiento = new com.toedter.calendar.JCalendar();
         jcombo_masajista = new javax.swing.JComboBox<>();
         jcombo_tratamiento = new javax.swing.JComboBox<>();
         jtable_horarios = new javax.swing.JScrollPane();
@@ -116,20 +111,31 @@ public class Sesiones extends javax.swing.JInternalFrame {
         btn_actualizar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
         jl_titulo = new javax.swing.JLabel();
+        txt_productoTitulo = new javax.swing.JLabel();
+        jcb_producto = new javax.swing.JComboBox<>();
+        jdc_fecha = new com.toedter.calendar.JDateChooser();
+        txt_codSesion = new javax.swing.JTextField();
+        lbl_codPack = new javax.swing.JLabel();
+        lbl_horariosLista = new javax.swing.JLabel();
+        jcb_codPack = new javax.swing.JComboBox<>();
+        lbl_instalacion = new javax.swing.JLabel();
+        jcb_instalacion = new javax.swing.JComboBox<>();
+        lbl_duracion = new javax.swing.JLabel();
+        jcb_duracionInstalacion = new javax.swing.JComboBox<>();
 
         setClosable(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jL_codCli.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jL_codCli.setForeground(new java.awt.Color(0, 0, 0));
-        jL_codCli.setText("Cliente");
+        jL_codSesion.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
+        jL_codSesion.setForeground(new java.awt.Color(0, 0, 0));
+        jL_codSesion.setText("Codigo Sesion");
 
-        jl_masajista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jl_masajista.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
         jl_masajista.setForeground(new java.awt.Color(0, 0, 0));
         jl_masajista.setText("Masajista");
 
-        jl_tratamiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jl_tratamiento.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
         jl_tratamiento.setForeground(new java.awt.Color(0, 0, 0));
         jl_tratamiento.setText("Tratamiento");
 
@@ -146,7 +152,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
         ));
         jtable_horarios.setViewportView(tbl_horarios);
 
-        jcl_fechas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jcl_fechas.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
         jcl_fechas.setForeground(new java.awt.Color(0, 0, 0));
         jcl_fechas.setText("Fecha");
 
@@ -175,80 +181,142 @@ public class Sesiones extends javax.swing.JInternalFrame {
         jl_titulo.setForeground(new java.awt.Color(0, 0, 0));
         jl_titulo.setText("Gestor de reserva tratamiento ");
 
+        txt_productoTitulo.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
+        txt_productoTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        txt_productoTitulo.setText("Producto");
+
+        lbl_codPack.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
+        lbl_codPack.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_codPack.setText("Asignar a pack:");
+
+        lbl_horariosLista.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbl_horariosLista.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_horariosLista.setText("Horarios");
+
+        lbl_instalacion.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
+        lbl_instalacion.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_instalacion.setText("Instalacion");
+
+        lbl_duracion.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
+        lbl_duracion.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_duracion.setText("Duracion");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jc_diaTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcl_fechas))
-                .addGap(71, 71, 71)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btm_guardarReserva, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_limpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jtable_horarios, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jcombo_tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jL_codCli)
-                                .addGap(29, 29, 29)
-                                .addComponent(jcombo_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jcombo_masajista, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jl_masajista)
-                            .addComponent(jl_tratamiento))
-                        .addGap(410, 410, 410)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
+                                .addComponent(lbl_horariosLista))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_instalacion)
+                                    .addComponent(lbl_duracion)
+                                    .addComponent(jcl_fechas)
+                                    .addComponent(lbl_codPack))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jcb_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jdc_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jcb_duracionInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_productoTitulo)
+                                    .addComponent(jl_masajista)
+                                    .addComponent(jl_tratamiento)
+                                    .addComponent(jL_codSesion))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jcombo_masajista, 0, 336, Short.MAX_VALUE)
+                                        .addComponent(jcb_producto, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jcombo_tratamiento, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txt_codSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jcb_instalacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(173, 173, 173))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btm_guardarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(jtable_horarios, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(51, 51, 51))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jl_titulo)
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcombo_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jL_codCli))
-                .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jl_tratamiento)
-                    .addComponent(jcombo_tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jl_masajista)
-                    .addComponent(jcombo_masajista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(jcl_fechas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jc_diaTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(btn_actualizar)
-                        .addGap(60, 60, 60)
-                        .addComponent(btn_limpiar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(21, 21, 21))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(319, 319, 319)
-                .addComponent(btm_guardarReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(207, 207, 207))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jl_titulo)
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_horariosLista)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jL_codSesion)
+                            .addComponent(txt_codSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jl_tratamiento)
+                            .addComponent(jcombo_tratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_productoTitulo)
+                            .addComponent(jcb_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jl_masajista)
+                            .addComponent(jcombo_masajista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_instalacion)
+                            .addComponent(jcb_instalacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_duracion)
+                            .addComponent(jcb_duracionInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcl_fechas)
+                            .addComponent(jdc_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_codPack)
+                            .addComponent(jcb_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jtable_horarios, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(149, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jtable_horarios, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
+                .addComponent(btm_guardarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btn_limpiar)
+                .addGap(18, 18, 18)
+                .addComponent(btn_actualizar)
+                .addGap(138, 138, 138))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -262,7 +330,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -285,17 +353,26 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private javax.swing.JButton btm_guardarReserva;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_limpiar;
-    private javax.swing.JLabel jL_codCli;
+    private javax.swing.JLabel jL_codSesion;
     private javax.swing.JPanel jPanel1;
-    private com.toedter.calendar.JCalendar jc_diaTratamiento;
+    private javax.swing.JComboBox<String> jcb_codPack;
+    private javax.swing.JComboBox<String> jcb_duracionInstalacion;
+    private javax.swing.JComboBox<String> jcb_instalacion;
+    private javax.swing.JComboBox<String> jcb_producto;
     private javax.swing.JLabel jcl_fechas;
-    private javax.swing.JComboBox<String> jcombo_cliente;
     private javax.swing.JComboBox<String> jcombo_masajista;
     private javax.swing.JComboBox<String> jcombo_tratamiento;
+    private com.toedter.calendar.JDateChooser jdc_fecha;
     private javax.swing.JLabel jl_masajista;
     private javax.swing.JLabel jl_titulo;
     private javax.swing.JLabel jl_tratamiento;
     private javax.swing.JScrollPane jtable_horarios;
+    private javax.swing.JLabel lbl_codPack;
+    private javax.swing.JLabel lbl_duracion;
+    private javax.swing.JLabel lbl_horariosLista;
+    private javax.swing.JLabel lbl_instalacion;
     private javax.swing.JTable tbl_horarios;
+    private javax.swing.JTextField txt_codSesion;
+    private javax.swing.JLabel txt_productoTitulo;
     // End of variables declaration//GEN-END:variables
 }
