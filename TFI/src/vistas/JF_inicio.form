@@ -87,23 +87,24 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmReserva">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reservas"/>
+            <Property name="text" type="java.lang.String" value="Reservas - DiaDeSpa"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmitem_reservaTratamiento">
               <Properties>
-                <Property name="text" type="java.lang.String" value="reserva tratamiento"/>
+                <Property name="text" type="java.lang.String" value="Modificar Sesiones"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmitem_reservaTratamientoActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmitem_reservaIntalaciones">
+            <MenuItem class="javax.swing.JMenuItem" name="jmitem_gestorDia">
               <Properties>
-                <Property name="text" type="java.lang.String" value="reserva instalacion"/>
+                <Property name="text" type="java.lang.String" value="Gestor DiaDeSpa"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmitem_reservaIntalacionesActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmitem_gestorDiaMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmitem_gestorDiaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

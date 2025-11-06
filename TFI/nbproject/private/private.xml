@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/vistas/JF_inicio.java</file>
-            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/vistas/ListadoMasajista.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/vistas/GestorDiaSpa.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/modelo/Cliente.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/vistas/Sesiones.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/persistencia/DiaDeSpaData.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/persistencia/ClienteData.java</file>
+            <file>file:/C:/Users/Rickert/Documents/GitHub/trabajo-final-Laboratorio1-/TFI/src/modelo/DiaDeSpa.java</file>
         </group>
     </open-files>
 </project-private>

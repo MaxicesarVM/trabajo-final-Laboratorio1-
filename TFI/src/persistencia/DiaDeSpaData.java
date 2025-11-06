@@ -32,8 +32,8 @@ public class DiaDeSpaData {
             ps.setDate(1, Date.valueOf(ds.getFecha()));
             ps.setString(2, ds.getPreferencias());
             ps.setInt(3, ds.getCliente().getCodCli());
-            ps.setBoolean(4, ds.getEstado());
-            ps.setDouble(5, ds.getMonto());
+            ps.setBoolean(4, true);
+            ps.setDouble(5, 0);
 
             int registros = ps.executeUpdate();
             System.out.println(registros);
@@ -128,7 +128,7 @@ public class DiaDeSpaData {
             ps.setDate(1, Date.valueOf(c.getFecha()));
             ps.setString(2, c.getPreferencias());
             ps.setInt(3, c.getCliente().getCodCli());
-            ps.setBoolean(4, c.getEstado());
+            ps.setBoolean(4, true);
             ps.setDouble(5, c.getMonto());
 
             ps.executeUpdate();

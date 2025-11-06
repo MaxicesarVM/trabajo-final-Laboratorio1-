@@ -40,7 +40,7 @@ public class JF_inicio extends javax.swing.JFrame {
         jmitem_TratamientoRegistro = new javax.swing.JMenuItem();
         jmReserva = new javax.swing.JMenu();
         jmitem_reservaTratamiento = new javax.swing.JMenuItem();
-        jmitem_reservaIntalaciones = new javax.swing.JMenuItem();
+        jmitem_gestorDia = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,9 +144,9 @@ public class JF_inicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jmTratamiento);
 
-        jmReserva.setText("Reservas");
+        jmReserva.setText("Reservas - DiaDeSpa");
 
-        jmitem_reservaTratamiento.setText("reserva tratamiento");
+        jmitem_reservaTratamiento.setText("Modificar Sesiones");
         jmitem_reservaTratamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmitem_reservaTratamientoActionPerformed(evt);
@@ -154,13 +154,18 @@ public class JF_inicio extends javax.swing.JFrame {
         });
         jmReserva.add(jmitem_reservaTratamiento);
 
-        jmitem_reservaIntalaciones.setText("reserva instalacion");
-        jmitem_reservaIntalaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmitem_reservaIntalacionesActionPerformed(evt);
+        jmitem_gestorDia.setText("Gestor DiaDeSpa");
+        jmitem_gestorDia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmitem_gestorDiaMouseClicked(evt);
             }
         });
-        jmReserva.add(jmitem_reservaIntalaciones);
+        jmitem_gestorDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_gestorDiaActionPerformed(evt);
+            }
+        });
+        jmReserva.add(jmitem_gestorDia);
 
         jMenuBar1.add(jmReserva);
 
@@ -292,9 +297,23 @@ public class JF_inicio extends javax.swing.JFrame {
         dsktp_principal.moveToFront(vistaSesiones);
     }//GEN-LAST:event_jmitem_reservaTratamientoActionPerformed
 
-    private void jmitem_reservaIntalacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_reservaIntalacionesActionPerformed
-        
-    }//GEN-LAST:event_jmitem_reservaIntalacionesActionPerformed
+    private void jmitem_gestorDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_gestorDiaActionPerformed
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        GestorDiaSpa vistaDiaSpa = new GestorDiaSpa();
+        vistaDiaSpa.setVisible(true);
+        dsktp_principal.add(vistaDiaSpa);
+        dsktp_principal.moveToFront(vistaDiaSpa);
+    }//GEN-LAST:event_jmitem_gestorDiaActionPerformed
+
+    private void jmitem_gestorDiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_gestorDiaMouseClicked
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        GestorDiaSpa vistaDiaSpa = new GestorDiaSpa();
+        vistaDiaSpa.setVisible(true);
+        dsktp_principal.add(vistaDiaSpa);
+        dsktp_principal.moveToFront(vistaDiaSpa);
+    }//GEN-LAST:event_jmitem_gestorDiaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -345,7 +364,7 @@ public class JF_inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmitem_MasajistaList;
     private javax.swing.JMenuItem jmitem_TratamientoList;
     private javax.swing.JMenuItem jmitem_TratamientoRegistro;
-    private javax.swing.JMenuItem jmitem_reservaIntalaciones;
+    private javax.swing.JMenuItem jmitem_gestorDia;
     private javax.swing.JMenuItem jmitem_reservaTratamiento;
     // End of variables declaration//GEN-END:variables
 }

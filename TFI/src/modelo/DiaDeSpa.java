@@ -45,6 +45,7 @@ public class DiaDeSpa {
         this.sesiones = new ArrayList<>();
     }
     
+    
 
     public DiaDeSpa(LocalDate fecha, String preferencias, Cliente cliente, boolean estado, double monto) {
         this.codPack = -1;
@@ -53,7 +54,6 @@ public class DiaDeSpa {
         this.cliente = cliente;
         this.estado = estado;
         this.monto = monto;
-        this.sesiones = new ArrayList<>();
     }
 
     public LocalDate getFecha() {
