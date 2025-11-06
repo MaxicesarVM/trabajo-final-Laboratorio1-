@@ -293,12 +293,7 @@ public class JF_inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jmitem_reservaTratamientoActionPerformed
 
     private void jmitem_reservaIntalacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_reservaIntalacionesActionPerformed
-        dsktp_principal.removeAll();
-        dsktp_principal.repaint();
-        Sesiones_instalaciones vistaSesiones_instalaciones = new Sesiones_instalaciones();
-        vistaSesiones_instalaciones.setVisible(true);
-        dsktp_principal.add(vistaSesiones_instalaciones);
-        dsktp_principal.moveToFront(vistaSesiones_instalaciones);
+        
     }//GEN-LAST:event_jmitem_reservaIntalacionesActionPerformed
 
     /**
