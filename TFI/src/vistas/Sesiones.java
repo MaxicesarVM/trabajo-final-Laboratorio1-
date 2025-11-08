@@ -135,6 +135,15 @@ public class Sesiones extends javax.swing.JInternalFrame {
     }
      
     
+    private void limpiarCombosDependientes() {
+    
+        jcb_producto.removeAllItems();
+        
+    
+        jcombo_masajista.removeAllItems();
+    }
+    
+    
     private void generarHorariosSesion(){
         
         String[] horariosInicio = {
@@ -461,11 +470,12 @@ public class Sesiones extends javax.swing.JInternalFrame {
         
         Tratamiento tratamientoSeleccionado = (Tratamiento) jcombo_tratamiento.getSelectedItem();
         String condicion = tratamientoSeleccionado.getNombre();
-        if(!"Ninguno".equals(condicion)){
+        if(tratamientoSeleccionado != null && !"Ninguno".equalsIgnoreCase(condicion)){
             
             jcb_producto.setEnabled(true);
             jcombo_masajista.setEnabled(true);
             txt_matriculaMasj.setEnabled(true);
+            limpiarCombosDependientes();
             cargarMasajistas();
             cargarProductos();
             
@@ -481,8 +491,9 @@ public class Sesiones extends javax.swing.JInternalFrame {
             jcb_producto.setEnabled(false);
             jcombo_masajista.setEnabled(false);
             txt_matriculaMasj.setEnabled(false);
-            jcb_producto.setSelectedIndex(-1);
-            jcombo_masajista.setSelectedIndex(-1);
+            limpiarCombosDependientes();
+            
+            txt_matriculaMasj.setText("");
             
         }
         
