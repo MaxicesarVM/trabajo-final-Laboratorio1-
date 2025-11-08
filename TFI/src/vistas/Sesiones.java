@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.DiaDeSpa;
+import modelo.Instalacion;
 import modelo.Masajista;
 import modelo.Tratamiento;
 import persistencia.Conexion;
 import persistencia.DiaDeSpaData;
+import persistencia.InstalacionData;
 import persistencia.MasajistaData;
 import persistencia.TratamientoData;
 
@@ -26,12 +28,14 @@ public class Sesiones extends javax.swing.JInternalFrame {
     DiaDeSpaData operacionesDiaSpa = new DiaDeSpaData(con);
     TratamientoData operacionesTratamiento = new TratamientoData(con);
     MasajistaData operacionesMasajista = new MasajistaData(con);
+    InstalacionData operacionesInstalaciones = new InstalacionData(con);
     
     
     ArrayList<DiaDeSpa> listad = (ArrayList<DiaDeSpa>) operacionesDiaSpa.listarDiaSpa();
     ArrayList<Tratamiento> listat = (ArrayList<Tratamiento>) operacionesTratamiento.listarTratamientos();
     ArrayList<Masajista> listam = (ArrayList<Masajista>) operacionesMasajista.listarMasajistas();
     ArrayList<String> listap = (ArrayList<String>) operacionesTratamiento.listarProductos();
+    ArrayList<Instalacion> listainst = (ArrayList<Instalacion>) operacionesInstalaciones.listarInstalacion();
     
     
     
@@ -89,6 +93,25 @@ public class Sesiones extends javax.swing.JInternalFrame {
         
     }
     
+    private void cargarInstalaciones(){
+        
+            
+        
+            
+            
+            for(Instalacion instalacion: listainst){
+            
+                
+                
+                jcb_instalacion.addItem(instalacion);
+                
+            
+        }
+        
+        
+    }
+    
+    
     private void cargarMasajistas(){
         
             
@@ -121,6 +144,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
         tbl_horarios.setModel(modeloTabla);
         
     }
+    
     
     private void borrarFilaTabla(){
         
@@ -304,6 +328,12 @@ public class Sesiones extends javax.swing.JInternalFrame {
         lbl_instalacion.setForeground(new java.awt.Color(0, 0, 0));
         lbl_instalacion.setText("Instalacion");
 
+        jcb_instalacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_instalacionActionPerformed(evt);
+            }
+        });
+
         lbl_duracion.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
         lbl_duracion.setForeground(new java.awt.Color(0, 0, 0));
         lbl_duracion.setText("Duracion");
@@ -332,11 +362,16 @@ public class Sesiones extends javax.swing.JInternalFrame {
                                 .addComponent(jcb_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 115, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_duracion, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jcl_fechas, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(652, 652, 652)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 143, Short.MAX_VALUE)
+                                        .addComponent(jcl_fechas))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lbl_instalacion)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jcb_instalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(296, 296, 296)))
                         .addComponent(btm_guardarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
@@ -352,7 +387,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
                             .addComponent(jl_tratamiento)
                             .addComponent(jL_codSesion)
                             .addComponent(lbl_matriculaMasj)
-                            .addComponent(lbl_instalacion))
+                            .addComponent(lbl_duracion))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,11 +396,10 @@ public class Sesiones extends javax.swing.JInternalFrame {
                                     .addComponent(jcb_producto, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jcombo_tratamiento, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addComponent(txt_codSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jcb_instalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jcb_duracionInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jdc_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_matriculaMasj, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 465, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -411,33 +445,33 @@ public class Sesiones extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_matriculaMasj)
                             .addComponent(txt_matriculaMasj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(29, 29, 29)
                         .addComponent(btm_guardarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcb_duracionInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_duracion))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_instalacion)
                             .addComponent(jcb_instalacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_duracion)
-                            .addComponent(jcb_duracionInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jcl_fechas, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jdc_fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_limpiar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcb_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_codPack))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_limpiar)
+                        .addComponent(lbl_codPack)))
                 .addGap(18, 18, 18)
                 .addComponent(btn_actualizar)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -518,6 +552,12 @@ public class Sesiones extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jcombo_masajistaActionPerformed
 
+    private void jcb_instalacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_instalacionActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_jcb_instalacionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btm_guardarReserva;
@@ -527,7 +567,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<Integer> jcb_codPack;
     private javax.swing.JComboBox<String> jcb_duracionInstalacion;
-    private javax.swing.JComboBox<String> jcb_instalacion;
+    private javax.swing.JComboBox<Instalacion> jcb_instalacion;
     private javax.swing.JComboBox<String> jcb_producto;
     private javax.swing.JLabel jcl_fechas;
     private javax.swing.JComboBox<Masajista> jcombo_masajista;

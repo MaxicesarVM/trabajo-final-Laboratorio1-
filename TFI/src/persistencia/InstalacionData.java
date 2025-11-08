@@ -34,7 +34,7 @@ public class InstalacionData {
     
     public Instalacion buscarInstalacion(int codInstal){
         Instalacion i = null;
-        String sql = "SELECT * FROM instalacion WHERE codInstalacion = ?";
+        String sql = "SELECT * FROM instalacion WHERE codInstalacion = ? AND estado = 1";
         PreparedStatement ps;
         try{
             ps = con.prepareStatement(sql);
@@ -92,7 +92,7 @@ public class InstalacionData {
         
         Instalacion i = null;
         List<Instalacion> instalaciones = new ArrayList<>();
-        String sql = "SELECT * from instalacion";
+        String sql = "SELECT * from instalacion WHERE estado = 1";
         
         try{
             

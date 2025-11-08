@@ -46,7 +46,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                   <Component id="lbl_codPack" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -54,12 +54,19 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="115" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbl_duracion" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jcl_fechas" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="0" pref="143" max="32767" attributes="0"/>
+                                          <Component id="jcl_fechas" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="lbl_instalacion" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace min="652" pref="652" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jcb_instalacion" min="-2" pref="338" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="btm_guardarReserva" min="-2" pref="167" max="-2" attributes="0"/>
@@ -79,7 +86,7 @@
                               <Component id="jl_tratamiento" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jL_codSesion" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_matriculaMasj" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_instalacion" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_duracion" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -91,12 +98,11 @@
                                   </Group>
                                   <Component id="txt_codSesion" alignment="1" min="-2" pref="336" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jcb_instalacion" min="-2" pref="338" max="-2" attributes="0"/>
                               <Component id="jcb_duracionInstalacion" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                               <Component id="jdc_fecha" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                               <Component id="txt_matriculaMasj" min="-2" pref="336" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="465" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -159,25 +165,24 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="btm_guardarReserva" min="-2" pref="85" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jcb_duracionInstalacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_duracion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lbl_instalacion" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jcb_instalacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbl_duracion" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jcb_duracionInstalacion" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jcl_fechas" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jdc_fecha" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
@@ -185,14 +190,16 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jcb_codPack" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="lbl_codPack" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_codPack" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btn_actualizar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="124" max="32767" attributes="0"/>
+                  <EmptySpace pref="127" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -403,8 +410,11 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcb_instalacionActionPerformed"/>
+          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Instalacion&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_duracion">
