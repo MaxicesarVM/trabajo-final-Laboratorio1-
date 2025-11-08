@@ -60,27 +60,25 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        pnl_gestorDiaSpa.setBackground(new java.awt.Color(204, 204, 204));
+        pnl_gestorDiaSpa.setBackground(new java.awt.Color(0, 153, 153));
 
         lbl_codPack.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_codPack.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_codPack.setText("Codigo Pack");
+        lbl_codPack.setText("Codigo Pack:");
 
+        lbl_titulo.setBackground(new java.awt.Color(0, 204, 204));
         lbl_titulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_titulo.setForeground(new java.awt.Color(0, 0, 0));
         lbl_titulo.setText("Gestor Dia de Spa");
+        lbl_titulo.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 102, 102)));
 
         lbl_fecha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_fecha.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_fecha.setText("Fecha");
+        lbl_fecha.setText("Fecha:");
 
+        lbl_preferencias.setBackground(new java.awt.Color(0, 153, 153));
         lbl_preferencias.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_preferencias.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_preferencias.setText("Preferencias");
+        lbl_preferencias.setText("Preferencias:");
 
         lbl_codigoCliente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_codigoCliente.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_codigoCliente.setText("Codigo Cliente");
+        lbl_codigoCliente.setText("Codigo Cliente:");
 
         txt_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,9 +87,9 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
 
-        btn_reservarDia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_reservarDia.setBackground(new java.awt.Color(0, 102, 102));
+        btn_reservarDia.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_reservarDia.setText("Reservar Dia de Spa");
         btn_reservarDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +97,8 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_borrarDia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_borrarDia.setBackground(new java.awt.Color(0, 102, 102));
+        btn_borrarDia.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_borrarDia.setText("Borrar Dia de Spa");
         btn_borrarDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +112,8 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_buscarCod.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_buscarCod.setBackground(new java.awt.Color(0, 102, 102));
+        btn_buscarCod.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_buscarCod.setText("Buscar Codigo Pack");
         btn_buscarCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,10 +128,10 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         });
 
         lbl_codigoCliente1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_codigoCliente1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_codigoCliente1.setText("Nombre");
+        lbl_codigoCliente1.setText("Nombre:");
 
-        btn_limpiarCampos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_limpiarCampos.setBackground(new java.awt.Color(0, 102, 102));
+        btn_limpiarCampos.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
         btn_limpiarCampos.setText("Limpiar Campos");
         btn_limpiarCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,10 +143,6 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         pnl_gestorDiaSpa.setLayout(pnl_gestorDiaSpaLayout);
         pnl_gestorDiaSpaLayout.setHorizontalGroup(
             pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_gestorDiaSpaLayout.createSequentialGroup()
                 .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
@@ -156,36 +152,42 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
                         .addComponent(btn_buscarCod, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_codigoCliente)
-                            .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbl_preferencias)
-                                .addComponent(lbl_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_codigoCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)))
-                        .addGap(18, 18, 18)
                         .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_gestorDiaSpaLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btn_reservarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                                .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_codigoCliente)
+                                    .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_preferencias)
+                                        .addComponent(lbl_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(txt_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbl_codigoCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_gestorDiaSpaLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btn_reservarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
+                                        .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
+                                                .addGap(3, 3, 3)
+                                                .addComponent(txt_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
+                                        .addComponent(dt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 301, Short.MAX_VALUE)
+                                        .addComponent(btn_borrarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
+                                        .addComponent(jcb_codCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btn_limpiarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                                .addComponent(dt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
-                                .addComponent(btn_borrarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                                .addComponent(jcb_codCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_limpiarCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(6, 6, 6)
+                                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(173, 173, 173))
             .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
@@ -198,7 +200,9 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
                 .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                        .addGap(73, 73, 73)
+                        .addContainerGap()
+                        .addComponent(lbl_titulo)
+                        .addGap(25, 25, 25)
                         .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,9 +213,7 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
                             .addComponent(dt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_titulo)
-                        .addGap(37, 37, 37)
+                        .addGap(85, 85, 85)
                         .addComponent(btn_buscarCod, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(btn_reservarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
