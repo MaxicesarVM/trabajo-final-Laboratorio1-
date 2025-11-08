@@ -101,7 +101,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
-                      <Component id="txt_preferencias1" min="-2" pref="272" max="-2" attributes="0"/>
+                      <Component id="txt_preferencias" min="-2" pref="272" max="-2" attributes="0"/>
                       <EmptySpace pref="632" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -148,9 +148,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_codigoCliente1" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_nombre" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lbl_codigoCliente1" max="32767" attributes="0"/>
+                              <Component id="txt_nombre" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -160,7 +160,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
-                      <Component id="txt_preferencias1" min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="txt_preferencias" min="-2" pref="61" max="-2" attributes="0"/>
                       <EmptySpace pref="434" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -273,6 +273,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcb_codClienteActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Cliente&gt;"/>
           </AuxValues>
@@ -288,9 +291,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_buscarCodActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_preferencias1">
+        <Component class="javax.swing.JTextField" name="txt_preferencias">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_preferencias1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_preferenciasActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_codigoCliente1">

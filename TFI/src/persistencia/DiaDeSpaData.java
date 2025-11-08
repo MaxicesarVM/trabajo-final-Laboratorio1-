@@ -196,7 +196,7 @@ public class DiaDeSpaData {
                 unDiasdeSpa.setMonto(rs.getDouble("monto"));
 
             }
-            System.out.println(c.toString());
+            
 
         } catch (SQLException ex) {
             System.out.println("No existe ese dia" + ex);

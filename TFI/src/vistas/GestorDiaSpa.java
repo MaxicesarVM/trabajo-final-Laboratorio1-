@@ -54,7 +54,7 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         btn_borrarDia = new javax.swing.JButton();
         jcb_codCliente = new javax.swing.JComboBox<>();
         btn_buscarCod = new javax.swing.JButton();
-        txt_preferencias1 = new javax.swing.JTextField();
+        txt_preferencias = new javax.swing.JTextField();
         lbl_codigoCliente1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -106,6 +106,12 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             }
         });
 
+        jcb_codCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_codClienteActionPerformed(evt);
+            }
+        });
+
         btn_buscarCod.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_buscarCod.setText("Buscar Codigo Pack");
         btn_buscarCod.addActionListener(new java.awt.event.ActionListener() {
@@ -114,9 +120,9 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             }
         });
 
-        txt_preferencias1.addActionListener(new java.awt.event.ActionListener() {
+        txt_preferencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_preferencias1ActionPerformed(evt);
+                txt_preferenciasActionPerformed(evt);
             }
         });
 
@@ -173,7 +179,7 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
                     .addGap(220, 220, 220)
-                    .addComponent(txt_preferencias1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_preferencias, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(632, Short.MAX_VALUE)))
         );
         pnl_gestorDiaSpaLayout.setVerticalGroup(
@@ -210,15 +216,15 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
                     .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_codigoCliente1)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbl_codigoCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_nombre))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
                     .addGap(187, 187, 187)
-                    .addComponent(txt_preferencias1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_preferencias, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(434, Short.MAX_VALUE)))
         );
 
@@ -241,7 +247,7 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         for(Cliente cliente: listac){
             
                 jcb_codCliente.addItem(cliente);
-                txt_nombre.setText(cliente.getNombreCompleto());
+                
             
         }
         
@@ -255,7 +261,7 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         int seleccion = Integer.parseInt(txt_codPack.getText());
         
         txt_codPack.setText(String.valueOf(operacionesDiaSpa.buscarDia(seleccion).getCodPack()));
-        txt_nombre.setText(operacionesDiaSpa.buscarDia(seleccion).getPreferencias());
+        txt_preferencias.setText(operacionesDiaSpa.buscarDia(seleccion).getPreferencias());
         
         LocalDate fechaDia = operacionesDiaSpa.buscarDia(seleccion).getFecha();
         
@@ -268,7 +274,9 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         
         jcb_codCliente.setSelectedItem(codClienteFiltrado);
         
+        Cliente clienteSeleccionado = (Cliente) jcb_codCliente.getSelectedItem();
         
+        txt_nombre.setText(clienteSeleccionado.getNombreCompleto());
         
         
     }//GEN-LAST:event_btn_buscarCodActionPerformed
@@ -276,7 +284,7 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
     private void btn_reservarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reservarDiaActionPerformed
         
         Date fechaSeleccionada = dt_fecha.getDate();
-        String preferenciasSeleccionadas = txt_nombre.getText();
+        String preferenciasSeleccionadas = txt_preferencias.getText();
         Cliente clienteSeleccionado = (Cliente) jcb_codCliente.getSelectedItem();
         
         // esto para casteo
@@ -310,12 +318,22 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_borrarDiaActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txt_nombreActionPerformed
 
-    private void txt_preferencias1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_preferencias1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_preferencias1ActionPerformed
+    private void txt_preferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_preferenciasActionPerformed
+        
+    }//GEN-LAST:event_txt_preferenciasActionPerformed
+
+    private void jcb_codClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_codClienteActionPerformed
+        
+        Cliente clienteSeleccionado = (Cliente) jcb_codCliente.getSelectedItem();
+        
+        txt_nombre.setText(clienteSeleccionado.getNombreCompleto());
+        
+        
+        
+    }//GEN-LAST:event_jcb_codClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -334,6 +352,6 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnl_gestorDiaSpa;
     private javax.swing.JTextField txt_codPack;
     private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_preferencias1;
+    private javax.swing.JTextField txt_preferencias;
     // End of variables declaration//GEN-END:variables
 }
