@@ -98,11 +98,11 @@
                                   </Group>
                                   <Component id="txt_codSesion" alignment="1" min="-2" pref="336" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jcb_duracionInstalacion" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                               <Component id="jdc_fecha" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                               <Component id="txt_matriculaMasj" min="-2" pref="336" max="-2" attributes="0"/>
+                              <Component id="txt_duracionMasajista" min="-2" pref="336" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="465" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -174,8 +174,8 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jcb_duracionInstalacion" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_duracion" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_duracionMasajista" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -428,17 +428,6 @@
             <Property name="text" type="java.lang.String" value="Duracion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jcb_duracionInstalacion">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JLabel" name="lbl_matriculaMasj">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -451,6 +440,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_matriculaMasj">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_duracionMasajista">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>

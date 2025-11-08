@@ -112,6 +112,24 @@ public class Sesiones extends javax.swing.JInternalFrame {
     }
     
     
+    private void cargarDuraciones(){
+        
+        
+        Tratamiento tratamientoSeleccionado = (Tratamiento) jcombo_tratamiento.getSelectedItem();
+        
+        if (tratamientoSeleccionado != null) {
+            txt_duracionMasajista.setText(String.valueOf(tratamientoSeleccionado.getDuracion()));
+        } else {
+        
+            txt_duracionMasajista.setText(""); 
+        }
+        
+            
+        
+    }
+    
+
+   
     private void cargarMasajistas(){
         
             
@@ -235,9 +253,9 @@ public class Sesiones extends javax.swing.JInternalFrame {
         lbl_instalacion = new javax.swing.JLabel();
         jcb_instalacion = new javax.swing.JComboBox<>();
         lbl_duracion = new javax.swing.JLabel();
-        jcb_duracionInstalacion = new javax.swing.JComboBox<>();
         lbl_matriculaMasj = new javax.swing.JLabel();
         txt_matriculaMasj = new javax.swing.JTextField();
+        txt_duracionMasajista = new javax.swing.JTextField();
 
         setClosable(true);
 
@@ -338,14 +356,15 @@ public class Sesiones extends javax.swing.JInternalFrame {
         lbl_duracion.setForeground(new java.awt.Color(0, 0, 0));
         lbl_duracion.setText("Duracion");
 
-        jcb_duracionInstalacion.setEnabled(false);
-
         lbl_matriculaMasj.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
         lbl_matriculaMasj.setForeground(new java.awt.Color(0, 0, 0));
         lbl_matriculaMasj.setText("Matricula Masajista");
 
         txt_matriculaMasj.setEditable(false);
         txt_matriculaMasj.setEnabled(false);
+
+        txt_duracionMasajista.setEditable(false);
+        txt_duracionMasajista.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -396,10 +415,10 @@ public class Sesiones extends javax.swing.JInternalFrame {
                                     .addComponent(jcb_producto, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jcombo_tratamiento, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addComponent(txt_codSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jcb_duracionInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jdc_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_matriculaMasj, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 465, Short.MAX_VALUE))
+                            .addComponent(txt_matriculaMasj, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_duracionMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -453,8 +472,8 @@ public class Sesiones extends javax.swing.JInternalFrame {
                         .addGap(24, 24, 24))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcb_duracionInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_duracion))
+                            .addComponent(lbl_duracion)
+                            .addComponent(txt_duracionMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_instalacion)
@@ -509,9 +528,11 @@ public class Sesiones extends javax.swing.JInternalFrame {
             jcb_producto.setEnabled(true);
             jcombo_masajista.setEnabled(true);
             txt_matriculaMasj.setEnabled(true);
+            txt_duracionMasajista.setEnabled(true);
             limpiarCombosDependientes();
             cargarMasajistas();
             cargarProductos();
+            cargarDuraciones();
             
             
             
@@ -525,9 +546,11 @@ public class Sesiones extends javax.swing.JInternalFrame {
             jcb_producto.setEnabled(false);
             jcombo_masajista.setEnabled(false);
             txt_matriculaMasj.setEnabled(false);
+            txt_duracionMasajista.setEnabled(false);
             limpiarCombosDependientes();
             
             txt_matriculaMasj.setText("");
+            txt_duracionMasajista.setText("");
             
         }
         
@@ -566,7 +589,6 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jL_codSesion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<Integer> jcb_codPack;
-    private javax.swing.JComboBox<String> jcb_duracionInstalacion;
     private javax.swing.JComboBox<Instalacion> jcb_instalacion;
     private javax.swing.JComboBox<String> jcb_producto;
     private javax.swing.JLabel jcl_fechas;
@@ -584,6 +606,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_matriculaMasj;
     private javax.swing.JTable tbl_horarios;
     private javax.swing.JTextField txt_codSesion;
+    private javax.swing.JTextField txt_duracionMasajista;
     private javax.swing.JTextField txt_matriculaMasj;
     private javax.swing.JLabel txt_productoTitulo;
     // End of variables declaration//GEN-END:variables
