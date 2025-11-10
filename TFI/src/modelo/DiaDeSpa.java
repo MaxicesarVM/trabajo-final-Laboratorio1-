@@ -116,7 +116,7 @@ public class DiaDeSpa {
 
     @Override
     public String toString() {
-        return "DiaDeSpa{" + "codPack=" + codPack + ", fecha=" + fecha + ", preferencias=" + preferencias + ", cliente=" + cliente + ", estado=" + estado + ", monto=" + monto + '}';
+        return ""+codPack;
     }
 
     
