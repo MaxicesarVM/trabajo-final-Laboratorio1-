@@ -309,6 +309,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
     
     private void verificarHorarios(){
      Instalacion instalacionParaElegir = (Instalacion) jcb_instalacion.getSelectedItem();
+     Tratamiento tratamientoElegido = (Tratamiento) jcombo_tratamiento.getSelectedItem();
      
      
 
@@ -810,3 +811,5 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txt_productoTitulo;
     // End of variables declaration//GEN-END:variables
 }
+
+

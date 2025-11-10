@@ -68,7 +68,7 @@ public class SesionData {
 
     public void eliminarSesion(int codSesion) {
 
-        String sql = "DELETE from sesion/pack WHERE codSesion = ?";
+        String sql = "DELETE from sesion WHERE codSesion = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class SesionData {
 
         Sesion s = null;
         List<Sesion> Sesiones = new ArrayList<>();
-        String sql = "SELECT * from sesion/pack WHERE estado = 1";
+        String sql = "SELECT * from sesion WHERE estado = 1";
         
         try {
 
@@ -168,7 +168,7 @@ public class SesionData {
 
     public Sesion buscarSesion(int codSesion) {
         Sesion s = null;
-        String sql = "SELECT * FROM sesion/pack WHERE codSesion = ?";
+        String sql = "SELECT * FROM sesion WHERE codSesion = ?";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -206,7 +206,7 @@ public class SesionData {
 
     public void altaLogica(Sesion s) {
 
-        String sql = "UPDATE sesion/pack SET estado=1 WHERE codSesion=?";
+        String sql = "UPDATE sesion SET estado=1 WHERE codSesion=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -223,7 +223,7 @@ public class SesionData {
 
     public void bajaLogica(Sesion s) {
 
-        String sql = "UPDATE sesion/pack SET estado=0 WHERE codSesion=?";
+        String sql = "UPDATE sesion SET estado=0 WHERE codSesion=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
