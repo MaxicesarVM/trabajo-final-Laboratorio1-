@@ -319,13 +319,20 @@ public class Sesiones extends javax.swing.JInternalFrame {
      } else if(txt_duracionMasajista.getText().equalsIgnoreCase("60") && instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")){
          generarHorariosSesionSoloTratamiento60(); // 60 min SIN instalación
          
-     } else if(txt_duracionMasajista.getText().equalsIgnoreCase("30")){
+     } else if(txt_duracionMasajista.getText().equalsIgnoreCase("30") && !instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")){
          generarHorariosSesionSoloTratamiento30ConIns(); // 30 min CON instalación
          
-     } else {
-         generarHorariosSesionSoloTratamiento60ConIns(); // 60 min CON instalación (Cualquier otra cosa, se asume 60 min CON)
+     } else if(tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno") && !instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")){
          
-     }
+         generarHorariosSesionSoloTratamiento60();
+         
+     } else if(txt_duracionMasajista.getText().equalsIgnoreCase("60") && !instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")){
+         generarHorariosSesionSoloTratamiento60ConIns(); 
+         
+     } 
+     
+     
+     
 }
     
 
@@ -758,9 +765,23 @@ public class Sesiones extends javax.swing.JInternalFrame {
 
     private void jcb_instalacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_instalacionActionPerformed
         
-        if (!txt_duracionMasajista.getText().isEmpty()) {
+       
+        
+        
+        Tratamiento tratamientoSeleccionado = (Tratamiento) jcombo_tratamiento.getSelectedItem();
+    
+    
+        boolean duracionLlena = !txt_duracionMasajista.getText().isEmpty();
+    
+    
+        boolean esTratamientoNinguno = (tratamientoSeleccionado != null && tratamientoSeleccionado.getNombre().equalsIgnoreCase("Ninguno"));
+    
+    
+        if (duracionLlena || esTratamientoNinguno) {
             verificarHorarios();
         }
+        
+        
         
         
     }//GEN-LAST:event_jcb_instalacionActionPerformed
@@ -811,5 +832,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txt_productoTitulo;
     // End of variables declaration//GEN-END:variables
 }
+
+
 
 
