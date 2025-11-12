@@ -2,7 +2,7 @@
 package modelo;
 
 import java.util.List;
-
+import java.util.Objects;
 
 public class Tratamiento {
     
@@ -114,7 +114,19 @@ public class Tratamiento {
         return nombre;
     }
     
-    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tratamiento that = (Tratamiento) o;
+        
+        return codTratam == that.codTratam; 
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codTratam);
+    }
     
     
     

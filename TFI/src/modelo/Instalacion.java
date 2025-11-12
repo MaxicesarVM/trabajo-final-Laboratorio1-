@@ -1,6 +1,6 @@
 
 package modelo;
-
+import java.util.Objects;
 
 public class Instalacion {
     
@@ -67,6 +67,28 @@ public class Instalacion {
     public String toString() {
         return nombre;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        
+        if (this == o) return true;
+        
+        
+        if (o == null || getClass() != o.getClass()) return false;
+        
+        
+        Instalacion that = (Instalacion) o;
+        return getCodInstal() == that.getCodInstal();
+    }
+
+    @Override
+    public int hashCode() {
+        
+        return Objects.hash(getCodInstal());
+    }
+    
+    
+    
     
     
     

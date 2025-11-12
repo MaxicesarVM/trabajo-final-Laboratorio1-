@@ -352,7 +352,6 @@ public class Sesiones extends javax.swing.JInternalFrame {
         jcl_fechas = new javax.swing.JLabel();
         btm_guardarReserva = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
-        btn_limpiar = new javax.swing.JButton();
         jl_titulo = new javax.swing.JLabel();
         txt_productoTitulo = new javax.swing.JLabel();
         jcb_producto = new javax.swing.JComboBox<>();
@@ -426,13 +425,6 @@ public class Sesiones extends javax.swing.JInternalFrame {
         btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_actualizarActionPerformed(evt);
-            }
-        });
-
-        btn_limpiar.setText("Limpiar Campos");
-        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_limpiarActionPerformed(evt);
             }
         });
 
@@ -524,7 +516,9 @@ public class Sesiones extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jcb_instalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(296, 296, 296)))
-                        .addComponent(btm_guardarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btm_guardarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -554,12 +548,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
                                     .addComponent(txt_codSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(36, 36, 36)
                                 .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(111, 111, 111))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -621,13 +610,11 @@ public class Sesiones extends javax.swing.JInternalFrame {
                             .addComponent(jdc_fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcb_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_limpiar)
-                        .addComponent(lbl_codPack)))
-                .addGap(18, 18, 18)
-                .addComponent(btn_actualizar)
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addComponent(jcb_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_actualizar))
+                    .addComponent(lbl_codPack))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -708,7 +695,10 @@ public class Sesiones extends javax.swing.JInternalFrame {
             }
             
         }
-              
+         
+        
+        
+        
     }//GEN-LAST:event_btm_guardarReservaActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
@@ -778,17 +768,10 @@ public class Sesiones extends javax.swing.JInternalFrame {
             
         }
         
-       
+        
+        
+        
     }//GEN-LAST:event_btn_actualizarActionPerformed
-
-    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
-        
-        borrarFilaTabla();
-        txt_codSesion.setText("");
-        
-        
-        
-    }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void jcombo_tratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcombo_tratamientoActionPerformed
         
@@ -886,7 +869,8 @@ public class Sesiones extends javax.swing.JInternalFrame {
         int codigoSesion = Integer.valueOf(txt_codSesion.getText());
         
         Sesion sesionBuscada = operacionesSesion.buscarSesion(codigoSesion);
-        
+        System.out.println("ESTO BUSCAS");
+        System.out.println(sesionBuscada.getTratamiento());
         
         
         txt_codSesion.setText(String.valueOf(sesionBuscada.getCodSesion()));
@@ -952,7 +936,6 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private javax.swing.JButton btm_guardarReserva;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_buscar;
-    private javax.swing.JButton btn_limpiar;
     private javax.swing.JLabel jL_codSesion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<Integer> jcb_codPack;
