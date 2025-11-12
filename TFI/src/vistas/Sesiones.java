@@ -672,6 +672,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
             
             try {
                 operacionesSesion.crearSesion(sesionCreada);
+                JOptionPane.showMessageDialog(this, "Se creo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al guardar la sesion");
             }
@@ -690,13 +691,15 @@ public class Sesiones extends javax.swing.JInternalFrame {
             Sesion sesionCreada = new Sesion(fechaCasteada, horaInicio, horaFin, tratamientoElegido, masajistaSeleccionado, instalacionSeleccionada, diaSeleccionado, estadoSesion);
             try {
                 operacionesSesion.crearSesion(sesionCreada);
+                JOptionPane.showMessageDialog(this, "Se creo la sesion correctamente");
+                
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al guardar la sesion");
             }
             
         }
          
-        
+        this.dispose();
         
         
     }//GEN-LAST:event_btm_guardarReservaActionPerformed
@@ -744,6 +747,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
             
             try {
                 operacionesSesion.actualizarSesion(sesionCreada);
+                JOptionPane.showMessageDialog(this, "Se actualizo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al actualizar la sesion");
             }
@@ -762,13 +766,14 @@ public class Sesiones extends javax.swing.JInternalFrame {
             Sesion sesionCreada = new Sesion(codigoSesion, fechaCasteada, horaInicio, horaFin, tratamientoElegido, masajistaSeleccionado, instalacionSeleccionada, diaSeleccionado, estadoSesion);
             try {
                 operacionesSesion.actualizarSesion(sesionCreada);
+                JOptionPane.showMessageDialog(this, "Se actualizo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al actualizar la sesion");
             }
             
         }
         
-        
+        this.dispose();
         
         
     }//GEN-LAST:event_btn_actualizarActionPerformed
