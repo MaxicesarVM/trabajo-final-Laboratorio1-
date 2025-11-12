@@ -367,6 +367,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
         lbl_matriculaMasj = new javax.swing.JLabel();
         txt_matriculaMasj = new javax.swing.JTextField();
         txt_duracionMasajista = new javax.swing.JTextField();
+        btn_buscar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -490,6 +491,14 @@ public class Sesiones extends javax.swing.JInternalFrame {
             }
         });
 
+        btn_buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -533,15 +542,18 @@ public class Sesiones extends javax.swing.JInternalFrame {
                             .addComponent(lbl_duracion))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jcombo_masajista, 0, 336, Short.MAX_VALUE)
-                                    .addComponent(jcb_producto, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jcombo_tratamiento, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(txt_codSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jdc_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_matriculaMasj, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_duracionMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_duracionMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jcombo_masajista, 0, 336, Short.MAX_VALUE)
+                                        .addComponent(jcb_producto, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jcombo_tratamiento, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txt_codSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(36, 36, 36)
+                                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -571,7 +583,8 @@ public class Sesiones extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jL_codSesion)
-                            .addComponent(txt_codSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_codSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_buscar))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jl_tratamiento)
@@ -614,7 +627,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
                         .addComponent(lbl_codPack)))
                 .addGap(18, 18, 18)
                 .addComponent(btn_actualizar)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -699,7 +712,73 @@ public class Sesiones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btm_guardarReservaActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        // TODO add your handling code here:
+        
+        
+        int codigoSesion = Integer.valueOf(txt_codSesion.getText());
+        Date fechaSesion = jdc_fecha.getDate();
+        
+        LocalDate fechaCasteada = fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+
+        int filaSeleccionada = tbl_horarios.getSelectedRow();
+        
+        LocalTime horaInicio = null;
+        LocalTime horaFin = null;
+                
+                
+        if (filaSeleccionada != -1) {
+        
+            String horarioInicio = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+        
+            String horarioFin = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
+        
+            horaInicio = LocalTime.parse(horarioInicio);
+            horaFin = LocalTime.parse(horarioFin);
+        
+            
+            
+           
+        }
+        
+        
+        Tratamiento tratamientoElegido = (Tratamiento) jcombo_tratamiento.getSelectedItem();
+        
+        if(tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno")){
+            
+            Instalacion instalacionSeleccionada = (Instalacion) jcb_instalacion.getSelectedItem();
+            int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
+            DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
+            boolean estadoSesion = true;
+        
+            Sesion sesionCreada = new Sesion(codigoSesion, fechaCasteada, horaInicio, horaFin, tratamientoElegido, instalacionSeleccionada, diaSeleccionado, estadoSesion);
+            
+            try {
+                operacionesSesion.actualizarSesion(sesionCreada);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Se encontro un error al actualizar la sesion");
+            }
+            
+        
+        } else{
+            
+            Masajista masajistaSeleccionado = (Masajista) jcombo_masajista.getSelectedItem();
+            String productoSeleccionado = (String) jcb_producto.getSelectedItem();
+            tratamientoElegido.setProductos(productoSeleccionado);
+            Instalacion instalacionSeleccionada = (Instalacion) jcb_instalacion.getSelectedItem();
+            int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
+            DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
+            boolean estadoSesion = true;
+            
+            Sesion sesionCreada = new Sesion(codigoSesion, fechaCasteada, horaInicio, horaFin, tratamientoElegido, masajistaSeleccionado, instalacionSeleccionada, diaSeleccionado, estadoSesion);
+            try {
+                operacionesSesion.actualizarSesion(sesionCreada);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Se encontro un error al actualizar la sesion");
+            }
+            
+        }
+        
+       
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
@@ -802,10 +881,77 @@ public class Sesiones extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_txt_duracionMasajistaActionPerformed
 
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        
+        int codigoSesion = Integer.valueOf(txt_codSesion.getText());
+        
+        Sesion sesionBuscada = operacionesSesion.buscarSesion(codigoSesion);
+        
+        
+        
+        txt_codSesion.setText(String.valueOf(sesionBuscada.getCodSesion()));
+        
+        Tratamiento tratamientoEncontrado = sesionBuscada.getTratamiento();
+        Instalacion instalacionEncontrada = sesionBuscada.getInstalaciones();
+        LocalDate fecha = sesionBuscada.getFecha();
+        Date fechaCasteada = Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        DiaDeSpa codigoEncontrado = sesionBuscada.getDiaDeSpa();
+        
+        
+        jcombo_tratamiento.setSelectedItem(tratamientoEncontrado);
+        jcb_codPack.setSelectedItem(codigoEncontrado.getCodPack());
+        
+        
+        if(tratamientoEncontrado.getNombre().equalsIgnoreCase("Ninguno")){
+            
+            
+            jcb_producto.setEnabled(false);
+            jcombo_masajista.setEnabled(false);
+            txt_matriculaMasj.setEnabled(false);
+            txt_matriculaMasj.setText("");
+            txt_duracionMasajista.setEnabled(false);
+            txt_duracionMasajista.setText("");
+            jcb_instalacion.setSelectedItem(instalacionEncontrada);
+            jdc_fecha.setDate(fechaCasteada);
+            
+            
+            
+            
+        } else{
+            
+            jcb_producto.setEnabled(true);
+            jcombo_masajista.setEnabled(true);
+            txt_matriculaMasj.setEnabled(true);
+            txt_duracionMasajista.setEnabled(true);
+            
+            
+            jcb_producto.setSelectedItem(sesionBuscada.getTratamiento().getProductos());
+            jcombo_masajista.setSelectedItem(sesionBuscada.getMasajista());
+            txt_matriculaMasj.setText(String.valueOf(sesionBuscada.getMasajista().getMatricula()));
+            txt_duracionMasajista.setText(String.valueOf(sesionBuscada.getTratamiento().getDuracion()));
+            jcb_instalacion.setSelectedItem(instalacionEncontrada);
+            jdc_fecha.setDate(fechaCasteada);
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btm_guardarReserva;
     private javax.swing.JButton btn_actualizar;
+    private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JLabel jL_codSesion;
     private javax.swing.JPanel jPanel1;

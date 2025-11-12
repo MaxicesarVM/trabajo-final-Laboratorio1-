@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -21,10 +22,13 @@ import persistencia.Conexion;
 public class SesionData {
 
     private Connection con = null;
+    private Conexion conexion;
 
     public SesionData(Conexion conexion) {
+        this.conexion = conexion;
 
-        this.con = (Connection) conexion.getConexion();
+        this.con = conexion.getConexion();
+
     }
 
 
@@ -121,10 +125,10 @@ public class SesionData {
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            TratamientoData td = new TratamientoData((Conexion) con);
-            DiaDeSpaData dd = new DiaDeSpaData((Conexion) con);
-            MasajistaData md = new MasajistaData((Conexion) con);
-            InstalacionData id = new InstalacionData((Conexion) con);
+            TratamientoData td = new TratamientoData(this.conexion);
+            DiaDeSpaData dd = new DiaDeSpaData(this.conexion);
+            MasajistaData md = new MasajistaData(this.conexion);
+            InstalacionData id = new InstalacionData(this.conexion);
             
             while (rs.next()) {
 
@@ -174,10 +178,10 @@ public class SesionData {
             ps = con.prepareStatement(sql);
             ps.setInt(1, codSesion);
             ResultSet rs = ps.executeQuery();
-            TratamientoData td = new TratamientoData((Conexion) con);
-            MasajistaData md = new MasajistaData((Conexion) con);
-            InstalacionData id = new InstalacionData((Conexion) con);
-            DiaDeSpaData dd = new DiaDeSpaData((Conexion) con);
+            TratamientoData td = new TratamientoData(this.conexion);
+            MasajistaData md = new MasajistaData(this.conexion);
+            InstalacionData id = new InstalacionData(this.conexion);
+            DiaDeSpaData dd = new DiaDeSpaData(this.conexion);
             while (rs.next()) {
                 s = new Sesion();
                 s.setCodSesion(rs.getInt("codSesion"));

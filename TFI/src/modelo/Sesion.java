@@ -17,6 +17,20 @@ public class Sesion {
     private DiaDeSpa diaDeSpa;
     private boolean estado;
 
+    public Sesion(int codSesion, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin, Tratamiento tratamiento, Instalacion instalaciones, DiaDeSpa diaDeSpa, boolean estado) {
+        this.codSesion = codSesion;
+        this.fecha = fecha;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.tratamiento = tratamiento;
+        this.instalaciones = instalaciones;
+        this.diaDeSpa = diaDeSpa;
+        this.estado = estado;
+    }
+
+    
+    
+    
     public Sesion(int codSesion, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin, Tratamiento tratamiento, Masajista masajista, Instalacion instalaciones, DiaDeSpa diaDeSpa, boolean estado) {
         this.codSesion = codSesion;
         this.fecha = fecha;
