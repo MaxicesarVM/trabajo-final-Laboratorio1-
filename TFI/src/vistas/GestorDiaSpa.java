@@ -334,8 +334,7 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         vistaSesiones.setVisible(true);
         
         
-        pnl_gestorDiaSpa.add(vistaSesiones);
-        pnl_gestorDiaSpa.setComponentZOrder(vistaSesiones, 0);
+        
         
         
     }//GEN-LAST:event_btn_reservarDiaActionPerformed
