@@ -31,7 +31,6 @@ public class SesionData {
 
     }
 
-
     public void crearSesion(Sesion s) throws SQLException {
 
         String sql = "INSERT into sesion (fecha, hora_inicio, hora_fin, codTratamiento, codMasajista, codPack, estado, codInstalacion) VALUES(?,?,?,?,?,?,?,?)";
@@ -120,7 +119,7 @@ public class SesionData {
         Sesion s = null;
         List<Sesion> Sesiones = new ArrayList<>();
         String sql = "SELECT * from sesion WHERE estado = 1";
-        
+
         try {
 
             PreparedStatement ps = con.prepareStatement(sql);
@@ -129,7 +128,7 @@ public class SesionData {
             DiaDeSpaData dd = new DiaDeSpaData(this.conexion);
             MasajistaData md = new MasajistaData(this.conexion);
             InstalacionData id = new InstalacionData(this.conexion);
-            
+
             while (rs.next()) {
 
                 s = new Sesion();
@@ -147,8 +146,7 @@ public class SesionData {
                 s.setEstado(rs.getBoolean("estado"));
                 Instalacion ic = id.buscarInstalacion(rs.getInt("codInstalacion"));
                 s.setInstalaciones(ic);
-                    
-                
+
                 Sesiones.add(s);
 
             }
@@ -241,4 +239,79 @@ public class SesionData {
         }
 
     }
+
+    public double calculodeCosto(int cod_pack) {
+        String sql = "SELECT s.codPack, SUM(IFNULL(i.precio, 0) + IFNULL(t.costo, 0)) AS Costo_Total_Pack FROM sesion s LEFT JOIN tratamiento t ON s.codTratamiento = t.codTratamiento LEFT JOIN instalacion i ON s.codInstalacion = i.codInstalacion WHERE s.codPack = ? GROUP BY s.codPack;";
+        double costoFinal = 0.0;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, cod_pack);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                costoFinal = rs.getDouble("Costo_Total_Pack");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al calcular el costo " + ex);
+        }
+
+        return costoFinal;
+    }
+
+    //FALTA TERMINAR ESTO NO FUNCIONAAAAAAA
+    public List<Sesion> listarSesionesPorFecha(LocalDate fecha) {
+
+        Sesion s = null;
+        List<Sesion> Sesiones = new ArrayList<>();
+        String sql = "SELECT * from sesion WHERE estado = 1 AND fecha = ?";
+        TratamientoData td = new TratamientoData(this.conexion);
+        DiaDeSpaData dd = new DiaDeSpaData(this.conexion);
+        MasajistaData md = new MasajistaData(this.conexion);
+        InstalacionData id = new InstalacionData(this.conexion);
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, java.sql.Date.valueOf(fecha));
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                s = new Sesion();
+                s.setCodSesion(rs.getInt("codSesion"));
+                s.setFecha(rs.getDate("fecha").toLocalDate());
+                s.setHoraInicio(rs.getTime("hora_inicio").toLocalTime());
+                s.setHoraFin(rs.getTime("hora_fin").toLocalTime());
+
+                Tratamiento ta = td.buscarTratamiento(rs.getInt("codTratamiento"));
+                s.setTratamiento(ta);
+                Masajista ma = md.buscarMasajista(rs.getInt("codMasajista"));
+                s.setMasajista(ma);
+                DiaDeSpa ds = dd.buscarDia(rs.getInt("codPack"));
+                s.setDiaDeSpa(ds);
+                s.setEstado(rs.getBoolean("estado"));
+                Instalacion ic = id.buscarInstalacion(rs.getInt("codInstalacion"));
+                s.setInstalaciones(ic);
+
+                Sesiones.add(s);
+
+            }
+
+            for (Sesion ss : Sesiones) {
+
+                System.out.println(Sesiones);
+
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+
+            System.out.println("Error al listar las sesiones en esa fecha: " + ex);
+
+        }
+
+        return Sesiones;
+    }
+
 }
