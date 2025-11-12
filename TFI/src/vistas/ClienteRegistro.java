@@ -386,7 +386,7 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
 
     private void btn_regisCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regisCliActionPerformed
         
-        
+       try{ 
         String seleccionDocumento = txt_documento.getText();
         String seleccionNombreCompleto = txt_nombreCompleto.getText();
         String seleccionTelefono = txt_telefono.getText();
@@ -398,11 +398,15 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         operacionesCliente.agregarCliente(clienteCreado);
         JOptionPane.showMessageDialog(this, "Se agrego el cliente: " + seleccionNombreCompleto + " correctamente");
         
-        
+       } catch (NumberFormatException e) {
+           
+          JOptionPane.showMessageDialog(this,  "Error:Documento, Teléfono y Edad tienen que ser números válidos", "Error de campos",  JOptionPane.ERROR_MESSAGE);
+       }
     }//GEN-LAST:event_btn_regisCliActionPerformed
 
     private void btn_buscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarCliActionPerformed
         
+       try {
         
         int seleccion = Integer.parseInt(txt_codCli.getText().trim());
         txt_codCli.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getCodCli()));
@@ -413,7 +417,11 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         txt_afecciones.setText(operacionesCliente.buscarCliente(seleccion).getAfecciones());
         ck_clienteActivo.setSelected(operacionesCliente.buscarCliente(seleccion).isEstado());
         
-        
+       } catch (NumberFormatException e) {
+           
+           JOptionPane.showMessageDialog(this, "El código de cliente tiene que ser un número", "Error codigo cliente", JOptionPane.ERROR_MESSAGE);
+           
+       }  
     }//GEN-LAST:event_btn_buscarCliActionPerformed
 
     private void btn_limpiarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarCliActionPerformed
@@ -432,6 +440,8 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_limpiarCliActionPerformed
 
     private void btn_actuCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actuCliActionPerformed
+      
+        try {
         
         int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
         String seleccionDocumento = txt_documento.getText();
@@ -445,22 +455,33 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         operacionesCliente.actualizarCliente(clienteActualizado);
         JOptionPane.showMessageDialog(this, "Se actualizo el cliente: " + seleccionNombreCompleto + " correctamente");
         
+        } catch (NumberFormatException e) {
+           
+           JOptionPane.showMessageDialog(this, "Error: Documento, teléfono y edad tienen que ser números válidos", "Error en campos", JOptionPane.ERROR_MESSAGE);
+           
+       }  
         
     }//GEN-LAST:event_btn_actuCliActionPerformed
 
     private void btn_borrarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarCliActionPerformed
         
+        try{
         int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
         
         operacionesCliente.eliminarCliente(seleccionCodigoCliente);
         JOptionPane.showMessageDialog(this, "Cliente borrado actualmente"); 
         
-        
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo de cliente valido", "Codigo de cliente incorrecto", JOptionPane.ERROR_MESSAGE);
+            
+        }
         
     }//GEN-LAST:event_btn_borrarCliActionPerformed
 
     private void btn_bajaLogicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bajaLogicaActionPerformed
         
+        try {
+            
         
         int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
         String seleccionDocumento = txt_documento.getText();
@@ -474,7 +495,10 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         operacionesCliente.bajaLogica(clienteCreado);
         JOptionPane.showMessageDialog(this, "Cliente dado de baja correctamente");
         
-        
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar un cliente valido", "Faltan datos del cliente", JOptionPane.ERROR_MESSAGE);
+            
+        }
         
         
         
@@ -482,6 +506,7 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
 
     private void btn_altaLogicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_altaLogicaActionPerformed
         
+    try{
         int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
         String seleccionDocumento = txt_documento.getText();
         String seleccionNombreCompleto = txt_nombreCompleto.getText();
@@ -493,6 +518,11 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         Cliente clienteCreado = new Cliente(seleccionCodigoCliente, Integer.parseInt(seleccionDocumento), seleccionNombreCompleto, Long.valueOf(seleccionTelefono), Integer.parseInt(seleccionEdad), seleccionAfecciones, seleccionEstado);
         operacionesCliente.altaLogica(clienteCreado);
         JOptionPane.showMessageDialog(this, "Cliente dado de alta correctamente");
+        
+    } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar un cliente valido", "Faltan datos del cliente", JOptionPane.ERROR_MESSAGE);
+            
+        }
         
         
         
