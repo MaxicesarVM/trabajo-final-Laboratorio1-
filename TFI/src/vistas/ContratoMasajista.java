@@ -249,8 +249,11 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   
     private void btn_buscarMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarMasajistaActionPerformed
+       
+        try {
+        
         int seleccion = Integer.parseInt(txt_matricula.getText().trim());
         txt_matricula.setText(String.valueOf(operacionesMasajista.buscarMasajista(seleccion).getMatricula()));
         txt_nombreCompleto.setText(operacionesMasajista.buscarMasajista(seleccion).getNombre_completo());
@@ -258,12 +261,16 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         txt_especialidad.setText(operacionesMasajista.buscarMasajista(seleccion).getEspecialidad());
         check_ActivoMas.setSelected(operacionesMasajista.buscarMasajista(seleccion).isEstado());
         
-       
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
+        }
 
 
     }//GEN-LAST:event_btn_buscarMasajistaActionPerformed
 
     private void btn_guardarMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarMasajistaActionPerformed
+
+    try {
 
         int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
         String seleccionNombreCompleto = txt_nombreCompleto.getText();
@@ -274,22 +281,34 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         Masajista masajistaCreado = new Masajista(seleccionMatricula, seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
         operacionesMasajista.agregarMasajista(masajistaCreado);
         JOptionPane.showMessageDialog(this, "Se agrego el masajista: " + seleccionNombreCompleto + " correctamente");
+        
+    } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
+        }
 
       
     }//GEN-LAST:event_btn_guardarMasajistaActionPerformed
 
     private void btn_borrarMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarMasajistaActionPerformed
-         int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
+         
+        try {
+        int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
         
         operacionesMasajista.eliminarMasajista(seleccionMatricula);
         JOptionPane.showMessageDialog(this, "Se elimino el masajista correctamente");
+        
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
+        }
 
 
 
     }//GEN-LAST:event_btn_borrarMasajistaActionPerformed
 
     private void btn_actualizarMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarMasajistaActionPerformed
-        
+       
+
+    try {
         int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
         String seleccionNombreCompleto = txt_nombreCompleto.getText();
         String seleccionTelefono = txt_telefono.getText();
@@ -299,6 +318,10 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         Masajista masajistaActualizado = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
         operacionesMasajista.actualizarMasajista(masajistaActualizado);
         JOptionPane.showMessageDialog(this, "Se actualizó el masajista correctamente");
+        
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
+        }
         
 
     
@@ -317,6 +340,8 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
 
     private void btn_bajaLogicaMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bajaLogicaMasajistaActionPerformed
 
+
+    try {
         int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
          String seleccionNombreCompleto = txt_nombreCompleto.getText();
         String seleccionTelefono = txt_telefono.getText();
@@ -326,12 +351,19 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         Masajista masajistaBaja = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
         operacionesMasajista.bajaLogica(masajistaBaja);
         JOptionPane.showMessageDialog(this, "Se dio de baja al masajista correctamente");
+        
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
+        }
 
        
     }//GEN-LAST:event_btn_bajaLogicaMasajistaActionPerformed
 
     private void btn_altaLogicaMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_altaLogicaMasajistaActionPerformed
-
+        
+        try {
+            
+        
         int seleccionMatricula = Integer.parseInt(txt_matricula.getText());
         String seleccionNombreCompleto = txt_nombreCompleto.getText();
         String seleccionTelefono = txt_telefono.getText();
@@ -341,6 +373,10 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         Masajista masajistaAlta = new Masajista(seleccionMatricula,seleccionNombreCompleto, Long.valueOf(seleccionTelefono), seleccionEspecialidad, seleccionEstado);
         operacionesMasajista.altaLogica(masajistaAlta);
         JOptionPane.showMessageDialog(this, "Se dio de alta al masajista correctamente");
+        
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
+        }
 
 
 

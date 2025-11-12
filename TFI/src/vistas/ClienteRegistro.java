@@ -400,7 +400,7 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         
        } catch (NumberFormatException e) {
            
-          JOptionPane.showMessageDialog(this,  "Error:Documento, Teléfono y Edad tienen que ser números válidos", "Error de campos",  JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(this,  "Error:Documento, telefono y edad tienen que ser numeros validos", "Error de campos",  JOptionPane.ERROR_MESSAGE);
        }
     }//GEN-LAST:event_btn_regisCliActionPerformed
 
@@ -419,7 +419,7 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         
        } catch (NumberFormatException e) {
            
-           JOptionPane.showMessageDialog(this, "El código de cliente tiene que ser un número", "Error codigo cliente", JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(this, "El codigo de cliente tiene que ser un numero", "Error codigo cliente", JOptionPane.ERROR_MESSAGE);
            
        }  
     }//GEN-LAST:event_btn_buscarCliActionPerformed
@@ -457,7 +457,7 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         
         } catch (NumberFormatException e) {
            
-           JOptionPane.showMessageDialog(this, "Error: Documento, teléfono y edad tienen que ser números válidos", "Error en campos", JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(this, "Error: Documento, telefono y edad tienen que ser numeros validos", "Error en campos", JOptionPane.ERROR_MESSAGE);
            
        }  
         
