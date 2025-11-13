@@ -259,7 +259,7 @@ public class SesionData {
         return costoFinal;
     }
 
-    //FALTA TERMINAR ESTO NO FUNCIONAAAAAAA
+    
     public List<Sesion> listarSesionesPorFecha(LocalDate fecha) {
 
         Sesion s = null;

@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -117,6 +118,55 @@ public class DiaDeSpaData {
 
     }
 
+    
+    public List<DiaDeSpa> listarDiaSpaPorFecha(LocalDate fecha) {
+        DiaDeSpa unDiasdeSpa = null;
+        List<DiaDeSpa> listadoDiaDeSpa = new ArrayList<>();
+        String sql = "SELECT * from dia_de_spa WHERE estado = 1 AND fecha = ?";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, java.sql.Date.valueOf(fecha));
+            ResultSet rs = ps.executeQuery();
+            ClienteData cd = new ClienteData(this.conexion);
+
+            while (rs.next()) {
+
+                unDiasdeSpa = new DiaDeSpa();
+                unDiasdeSpa.setCodPack(rs.getInt("codPack"));
+                unDiasdeSpa.setFecha(rs.getDate("fecha").toLocalDate());
+                unDiasdeSpa.setPreferencias(rs.getString("preferencias"));
+                Cliente cliente = cd.buscarCliente(rs.getInt("codCli"));
+                unDiasdeSpa.setCliente(cliente);
+                unDiasdeSpa.setEstado(rs.getBoolean("estado"));
+                unDiasdeSpa.setMonto(rs.getDouble("monto"));
+
+                listadoDiaDeSpa.add(unDiasdeSpa);
+
+            }
+
+            for (DiaDeSpa dias : listadoDiaDeSpa) {
+
+                System.out.println(dias);
+
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+
+            System.out.println("Error al listar los dias: " + ex);
+
+        }
+
+        return listadoDiaDeSpa;
+    }
+    
+    
+    
+    
+    
     public void actualizarDiaSpa(DiaDeSpa c) {
 
         String sql = "UPDATE dia_de_spa SET fecha= ? ,preferencias= ? , codCli = ? , estado= ?, monto = ? WHERE codPack = ?";
@@ -204,4 +254,8 @@ public class DiaDeSpaData {
 
         return unDiasdeSpa;
     }
+    
+    
+    
+    
 }

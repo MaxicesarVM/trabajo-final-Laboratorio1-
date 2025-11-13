@@ -41,7 +41,8 @@ public class JF_inicio extends javax.swing.JFrame {
         jmReserva = new javax.swing.JMenu();
         jmitem_reservaTratamiento = new javax.swing.JMenuItem();
         jmitem_gestorDia = new javax.swing.JMenuItem();
-        jmitem_listaDia = new javax.swing.JMenuItem();
+        jmitem_listadoSesionesFecha = new javax.swing.JMenuItem();
+        jmitem_listadoDiasSpa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,18 +169,26 @@ public class JF_inicio extends javax.swing.JFrame {
         });
         jmReserva.add(jmitem_gestorDia);
 
-        jmitem_listaDia.setText("Listado dia Spa");
-        jmitem_listaDia.addMouseListener(new java.awt.event.MouseAdapter() {
+        jmitem_listadoSesionesFecha.setText("Listado Sesiones");
+        jmitem_listadoSesionesFecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jmitem_listaDiaMouseClicked(evt);
+                jmitem_listadoSesionesFechaMouseClicked(evt);
             }
         });
-        jmitem_listaDia.addActionListener(new java.awt.event.ActionListener() {
+        jmitem_listadoSesionesFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmitem_listaDiaActionPerformed(evt);
+                jmitem_listadoSesionesFechaActionPerformed(evt);
             }
         });
-        jmReserva.add(jmitem_listaDia);
+        jmReserva.add(jmitem_listadoSesionesFecha);
+
+        jmitem_listadoDiasSpa.setText("Listado Dias Spa");
+        jmitem_listadoDiasSpa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmitem_listadoDiasSpaActionPerformed(evt);
+            }
+        });
+        jmReserva.add(jmitem_listadoDiasSpa);
 
         jMenuBar1.add(jmReserva);
 
@@ -329,18 +338,30 @@ public class JF_inicio extends javax.swing.JFrame {
         dsktp_principal.moveToFront(vistaDiaSpa);
     }//GEN-LAST:event_jmitem_gestorDiaMouseClicked
 
-    private void jmitem_listaDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_listaDiaActionPerformed
+    private void jmitem_listadoSesionesFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_listadoSesionesFechaActionPerformed
        dsktp_principal.removeAll();
         dsktp_principal.repaint();
-        vistaListaDiadeSpa vistaDiaSpa = new vistaListaDiadeSpa();
+        ListadoSesionesPorDia vistaDiaSpa = new ListadoSesionesPorDia();
         vistaDiaSpa.setVisible(true);
         dsktp_principal.add(vistaDiaSpa);
         dsktp_principal.moveToFront(vistaDiaSpa);
-    }//GEN-LAST:event_jmitem_listaDiaActionPerformed
+    }//GEN-LAST:event_jmitem_listadoSesionesFechaActionPerformed
 
-    private void jmitem_listaDiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_listaDiaMouseClicked
+    private void jmitem_listadoSesionesFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmitem_listadoSesionesFechaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jmitem_listaDiaMouseClicked
+    }//GEN-LAST:event_jmitem_listadoSesionesFechaMouseClicked
+
+    private void jmitem_listadoDiasSpaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmitem_listadoDiasSpaActionPerformed
+        
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        ListadoDiasDeSpa vistaListadoDiaSpa = new ListadoDiasDeSpa();
+        vistaListadoDiaSpa.setVisible(true);
+        dsktp_principal.add(vistaListadoDiaSpa);
+        dsktp_principal.moveToFront(vistaListadoDiaSpa);
+        
+        
+    }//GEN-LAST:event_jmitem_listadoDiasSpaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,7 +413,8 @@ public class JF_inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmitem_TratamientoList;
     private javax.swing.JMenuItem jmitem_TratamientoRegistro;
     private javax.swing.JMenuItem jmitem_gestorDia;
-    private javax.swing.JMenuItem jmitem_listaDia;
+    private javax.swing.JMenuItem jmitem_listadoDiasSpa;
+    private javax.swing.JMenuItem jmitem_listadoSesionesFecha;
     private javax.swing.JMenuItem jmitem_reservaTratamiento;
     // End of variables declaration//GEN-END:variables
 }
