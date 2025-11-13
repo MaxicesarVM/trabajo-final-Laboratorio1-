@@ -273,6 +273,8 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
     
     private void btn_buscarCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarCodActionPerformed
         
+        try { 
+        
         int seleccion = Integer.parseInt(txt_codPack.getText());
         
         DiaDeSpa diaEncontrado = operacionesDiaSpa.buscarDia(seleccion);
@@ -312,10 +314,20 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         
         txt_nombre.setText(clienteSeleccionado.getNombreCompleto());
         
+        } catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo valido", "Codigo invalido", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
         
     }//GEN-LAST:event_btn_buscarCodActionPerformed
 
     private void btn_reservarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reservarDiaActionPerformed
+        
+        try {
+            
+        
         
         Date fechaSeleccionada = dt_fecha.getDate();
         String preferenciasSeleccionadas = txt_preferencias.getText();
@@ -334,12 +346,24 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         vistaSesiones.setVisible(true);
         
         
+        } catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar una fecha valida", "Error: Fecha invalida", JOptionPane.ERROR_MESSAGE);
+            
+        } catch (NullPointerException a) {
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar una fecha valida", "Error: Fecha invalida", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
         
         
         
     }//GEN-LAST:event_btn_reservarDiaActionPerformed
 
     private void btn_borrarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarDiaActionPerformed
+       
+        try {
         
         int seleccion = Integer.parseInt(txt_codPack.getText());
         
@@ -347,7 +371,11 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         
         JOptionPane.showMessageDialog(this, "Se elimino el dia de spa correctamente");
         
+        } catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar una reserva valida", "Error: Reserva invalida", JOptionPane.ERROR_MESSAGE);
         
+        }   
     }//GEN-LAST:event_btn_borrarDiaActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
