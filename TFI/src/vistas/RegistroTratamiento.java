@@ -352,7 +352,8 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
     
     
     private void btn_buscarTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarTratamientoActionPerformed
-        
+       
+        try {
         
         borrarProductos();
         int seleccion = Integer.parseInt(txt_codTrat.getText().trim());
@@ -364,7 +365,15 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         txt_costoTrat.setText(String.valueOf(operacionesTratamiento.buscarTratamiento(seleccion).getCosto()));
         ck_estadoTratamiento.setSelected(operacionesTratamiento.buscarTratamiento(seleccion).getActivo());
         
-        
+        } catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        } catch (NullPointerException a) {
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        } 
         
         
         
@@ -372,6 +381,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
 
     private void btn_guardarTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarTratActionPerformed
         
+        try {
         
         String seleccionNombre = txt_nombreTrat.getText();
         String seleccionTipoTrat = txt_tipoTrat.getText();
@@ -386,6 +396,17 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Se agrego el tratamiento: " + seleccionNombre + " correctamente");
         
         
+        } catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        } catch (NullPointerException a) {
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        
+        
         
         
         
@@ -397,17 +418,25 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_guardarTratActionPerformed
 
     private void btn_borrarTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarTratActionPerformed
+       
+        try {
         
         int seleccionCodigoTratamiento = Integer.parseInt(txt_codTrat.getText());
         
         operacionesTratamiento.eliminarTratamiento(seleccionCodigoTratamiento);
         JOptionPane.showMessageDialog(this, "Tratamiento borrado actualmente"); 
         
+        } catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo valido", "Error: Codigo invalido", JOptionPane.ERROR_MESSAGE);
+        
+        }   
         
     }//GEN-LAST:event_btn_borrarTratActionPerformed
 
     private void btn_actuTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actuTratActionPerformed
         
+        try {
         
         int seleccionCodigoTratamiento = Integer.parseInt(txt_codTrat.getText());
         String seleccionNombre = txt_nombreTrat.getText();
@@ -422,12 +451,22 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         operacionesTratamiento.actualizarTratamiento(tratamientoActualizado);
         JOptionPane.showMessageDialog(this, "Se actualizo el tratamiento: " + seleccionNombre + " correctamente");
         
-        
+        } catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        } catch (NullPointerException a) {
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        }
         
         
     }//GEN-LAST:event_btn_actuTratActionPerformed
 
     private void btn_bajaTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bajaTratActionPerformed
+        
+        try {
         
         int seleccionCodigoTratamiento = Integer.parseInt(txt_codTrat.getText());
         String seleccionNombre = txt_nombreTrat.getText();
@@ -442,11 +481,21 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         operacionesTratamiento.bajaLogica(tratamientoActualizado);
         JOptionPane.showMessageDialog(this, "Se actualizo el tratamiento: " + seleccionNombre + " correctamente");
         
-        
+        } catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        } catch (NullPointerException a) {
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        } 
         
     }//GEN-LAST:event_btn_bajaTratActionPerformed
 
     private void btn_altaTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_altaTratActionPerformed
+        
+        try {
         
         int seleccionCodigoTratamiento = Integer.parseInt(txt_codTrat.getText());
         String seleccionNombre = txt_nombreTrat.getText();
@@ -461,7 +510,15 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         operacionesTratamiento.altaLogica(tratamientoActualizado);
         JOptionPane.showMessageDialog(this, "Se actualizo el tratamiento: " + seleccionNombre + " correctamente");
         
-        
+        } catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        } catch (NullPointerException a) {
+            
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
+            
+        }
         
     }//GEN-LAST:event_btn_altaTratActionPerformed
 
