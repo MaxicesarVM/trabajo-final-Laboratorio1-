@@ -80,7 +80,8 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         lbl_activo.setText("Activo");
 
         btn_buscarMasajista.setBackground(new java.awt.Color(0, 102, 102));
-        btn_buscarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_buscarMasajista.setFont(new java.awt.Font("Javanese Text", 0, 14)); // NOI18N
+        btn_buscarMasajista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
         btn_buscarMasajista.setText("Buscar");
         btn_buscarMasajista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +90,8 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         });
 
         btn_guardarMasajista.setBackground(new java.awt.Color(0, 102, 102));
-        btn_guardarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_guardarMasajista.setFont(new java.awt.Font("Javanese Text", 0, 14)); // NOI18N
+        btn_guardarMasajista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registro.png"))); // NOI18N
         btn_guardarMasajista.setText("Guardar");
         btn_guardarMasajista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +100,8 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         });
 
         btn_borrarMasajista.setBackground(new java.awt.Color(0, 102, 102));
-        btn_borrarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_borrarMasajista.setFont(new java.awt.Font("Javanese Text", 0, 14)); // NOI18N
+        btn_borrarMasajista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         btn_borrarMasajista.setText("Borrar");
         btn_borrarMasajista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +110,8 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         });
 
         btn_actualizarMasajista.setBackground(new java.awt.Color(0, 102, 102));
-        btn_actualizarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_actualizarMasajista.setFont(new java.awt.Font("Javanese Text", 0, 14)); // NOI18N
+        btn_actualizarMasajista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-actualizar-50.png"))); // NOI18N
         btn_actualizarMasajista.setText("Actualizar");
         btn_actualizarMasajista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +120,8 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         });
 
         btn_limpiarMasajista.setBackground(new java.awt.Color(0, 102, 102));
-        btn_limpiarMasajista.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        btn_limpiarMasajista.setFont(new java.awt.Font("Javanese Text", 0, 14)); // NOI18N
+        btn_limpiarMasajista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-escoba-50.png"))); // NOI18N
         btn_limpiarMasajista.setText("Limpiar");
         btn_limpiarMasajista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +171,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
                                 .addComponent(lbl_matricula)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
+                                .addGap(18, 18, 18)
                                 .addComponent(btn_buscarMasajista))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lbl_telefono)
@@ -177,24 +182,21 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
                                     .addComponent(lbl_especialidad)
                                     .addComponent(btn_guardarMasajista))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_especialidad)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btn_borrarMasajista)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_especialidad, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btn_altaLogicaMasajista)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(52, 52, 52)
-                                                .addComponent(btn_altaLogicaMasajista)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(btn_actualizarMasajista)
-                                                .addGap(26, 26, 26)
-                                                .addComponent(btn_limpiarMasajista))))))))
+                                                .addComponent(btn_borrarMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btn_actualizarMasajista)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                        .addComponent(btn_limpiarMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(btn_bajaLogicaMasajista)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,10 +206,11 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_matricula)
-                            .addComponent(txt_matricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_buscarMasajista))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbl_matricula)
+                                .addComponent(txt_matricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_buscarMasajista, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_nombreCompleto)
@@ -225,11 +228,11 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
                     .addComponent(lbl_activo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_guardarMasajista)
-                    .addComponent(btn_borrarMasajista)
-                    .addComponent(btn_actualizarMasajista)
-                    .addComponent(btn_limpiarMasajista))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                    .addComponent(btn_guardarMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_borrarMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_actualizarMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_limpiarMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_bajaLogicaMasajista)
                     .addComponent(btn_altaLogicaMasajista))

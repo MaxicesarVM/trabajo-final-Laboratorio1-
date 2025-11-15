@@ -51,16 +51,16 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         txt_telefono = new java.awt.TextField();
         txt_edad = new java.awt.TextField();
         txt_afecciones = new java.awt.TextField();
-        btn_regisCli = new java.awt.Button();
-        btn_limpiarCli = new java.awt.Button();
-        btn_actuCli = new java.awt.Button();
-        btn_borrarCli = new java.awt.Button();
         btn_bajaLogica = new java.awt.Button();
         btn_altaLogica = new java.awt.Button();
         jb_notaCodCli = new javax.swing.JLabel();
         jb_notaCodCli1 = new javax.swing.JLabel();
         ck_clienteActivo = new javax.swing.JCheckBox();
         btn_buscarCli = new javax.swing.JButton();
+        btn_regisCli = new javax.swing.JButton();
+        btn_actuCli = new javax.swing.JButton();
+        btn_borrarCli = new javax.swing.JButton();
+        btn_limpiarCli = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
@@ -145,42 +145,6 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_regisCli.setBackground(new java.awt.Color(153, 255, 255));
-        btn_regisCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        btn_regisCli.setLabel("Registrar");
-        btn_regisCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_regisCliActionPerformed(evt);
-            }
-        });
-
-        btn_limpiarCli.setBackground(new java.awt.Color(153, 255, 255));
-        btn_limpiarCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        btn_limpiarCli.setLabel("Limpiar campos");
-        btn_limpiarCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_limpiarCliActionPerformed(evt);
-            }
-        });
-
-        btn_actuCli.setBackground(new java.awt.Color(153, 255, 255));
-        btn_actuCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        btn_actuCli.setLabel("Actualizar");
-        btn_actuCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actuCliActionPerformed(evt);
-            }
-        });
-
-        btn_borrarCli.setBackground(new java.awt.Color(153, 255, 255));
-        btn_borrarCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        btn_borrarCli.setLabel("Borrar registro");
-        btn_borrarCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_borrarCliActionPerformed(evt);
-            }
-        });
-
         btn_bajaLogica.setBackground(new java.awt.Color(153, 255, 255));
         btn_bajaLogica.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
         btn_bajaLogica.setLabel("Baja");
@@ -210,10 +174,53 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         ck_clienteActivo.setBackground(new java.awt.Color(255, 255, 255));
         ck_clienteActivo.setForeground(new java.awt.Color(0, 153, 255));
 
+        btn_buscarCli.setBackground(new java.awt.Color(0, 204, 204));
+        btn_buscarCli.setForeground(new java.awt.Color(0, 0, 0));
+        btn_buscarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
         btn_buscarCli.setText("Buscar");
         btn_buscarCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buscarCliActionPerformed(evt);
+            }
+        });
+
+        btn_regisCli.setBackground(new java.awt.Color(0, 204, 204));
+        btn_regisCli.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regisCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registro.png"))); // NOI18N
+        btn_regisCli.setText("Registrar");
+        btn_regisCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regisCliActionPerformed(evt);
+            }
+        });
+
+        btn_actuCli.setBackground(new java.awt.Color(0, 204, 204));
+        btn_actuCli.setForeground(new java.awt.Color(0, 0, 0));
+        btn_actuCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-actualizar-50.png"))); // NOI18N
+        btn_actuCli.setText("Actualizar");
+        btn_actuCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actuCliActionPerformed(evt);
+            }
+        });
+
+        btn_borrarCli.setBackground(new java.awt.Color(0, 204, 204));
+        btn_borrarCli.setForeground(new java.awt.Color(0, 0, 0));
+        btn_borrarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        btn_borrarCli.setText("Borrar registro");
+        btn_borrarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_borrarCliActionPerformed(evt);
+            }
+        });
+
+        btn_limpiarCli.setBackground(new java.awt.Color(0, 204, 204));
+        btn_limpiarCli.setForeground(new java.awt.Color(0, 0, 0));
+        btn_limpiarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-escoba-50.png"))); // NOI18N
+        btn_limpiarCli.setText("Limpiar campos");
+        btn_limpiarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarCliActionPerformed(evt);
             }
         });
 
@@ -224,7 +231,6 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jb_notaCodCli1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -255,25 +261,24 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txt_codCli, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
-                                .addComponent(btn_buscarCli))
                             .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jb_notaCodCli)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_nombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btn_actuCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btn_borrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btn_regisCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btn_limpiarCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(txt_afecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                            .addComponent(txt_afecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_notaCodCli)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_nombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_codCli, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_buscarCli)
+                                    .addComponent(btn_limpiarCli)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(btn_actuCli, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btn_regisCli, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(btn_borrarCli)))))
+                    .addComponent(jb_notaCodCli1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,61 +289,55 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                 .addComponent(jb_notaCodCli)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jl_dni))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btn_buscarCli)
                             .addComponent(jl_codCli)
                             .addComponent(txt_codCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jl_dni)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(btn_regisCli, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(btn_actuCli, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jl_nombreCompleto)
-                            .addComponent(txt_nombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_nombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_regisCli))
+                .addGap(9, 9, 9)
+                .addComponent(btn_actuCli, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_telefono)
+                    .addComponent(btn_borrarCli))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(btn_borrarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jl_telefono))
                         .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jl_edad)
+                            .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_limpiarCli)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txt_afecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jl_afecciones)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jl_edad)
-                                .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_altaLogica, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(btn_limpiarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 21, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txt_afecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jl_afecciones)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_altaLogica, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btn_bajaLogica, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jl_estado)
-                                            .addComponent(ck_clienteActivo))))))
-                        .addContainerGap(23, Short.MAX_VALUE))))
+                                .addComponent(btn_bajaLogica, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jl_estado)
+                                    .addComponent(ck_clienteActivo))))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -378,80 +377,6 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
     private void txt_afeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_afeccionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_afeccionesActionPerformed
-
-    private void btn_regisCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regisCliActionPerformed
-        
-       try{ 
-        String seleccionDocumento = txt_documento.getText();
-        String seleccionNombreCompleto = txt_nombreCompleto.getText();
-        String seleccionTelefono = txt_telefono.getText();
-        String seleccionEdad = txt_edad.getText();
-        String seleccionAfecciones = txt_afecciones.getText();
-        boolean seleccionEstado = ck_clienteActivo.isSelected();
-        
-        Cliente clienteCreado = new Cliente(Integer.parseInt(seleccionDocumento), seleccionNombreCompleto, Long.valueOf(seleccionTelefono), Integer.parseInt(seleccionEdad), seleccionAfecciones, seleccionEstado);
-        operacionesCliente.agregarCliente(clienteCreado);
-        JOptionPane.showMessageDialog(this, "Se agrego el cliente: " + seleccionNombreCompleto + " correctamente");
-        
-       } catch (NumberFormatException e) {
-           
-          JOptionPane.showMessageDialog(this,  "Error:Documento, telefono y edad tienen que ser numeros validos", "Error de campos",  JOptionPane.ERROR_MESSAGE);
-       }
-    }//GEN-LAST:event_btn_regisCliActionPerformed
-
-    private void btn_limpiarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarCliActionPerformed
-        
-        txt_codCli.setText("");
-        txt_documento.setText("");      
-        txt_nombreCompleto.setText("");
-        txt_telefono.setText("");
-        txt_edad.setText("");  
-        txt_afecciones.setText("");
-        ck_clienteActivo.setSelected(false);
-        
-                
-                
-        
-    }//GEN-LAST:event_btn_limpiarCliActionPerformed
-
-    private void btn_actuCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actuCliActionPerformed
-      
-        try {
-        
-        int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
-        String seleccionDocumento = txt_documento.getText();
-        String seleccionNombreCompleto = txt_nombreCompleto.getText();
-        String seleccionTelefono = txt_telefono.getText();
-        String seleccionEdad = txt_edad.getText();
-        String seleccionAfecciones = txt_afecciones.getText();
-        boolean seleccionEstado = ck_clienteActivo.isSelected();
-        
-        Cliente clienteActualizado = new Cliente(seleccionCodigoCliente, Integer.parseInt(seleccionDocumento), seleccionNombreCompleto, Long.valueOf(seleccionTelefono), Integer.parseInt(seleccionEdad), seleccionAfecciones, seleccionEstado);
-        operacionesCliente.actualizarCliente(clienteActualizado);
-        JOptionPane.showMessageDialog(this, "Se actualizo el cliente: " + seleccionNombreCompleto + " correctamente");
-        
-        } catch (NumberFormatException e) {
-           
-           JOptionPane.showMessageDialog(this, "Error: Documento, telefono y edad tienen que ser numeros validos", "Error en campos", JOptionPane.ERROR_MESSAGE);
-           
-       }  
-        
-    }//GEN-LAST:event_btn_actuCliActionPerformed
-
-    private void btn_borrarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarCliActionPerformed
-        
-        try{
-        int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
-        
-        operacionesCliente.eliminarCliente(seleccionCodigoCliente);
-        JOptionPane.showMessageDialog(this, "Cliente borrado actualmente"); 
-        
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo de cliente valido", "Codigo de cliente incorrecto", JOptionPane.ERROR_MESSAGE);
-            
-        }
-        
-    }//GEN-LAST:event_btn_borrarCliActionPerformed
 
     private void btn_bajaLogicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bajaLogicaActionPerformed
         
@@ -522,15 +447,84 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
        }         // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarCliActionPerformed
 
+    private void btn_regisCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regisCliActionPerformed
+        
+       try{ 
+        String seleccionDocumento = txt_documento.getText();
+        String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEdad = txt_edad.getText();
+        String seleccionAfecciones = txt_afecciones.getText();
+        boolean seleccionEstado = ck_clienteActivo.isSelected();
+        
+        Cliente clienteCreado = new Cliente(Integer.parseInt(seleccionDocumento), seleccionNombreCompleto, Long.valueOf(seleccionTelefono), Integer.parseInt(seleccionEdad), seleccionAfecciones, seleccionEstado);
+        operacionesCliente.agregarCliente(clienteCreado);
+        JOptionPane.showMessageDialog(this, "Se agrego el cliente: " + seleccionNombreCompleto + " correctamente");
+        
+       } catch (NumberFormatException e) {
+           
+          JOptionPane.showMessageDialog(this,  "Error:Documento, telefono y edad tienen que ser numeros validos", "Error de campos",  JOptionPane.ERROR_MESSAGE);
+       }
+    }//GEN-LAST:event_btn_regisCliActionPerformed
+
+    private void btn_actuCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actuCliActionPerformed
+       try {
+        
+        int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
+        String seleccionDocumento = txt_documento.getText();
+        String seleccionNombreCompleto = txt_nombreCompleto.getText();
+        String seleccionTelefono = txt_telefono.getText();
+        String seleccionEdad = txt_edad.getText();
+        String seleccionAfecciones = txt_afecciones.getText();
+        boolean seleccionEstado = ck_clienteActivo.isSelected();
+        
+        Cliente clienteActualizado = new Cliente(seleccionCodigoCliente, Integer.parseInt(seleccionDocumento), seleccionNombreCompleto, Long.valueOf(seleccionTelefono), Integer.parseInt(seleccionEdad), seleccionAfecciones, seleccionEstado);
+        operacionesCliente.actualizarCliente(clienteActualizado);
+        JOptionPane.showMessageDialog(this, "Se actualizo el cliente: " + seleccionNombreCompleto + " correctamente");
+        
+        } catch (NumberFormatException e) {
+           
+           JOptionPane.showMessageDialog(this, "Error: Documento, telefono y edad tienen que ser numeros validos", "Error en campos", JOptionPane.ERROR_MESSAGE);
+           
+       }    
+    }//GEN-LAST:event_btn_actuCliActionPerformed
+
+    private void btn_borrarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarCliActionPerformed
+    try{
+        int seleccionCodigoCliente = Integer.parseInt(txt_codCli.getText());
+        
+        operacionesCliente.eliminarCliente(seleccionCodigoCliente);
+        JOptionPane.showMessageDialog(this, "Cliente borrado actualmente"); 
+        
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo de cliente valido", "Codigo de cliente incorrecto", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_btn_borrarCliActionPerformed
+
+    private void btn_limpiarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarCliActionPerformed
+           txt_codCli.setText("");
+        txt_documento.setText("");      
+        txt_nombreCompleto.setText("");
+        txt_telefono.setText("");
+        txt_edad.setText("");  
+        txt_afecciones.setText("");
+        ck_clienteActivo.setSelected(false);
+        
+                
+                
+        
+    }//GEN-LAST:event_btn_limpiarCliActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btn_actuCli;
+    private javax.swing.JButton btn_actuCli;
     private java.awt.Button btn_altaLogica;
     private java.awt.Button btn_bajaLogica;
-    private java.awt.Button btn_borrarCli;
+    private javax.swing.JButton btn_borrarCli;
     private javax.swing.JButton btn_buscarCli;
-    private java.awt.Button btn_limpiarCli;
-    private java.awt.Button btn_regisCli;
+    private javax.swing.JButton btn_limpiarCli;
+    private javax.swing.JButton btn_regisCli;
     private javax.swing.JCheckBox ck_clienteActivo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jb_notaCodCli;
