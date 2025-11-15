@@ -52,11 +52,11 @@ public class JF_inicio extends javax.swing.JFrame {
         dsktp_principal.setLayout(dsktp_principalLayout);
         dsktp_principalLayout.setHorizontalGroup(
             dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1477, Short.MAX_VALUE)
+            .addGap(0, 1520, Short.MAX_VALUE)
         );
         dsktp_principalLayout.setVerticalGroup(
             dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGap(0, 866, Short.MAX_VALUE)
         );
 
         jmCliente.setText("Cliente");
