@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.DiaDeSpa;
 import modelo.Instalacion;
@@ -259,7 +260,79 @@ public class SesionData {
         return costoFinal;
     }
 
-    
+    public List<Instalacion> instalacionesMassolicitadas(LocalDate fecha_inicio, LocalDate fecha_final) {
+        Instalacion i = null;
+        List<Instalacion> instalaciones = new ArrayList<>();
+        String sql = "CALL instalacionesMasSolicitadas(?,?)";
+        InstalacionData id = new InstalacionData(this.conexion);
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, java.sql.Date.valueOf(fecha_inicio));
+            ps.setDate(2, java.sql.Date.valueOf(fecha_final));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                i = new Instalacion();
+                i.setCodInstal(rs.getInt("codInstalacion"));
+                i.setNombre(rs.getString("nombre"));
+                i.setDetalleUso(rs.getString("detalle"));
+                i.setPrecio30m(rs.getDouble("precio"));
+                i.setEstado(rs.getBoolean("estado"));
+                instalaciones.add(i);
+            }
+            for (Instalacion li : instalaciones) {
+
+                System.out.println(li);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+
+            System.out.println("Error al listar las sesiones en esa fecha: " + ex);
+
+        }
+        return instalaciones;
+    }
+
+    public List<Tratamiento> tratamientoMasSolicitados(LocalDate fecha_inicio, LocalDate fecha_final) {
+        Tratamiento t = null;
+        List<Tratamiento> tratamientos = new ArrayList<>();
+        String sql = "CALL tratamientoMasSolicitados (?,?);";
+        TratamientoData td = new TratamientoData(this.conexion);
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, java.sql.Date.valueOf(fecha_inicio));
+            ps.setDate(2, java.sql.Date.valueOf(fecha_final));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                t = new Tratamiento();
+                t.setCodTratam(rs.getInt("codTratamiento"));
+                t.setNombre(rs.getString("nombre"));
+                t.setTipo(rs.getString("tipo"));
+                t.setDetalle(rs.getString("detalle"));
+                t.setProductos(rs.getString("producto"));
+                t.setDuracion(rs.getInt("duracion"));
+                t.setCosto(rs.getDouble("costo"));
+                t.setActivo(rs.getBoolean("estado"));
+                tratamientos.add(t);
+            }
+            for (Tratamiento lt : tratamientos) {
+
+                System.out.println(lt);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+
+            System.out.println("Error al listar los tratamientos en esa fecha: " + ex);
+
+        }
+
+        return tratamientos;
+
+    }
+
     public List<Sesion> listarSesionesPorFecha(LocalDate fecha) {
 
         Sesion s = null;

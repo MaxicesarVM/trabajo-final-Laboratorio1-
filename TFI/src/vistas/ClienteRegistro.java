@@ -52,7 +52,6 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         txt_edad = new java.awt.TextField();
         txt_afecciones = new java.awt.TextField();
         btn_regisCli = new java.awt.Button();
-        btn_buscarCli = new java.awt.Button();
         btn_limpiarCli = new java.awt.Button();
         btn_actuCli = new java.awt.Button();
         btn_borrarCli = new java.awt.Button();
@@ -61,6 +60,7 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         jb_notaCodCli = new javax.swing.JLabel();
         jb_notaCodCli1 = new javax.swing.JLabel();
         ck_clienteActivo = new javax.swing.JCheckBox();
+        btn_buscarCli = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
@@ -154,15 +154,6 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_buscarCli.setBackground(new java.awt.Color(153, 255, 255));
-        btn_buscarCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
-        btn_buscarCli.setLabel("Buscar");
-        btn_buscarCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarCliActionPerformed(evt);
-            }
-        });
-
         btn_limpiarCli.setBackground(new java.awt.Color(153, 255, 255));
         btn_limpiarCli.setFont(new java.awt.Font("Javanese Text", 0, 12)); // NOI18N
         btn_limpiarCli.setLabel("Limpiar campos");
@@ -219,6 +210,13 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         ck_clienteActivo.setBackground(new java.awt.Color(255, 255, 255));
         ck_clienteActivo.setForeground(new java.awt.Color(0, 153, 255));
 
+        btn_buscarCli.setText("Buscar");
+        btn_buscarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarCliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -259,8 +257,8 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                             .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txt_codCli, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_buscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(22, 22, 22)
+                                .addComponent(btn_buscarCli))
                             .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jb_notaCodCli)
@@ -284,17 +282,14 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                 .addComponent(jb_notaCodCli1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jb_notaCodCli)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(btn_buscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jl_codCli)
-                                .addComponent(txt_codCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_buscarCli)
+                            .addComponent(jl_codCli)
+                            .addComponent(txt_codCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(txt_documento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -329,7 +324,7 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(btn_limpiarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 22, Short.MAX_VALUE)
+                        .addGap(18, 21, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txt_afecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -403,26 +398,6 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
           JOptionPane.showMessageDialog(this,  "Error:Documento, telefono y edad tienen que ser numeros validos", "Error de campos",  JOptionPane.ERROR_MESSAGE);
        }
     }//GEN-LAST:event_btn_regisCliActionPerformed
-
-    private void btn_buscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarCliActionPerformed
-        
-       try {
-        
-        int seleccion = Integer.parseInt(txt_codCli.getText().trim());
-        txt_codCli.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getCodCli()));
-        txt_documento.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getDni()));
-        txt_nombreCompleto.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getNombreCompleto()));
-        txt_telefono.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getTelefono()));
-        txt_edad.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getEdad()));
-        txt_afecciones.setText(operacionesCliente.buscarCliente(seleccion).getAfecciones());
-        ck_clienteActivo.setSelected(operacionesCliente.buscarCliente(seleccion).isEstado());
-        
-       } catch (NumberFormatException e) {
-           
-           JOptionPane.showMessageDialog(this, "El codigo de cliente tiene que ser un numero", "Error codigo cliente", JOptionPane.ERROR_MESSAGE);
-           
-       }  
-    }//GEN-LAST:event_btn_buscarCliActionPerformed
 
     private void btn_limpiarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarCliActionPerformed
         
@@ -528,13 +503,32 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btn_altaLogicaActionPerformed
 
+    private void btn_buscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarCliActionPerformed
+       try {
+        
+        int seleccion = Integer.parseInt(txt_codCli.getText().trim());
+        txt_codCli.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getCodCli()));
+        txt_documento.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getDni()));
+        txt_nombreCompleto.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getNombreCompleto()));
+        txt_telefono.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getTelefono()));
+        txt_edad.setText(String.valueOf(operacionesCliente.buscarCliente(seleccion).getEdad()));
+        txt_afecciones.setText(operacionesCliente.buscarCliente(seleccion).getAfecciones());
+        ck_clienteActivo.setSelected(operacionesCliente.buscarCliente(seleccion).isEstado());
+        
+       } catch (NumberFormatException e) {
+           
+           JOptionPane.showMessageDialog(this, "El codigo de cliente tiene que ser un numero", "Error codigo cliente", JOptionPane.ERROR_MESSAGE);
+           
+       }         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_buscarCliActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btn_actuCli;
     private java.awt.Button btn_altaLogica;
     private java.awt.Button btn_bajaLogica;
     private java.awt.Button btn_borrarCli;
-    private java.awt.Button btn_buscarCli;
+    private javax.swing.JButton btn_buscarCli;
     private java.awt.Button btn_limpiarCli;
     private java.awt.Button btn_regisCli;
     private javax.swing.JCheckBox ck_clienteActivo;
