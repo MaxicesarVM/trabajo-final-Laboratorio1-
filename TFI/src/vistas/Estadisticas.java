@@ -4,7 +4,10 @@
  */
 package vistas;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import modelo.DiaDeSpa;
 import modelo.Instalacion;
@@ -47,8 +50,8 @@ public class Estadisticas extends javax.swing.JInternalFrame {
         modeloTablaInstalacion = new DefaultTableModel();
         modeloTablaTratamiento = new DefaultTableModel();
         
-        
-        
+        cargarColumnasTablasInstalacion();
+        cargarColumnasTablasTratamiento();
         
         
         
@@ -76,14 +79,112 @@ public class Estadisticas extends javax.swing.JInternalFrame {
         filaCabecera.add("Nombre");
         filaCabecera.add("Tipo");
         filaCabecera.add("Detalle");
-        
+        filaCabecera.add("Duracion");
+        filaCabecera.add("Costo");
         for(Object it: filaCabecera){
-            modeloTablaInstalacion.addColumn(it);
+            modeloTablaTratamiento.addColumn(it);
         }
-        tbl_instalacionesSolicitadas.setModel(modeloTablaInstalacion);
+        tbl_tratamientosSolicitados.setModel(modeloTablaTratamiento);
         
     }  
     
+    private void borrarFilaTablaInstalacion(){
+        
+        int indice = modeloTablaInstalacion.getRowCount() - 1;
+        for(int i = indice; i >= 0 ; i-- ){
+        
+            modeloTablaInstalacion.removeRow(i);
+            
+        
+        }
+         
+    }
+    
+    private void borrarFilaTablaTratamiento(){
+        
+        int indice = modeloTablaTratamiento.getRowCount() - 1;
+        for(int i = indice; i >= 0 ; i-- ){
+        
+            modeloTablaTratamiento.removeRow(i);
+            
+        
+        }
+         
+    }
+    
+    
+    private void cargarListadoInstalacion(){
+    
+        borrarFilaTablaInstalacion();
+        
+        Date fechaSesionInicio = jdc_primerafechaInstalacion.getDate();
+        Date fechaSesionFin = jdc_segundafechaInstalacion.getDate();
+        
+        LocalDate fechaCasteadaInicio = fechaSesionInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaCasteadaFin = fechaSesionFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        
+        listaI = (ArrayList<Instalacion>) operacionesSesion.instalacionesMassolicitadas(fechaCasteadaInicio, fechaCasteadaFin);
+        
+        for(Instalacion instalacion: listaI){
+            
+            modeloTablaInstalacion.addRow(new Object[]{
+            
+            instalacion.getCodInstal(),
+            instalacion.getNombre(),
+            instalacion.getDetalleUso(),
+            instalacion.getPrecio30m()
+                
+                
+             
+            
+            });
+            
+            
+            
+        }
+        
+        
+    
+    }
+    
+    private void cargarListadoTratamiento(){
+    
+        borrarFilaTablaTratamiento();
+        
+        Date fechaSesionInicio = jdc_primeraFechaTratamientos.getDate();
+        Date fechaSesionFin = jdc_segundaFechaTratamientos.getDate();
+        
+        LocalDate fechaCasteadaInicio = fechaSesionInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaCasteadaFin = fechaSesionFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        
+        listaT = (ArrayList<Tratamiento>) operacionesSesion.tratamientoMasSolicitados(fechaCasteadaInicio, fechaCasteadaFin);
+        
+        for(Tratamiento tratamiento: listaT){
+            
+            modeloTablaTratamiento.addRow(new Object[]{
+            
+            tratamiento.getCodTratam(),
+            tratamiento.getNombre(),
+            tratamiento.getTipo(),
+            tratamiento.getDetalle(),
+            tratamiento.getDuracion(),
+            tratamiento.getCosto()
+            
+                
+                
+             
+            
+            });
+            
+            
+            
+        }
+        
+        
+    
+    }
     
     
     
@@ -106,6 +207,8 @@ public class Estadisticas extends javax.swing.JInternalFrame {
         jdc_primeraFechaTratamientos = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jdc_segundaFechaTratamientos = new com.toedter.calendar.JDateChooser();
+        btn_instalaciones = new javax.swing.JButton();
+        btn_tratamientos = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -147,20 +250,54 @@ public class Estadisticas extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Entre");
 
+        btn_instalaciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_instalaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        btn_instalaciones.setText("Buscar Instalaciones");
+        btn_instalaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_instalacionesActionPerformed(evt);
+            }
+        });
+
+        btn_tratamientos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_tratamientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda.png"))); // NOI18N
+        btn_tratamientos.setText("Buscar Tratamientos");
+        btn_tratamientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tratamientosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(164, 164, 164)
+                .addComponent(btn_instalaciones)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_tratamientos)
+                .addGap(197, 197, 197))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(lbl_InstalacionesSolicitadas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addComponent(lbl_tratamientosSolicitados)
+                .addGap(46, 46, 46))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jdc_primerafechaInstalacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jdc_primerafechaInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(jLabel2)
                         .addGap(60, 60, 60)
-                        .addComponent(jdc_segundafechaInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jdc_segundafechaInstalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -168,15 +305,11 @@ public class Estadisticas extends javax.swing.JInternalFrame {
                         .addGap(47, 47, 47)
                         .addComponent(jLabel4)
                         .addGap(49, 49, 49)
-                        .addComponent(jdc_segundaFechaTratamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(lbl_InstalacionesSolicitadas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
-                .addComponent(lbl_tratamientosSolicitados)
-                .addGap(46, 46, 46))
+                        .addComponent(jdc_segundaFechaTratamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,11 +326,15 @@ public class Estadisticas extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(jdc_segundaFechaTratamientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_tratamientos, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_instalaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,8 +351,18 @@ public class Estadisticas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_instalacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_instalacionesActionPerformed
+        cargarListadoInstalacion();
+    }//GEN-LAST:event_btn_instalacionesActionPerformed
+
+    private void btn_tratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tratamientosActionPerformed
+        cargarListadoTratamiento();
+    }//GEN-LAST:event_btn_tratamientosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_instalaciones;
+    private javax.swing.JButton btn_tratamientos;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
