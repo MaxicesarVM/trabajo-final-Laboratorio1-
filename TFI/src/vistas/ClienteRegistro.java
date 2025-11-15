@@ -396,6 +396,15 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
        } catch (NumberFormatException e) {
            
           JOptionPane.showMessageDialog(this,  "Error:Documento, telefono y edad tienen que ser numeros validos", "Error de campos",  JOptionPane.ERROR_MESSAGE);
+       
+       } catch (Exception e){
+          
+           if(e.getMessage() != null && e.getMessage().contains("Valores duplicados")){
+           JOptionPane.showMessageDialog(this, "Error: El DNI o código de cliente ya existen en la base de datos.", "Clave duplicada", JOptionPane.ERROR_MESSAGE);
+           
+           }else {
+            JOptionPane.showMessageDialog(this, "Error al registrar el cliente. Detalles: " + e.getMessage(), "Error de base de datos", JOptionPane.ERROR_MESSAGE);
+           }
        }
     }//GEN-LAST:event_btn_regisCliActionPerformed
 
@@ -519,7 +528,12 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
            
            JOptionPane.showMessageDialog(this, "El codigo de cliente tiene que ser un numero", "Error codigo cliente", JOptionPane.ERROR_MESSAGE);
            
-       }         // TODO add your handling code here:
+       }  catch (Exception e){
+          
+           JOptionPane.showMessageDialog(this, "Error al buscar el cliente. Detalles: " + e.getMessage(), 
+                   "Error de base de datos", JOptionPane.ERROR_MESSAGE);
+       
+       }       
     }//GEN-LAST:event_btn_buscarCliActionPerformed
 
 
