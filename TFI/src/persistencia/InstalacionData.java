@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Instalacion;
@@ -86,6 +87,45 @@ public class InstalacionData {
             System.out.println("Error al actualizar instalacion: " + ex);
         }  
     }
+    
+    
+    
+    
+    public List<Instalacion> instalacionesMassolicitadas(LocalDate fecha_inicio, LocalDate fecha_final) {
+        Instalacion i = null;
+        List<Instalacion> instalaciones = new ArrayList<>();
+        String sql = "CALL instalacionesMasSolicitadas(?,?)";
+        InstalacionData id = new InstalacionData((Conexion) con);
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, java.sql.Date.valueOf(fecha_inicio));
+            ps.setDate(2, java.sql.Date.valueOf(fecha_final));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                i = new Instalacion();
+                i.setCodInstal(rs.getInt("codInstalacion"));
+                i.setNombre(rs.getString("nombre"));
+                i.setDetalleUso(rs.getString("detalle"));
+                i.setPrecio30m(rs.getDouble("precio"));
+                i.setEstado(rs.getBoolean("estado"));
+                instalaciones.add(i);
+            }
+            for (Instalacion li : instalaciones) {
+
+                System.out.println(li);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+
+            System.out.println("Error al listar las sesiones en esa fecha: " + ex);
+
+        }
+        return instalaciones;
+    }
+    
+    
     
     
     public List<Instalacion> listarInstalacion(){

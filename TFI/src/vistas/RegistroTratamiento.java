@@ -127,6 +127,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         btn_guardarTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_guardarTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_guardarTrat.setForeground(new java.awt.Color(0, 0, 0));
+        btn_guardarTrat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registro.png"))); // NOI18N
         btn_guardarTrat.setText("Guardar");
         btn_guardarTrat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +138,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         btn_borrarTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_borrarTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_borrarTrat.setForeground(new java.awt.Color(0, 0, 0));
+        btn_borrarTrat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         btn_borrarTrat.setText("Borrar");
         btn_borrarTrat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +149,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         btn_actuTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_actuTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_actuTrat.setForeground(new java.awt.Color(0, 0, 0));
+        btn_actuTrat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-actualizar-50.png"))); // NOI18N
         btn_actuTrat.setText("Actualizar");
         btn_actuTrat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +160,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         btn_limpiarTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_limpiarTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn_limpiarTrat.setForeground(new java.awt.Color(0, 0, 0));
+        btn_limpiarTrat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-escoba-50.png"))); // NOI18N
         btn_limpiarTrat.setText("Limpiar");
         btn_limpiarTrat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,6 +194,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         btn_buscarTratamiento.setBackground(new java.awt.Color(255, 255, 255));
         btn_buscarTratamiento.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btn_buscarTratamiento.setForeground(new java.awt.Color(0, 0, 0));
+        btn_buscarTratamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
         btn_buscarTratamiento.setText("Buscar");
         btn_buscarTratamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +247,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                 .addComponent(btn_guardarTrat)
                 .addGap(81, 81, 81)
                 .addComponent(btn_borrarTrat)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(btn_actuTrat)
                 .addGap(49, 49, 49)
                 .addComponent(btn_limpiarTrat)
@@ -283,7 +288,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                     .addComponent(lbl_detalleTrat)
                     .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(txt_detalleTrat, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)))
+                        .addComponent(txt_detalleTrat, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_productosTrat)
@@ -303,7 +308,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                 .addGap(40, 40, 40)
                 .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardarTrat)
-                    .addComponent(btn_borrarTrat)
+                    .addComponent(btn_borrarTrat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_actuTrat)
                     .addComponent(btn_limpiarTrat))
                 .addGap(73, 73, 73)
@@ -373,9 +378,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        } catch (Exception e) { 
-        JOptionPane.showMessageDialog(this, "Error al buscar el tratamiento. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
-    }
+        } 
         
         
         
@@ -406,14 +409,17 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        } catch (Exception e) { 
-        
-        JOptionPane.showMessageDialog(this, "Error al guardar el tratamiento en la base de datos. Detalles: " + e.getMessage(), "Error SQL", JOptionPane.ERROR_MESSAGE);
-        
-         
         }
         
-           
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btn_guardarTratActionPerformed
 
     private void btn_borrarTratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarTratActionPerformed
@@ -429,10 +435,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo valido", "Error: Codigo invalido", JOptionPane.ERROR_MESSAGE);
         
-        }   catch (Exception e) { 
-       
-        JOptionPane.showMessageDialog(this, "Error al eliminar el tratamiento. Revise si está asociado a otras tablas. Detalles: " + e.getMessage(), "Error SQL", JOptionPane.ERROR_MESSAGE);
-    }
+        }   
         
     }//GEN-LAST:event_btn_borrarTratActionPerformed
 
@@ -461,11 +464,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        }catch (Exception e) {
-        
-        JOptionPane.showMessageDialog(this, "Error al actualizar el tratamiento en la base de datos. Revise la Matrícula. Detalles: " + e.getMessage(), 
-                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
-    }
+        }
         
         
     }//GEN-LAST:event_btn_actuTratActionPerformed
@@ -495,10 +494,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        } catch (Exception e) { 
-      
-        JOptionPane.showMessageDialog(this, "Error al dar de baja el tratamiento. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
-    }
+        } 
         
     }//GEN-LAST:event_btn_bajaTratActionPerformed
 
@@ -527,10 +523,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        }catch (Exception e) { 
-        
-        JOptionPane.showMessageDialog(this, "Error al dar de alta el tratamiento. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
-    }
+        }
         
     }//GEN-LAST:event_btn_altaTratActionPerformed
 

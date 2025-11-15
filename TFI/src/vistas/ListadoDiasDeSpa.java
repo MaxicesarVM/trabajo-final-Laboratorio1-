@@ -135,6 +135,8 @@ public class ListadoDiasDeSpa extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(table_diasDeSpa);
 
+        btn_buscarDia.setBackground(new java.awt.Color(0, 102, 102));
+        btn_buscarDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
         btn_buscarDia.setText("Buscar Dias de Spa");
         btn_buscarDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

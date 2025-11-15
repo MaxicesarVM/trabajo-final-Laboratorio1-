@@ -414,6 +414,10 @@ public class Sesiones extends javax.swing.JInternalFrame {
         jcl_fechas.setForeground(new java.awt.Color(0, 0, 0));
         jcl_fechas.setText("Fecha");
 
+        btm_guardarReserva.setBackground(new java.awt.Color(255, 255, 255));
+        btm_guardarReserva.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btm_guardarReserva.setForeground(new java.awt.Color(0, 0, 0));
+        btm_guardarReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registro.png"))); // NOI18N
         btm_guardarReserva.setText("Reservar");
         btm_guardarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,6 +425,9 @@ public class Sesiones extends javax.swing.JInternalFrame {
             }
         });
 
+        btn_actualizar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_actualizar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-actualizar-50.png"))); // NOI18N
         btn_actualizar.setText("Modificar");
         btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -483,7 +490,10 @@ public class Sesiones extends javax.swing.JInternalFrame {
             }
         });
 
+        btn_buscar.setBackground(new java.awt.Color(255, 255, 255));
         btn_buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_buscar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -547,7 +557,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
                                         .addComponent(jcombo_tratamiento, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(txt_codSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(36, 36, 36)
-                                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(111, 111, 111))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -614,7 +624,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
                         .addComponent(jcb_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_actualizar))
                     .addComponent(lbl_codPack))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -925,7 +935,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
             
             
             
-        } 
+        }
         
         
         

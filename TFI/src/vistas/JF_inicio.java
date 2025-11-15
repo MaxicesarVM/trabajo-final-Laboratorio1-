@@ -43,6 +43,8 @@ public class JF_inicio extends javax.swing.JFrame {
         jmitem_gestorDia = new javax.swing.JMenuItem();
         jmitem_listadoSesionesFecha = new javax.swing.JMenuItem();
         jmitem_listadoDiasSpa = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        estadisticas_menu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,11 +52,11 @@ public class JF_inicio extends javax.swing.JFrame {
         dsktp_principal.setLayout(dsktp_principalLayout);
         dsktp_principalLayout.setHorizontalGroup(
             dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1477, Short.MAX_VALUE)
+            .addGap(0, 1520, Short.MAX_VALUE)
         );
         dsktp_principalLayout.setVerticalGroup(
             dsktp_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 839, Short.MAX_VALUE)
+            .addGap(0, 866, Short.MAX_VALUE)
         );
 
         jmCliente.setText("Cliente");
@@ -191,6 +193,18 @@ public class JF_inicio extends javax.swing.JFrame {
         jmReserva.add(jmitem_listadoDiasSpa);
 
         jMenuBar1.add(jmReserva);
+
+        jMenu1.setText("Estadisticas");
+
+        estadisticas_menu.setText("Estadisticas");
+        estadisticas_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estadisticas_menuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(estadisticas_menu);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -363,6 +377,15 @@ public class JF_inicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmitem_listadoDiasSpaActionPerformed
 
+    private void estadisticas_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadisticas_menuActionPerformed
+        dsktp_principal.removeAll();
+        dsktp_principal.repaint();
+        Estadisticas vistaEstadisticas = new Estadisticas();
+        vistaEstadisticas.setVisible(true);
+        dsktp_principal.add(vistaEstadisticas);
+        dsktp_principal.moveToFront(vistaEstadisticas);
+    }//GEN-LAST:event_estadisticas_menuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -400,6 +423,8 @@ public class JF_inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dsktp_principal;
+    private javax.swing.JMenuItem estadisticas_menu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jmCliente;
     private javax.swing.JMenu jmInstalaciones;
