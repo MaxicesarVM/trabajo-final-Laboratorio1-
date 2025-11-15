@@ -4,15 +4,37 @@
  */
 package vistas;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.DiaDeSpa;
+import modelo.Instalacion;
+import modelo.Tratamiento;
+import persistencia.Conexion;
+import persistencia.DiaDeSpaData;
+import persistencia.InstalacionData;
+import persistencia.MasajistaData;
+import persistencia.SesionData;
+import persistencia.TratamientoData;
+
 /**
  *
  * @author Rickert
  */
 public class Estadisticas extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modeloTablaInstalacion;
+    private DefaultTableModel modeloTablaTratamiento;
     
+    Conexion con = new Conexion();
     
+    DiaDeSpaData operacionesDiaSpa = new DiaDeSpaData(con);
+    TratamientoData operacionesTratamiento = new TratamientoData(con);
+    MasajistaData operacionesMasajista = new MasajistaData(con);
+    InstalacionData operacionesInstalaciones = new InstalacionData(con);
+    SesionData operacionesSesion = new SesionData(con);
     
+    private ArrayList<Instalacion> listaI;
+    private ArrayList<Tratamiento> listaT;
     
     
     
@@ -21,10 +43,46 @@ public class Estadisticas extends javax.swing.JInternalFrame {
     
     public Estadisticas() {
         initComponents();
+        
+        modeloTablaInstalacion = new DefaultTableModel();
+        modeloTablaTratamiento = new DefaultTableModel();
+        
+        
+        
+        
+        
+        
     }
 
     
+    private void cargarColumnasTablasInstalacion(){
+        
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("Codigo Instalacion");
+        filaCabecera.add("Nombre");
+        filaCabecera.add("Detalle");
+        filaCabecera.add("Precio x hora");
+        for(Object it: filaCabecera){
+            modeloTablaInstalacion.addColumn(it);
+        }
+        tbl_instalacionesSolicitadas.setModel(modeloTablaInstalacion);
+        
+    }  
     
+    private void cargarColumnasTablasTratamiento(){
+        
+        ArrayList<Object> filaCabecera = new ArrayList<>();
+        filaCabecera.add("Codigo Tratamiento");
+        filaCabecera.add("Nombre");
+        filaCabecera.add("Tipo");
+        filaCabecera.add("Detalle");
+        
+        for(Object it: filaCabecera){
+            modeloTablaInstalacion.addColumn(it);
+        }
+        tbl_instalacionesSolicitadas.setModel(modeloTablaInstalacion);
+        
+    }  
     
     
     
