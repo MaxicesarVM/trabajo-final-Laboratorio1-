@@ -272,10 +272,10 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+         try{ 
         int filaSeleccionada = jTable_sesiones.getSelectedRow();
               
-                
+              
         if (filaSeleccionada != -1) {
         
             int codigoSesionSeleccionado = (int) modeloTabla.getValueAt(filaSeleccionada, 0);
@@ -288,6 +288,17 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
             
            
         }
+      
+    } catch (NumberFormatException e) {
+        
+        JOptionPane.showMessageDialog(this, "Error: El código de sesión seleccionado no es un número válido.", 
+                                      "Error de Formato", JOptionPane.ERROR_MESSAGE);
+                                      
+    }catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al anular la sesión en la base de datos. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
         
         
