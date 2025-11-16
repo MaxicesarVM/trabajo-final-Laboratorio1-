@@ -65,21 +65,25 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
         
         for(Sesion sesion: listaS){
             
+            String masajistaNonulo;
+            if (sesion.getMasajista() != null) {
+                masajistaNonulo = String.valueOf(sesion.getMasajista().getNombre_completo());
+
+            }else{
+                masajistaNonulo="No aplica";
+            }
             modeloTabla.addRow(new Object[]{
-            
-            sesion.getCodSesion(),
-            sesion.getHoraInicio(),
-            sesion.getHoraFin(),
-            operacionesTratamiento.buscarTratamiento(sesion.getTratamiento().getCodTratam()).getNombre(),
-            operacionesMasajista.buscarMasajista(sesion.getMasajista().getMatricula()).getNombre_completo(),
-            operacionesDiaSpa.buscarDia(sesion.getDiaDeSpa().getCodPack()),
-            operacionesInstalaciones.buscarInstalacion(sesion.getInstalaciones().getCodInstal()).getNombre(),
-            operacionesSesion.calculodeCosto(sesion.getDiaDeSpa().getCodPack())
-            
-                
-            
-            
+                sesion.getCodSesion(),
+                sesion.getHoraInicio(),
+                sesion.getHoraFin(),
+                operacionesTratamiento.buscarTratamiento(sesion.getTratamiento().getCodTratam()).getNombre(),
+                masajistaNonulo,
+                operacionesDiaSpa.buscarDia(sesion.getDiaDeSpa().getCodPack()),
+                operacionesInstalaciones.buscarInstalacion(sesion.getInstalaciones().getCodInstal()).getNombre(),
+                operacionesSesion.calculodeCosto(sesion.getDiaDeSpa().getCodPack())
+
             });
+            
             
             
             

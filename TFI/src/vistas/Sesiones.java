@@ -643,53 +643,50 @@ public class Sesiones extends javax.swing.JInternalFrame {
 
     private void btm_guardarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_guardarReservaActionPerformed
         
+
         Date fechaSesion = jdc_fecha.getDate();
-        
+
         LocalDate fechaCasteada = fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
 
         int filaSeleccionada = tbl_horarios.getSelectedRow();
-        
+
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un horario por favor");
+        }
         LocalTime horaInicio = null;
         LocalTime horaFin = null;
-                
-                
-        if (filaSeleccionada != -1) {
-        
-            String horarioInicio = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
-        
-            String horarioFin = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
-        
-            horaInicio = LocalTime.parse(horarioInicio);
-            horaFin = LocalTime.parse(horarioFin);
-        
-            
-            
-           
+        String horarioInicio = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+        String horarioFin = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
+
+        horaInicio = LocalTime.parse(horarioInicio);
+        horaFin = LocalTime.parse(horarioFin);
+
+        boolean validador = operacionesSesion.verificadorDeHora(fechaCasteada, horaInicio, horaFin);
+        if (validador) {
+            JOptionPane.showMessageDialog(this, "El horario que eligio esta ocupado, por favor eliga otro horario");
+            return;
         }
-        
-        
+
         Tratamiento tratamientoElegido = (Tratamiento) jcombo_tratamiento.getSelectedItem();
-        
-        if(tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno")){
-            
+
+        if (tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno")) {
+
             Instalacion instalacionSeleccionada = (Instalacion) jcb_instalacion.getSelectedItem();
             int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
             DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
             boolean estadoSesion = true;
-        
+
             Sesion sesionCreada = new Sesion(fechaCasteada, horaInicio, horaFin, tratamientoElegido, instalacionSeleccionada, diaSeleccionado, estadoSesion);
-            
+
             try {
-                operacionesSesion.crearSesion(sesionCreada);
+                operacionesSesion.crearSesionSinTratamiento(sesionCreada);
                 JOptionPane.showMessageDialog(this, "Se creo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al guardar la sesion");
             }
-            
-        
-        } else{
-            
+
+        } else {
+
             Masajista masajistaSeleccionado = (Masajista) jcombo_masajista.getSelectedItem();
             String productoSeleccionado = (String) jcb_producto.getSelectedItem();
             tratamientoElegido.setProductos(productoSeleccionado);
@@ -697,79 +694,76 @@ public class Sesiones extends javax.swing.JInternalFrame {
             int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
             DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
             boolean estadoSesion = true;
-            
+
             Sesion sesionCreada = new Sesion(fechaCasteada, horaInicio, horaFin, tratamientoElegido, masajistaSeleccionado, instalacionSeleccionada, diaSeleccionado, estadoSesion);
             try {
                 operacionesSesion.crearSesion(sesionCreada);
                 JOptionPane.showMessageDialog(this, "Se creo la sesion correctamente");
-                
+
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al guardar la sesion");
-            } catch (NumberFormatException e) {
-        // (¡Necesitas esta excepción! Ver punto 2)
-        JOptionPane.showMessageDialog(this, "Su sesion no se pudo guardar, verifique los datos ingresados!", "Error de Formato", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error inesperado al buscar: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-            
-        }
-         
-        this.dispose();
-        
-        
-    }//GEN-LAST:event_btm_guardarReservaActionPerformed
 
+            } catch (NumberFormatException e) {
+                // (¡Necesitas esta excepción! Ver punto 2)
+                JOptionPane.showMessageDialog(this, "Su sesion no se pudo guardar, verifique los datos ingresados!", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error inesperado al buscar: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            this.dispose();
+   
+    }//GEN-LAST:event_btm_guardarReservaActionPerformed
+    }
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         
         
         int codigoSesion = Integer.valueOf(txt_codSesion.getText());
         Date fechaSesion = jdc_fecha.getDate();
-        
+
         LocalDate fechaCasteada = fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
 
         int filaSeleccionada = tbl_horarios.getSelectedRow();
-        
+
         LocalTime horaInicio = null;
         LocalTime horaFin = null;
-                
-                
-        if (filaSeleccionada != -1) {
-        
-            String horarioInicio = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
-        
-            String horarioFin = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
-        
-            horaInicio = LocalTime.parse(horarioInicio);
-            horaFin = LocalTime.parse(horarioFin);
-        
-            
-            
-           
+
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un horario por favor");
+
         }
-        
-        
+        String horarioInicio = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+
+        String horarioFin = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
+
+        horaInicio = LocalTime.parse(horarioInicio);
+        horaFin = LocalTime.parse(horarioFin);
+
+        boolean validador = operacionesSesion.verificadorDeHora(fechaCasteada, horaInicio, horaFin);
+        if (validador) {
+            JOptionPane.showMessageDialog(this, "El horario que eligio esta ocupado, por favor eliga otro horario");
+            return;
+        }
+
         Tratamiento tratamientoElegido = (Tratamiento) jcombo_tratamiento.getSelectedItem();
-        
-        if(tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno")){
-            
+
+        if (tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno")) {
+
             Instalacion instalacionSeleccionada = (Instalacion) jcb_instalacion.getSelectedItem();
             int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
             DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
             boolean estadoSesion = true;
-        
+
             Sesion sesionCreada = new Sesion(codigoSesion, fechaCasteada, horaInicio, horaFin, tratamientoElegido, instalacionSeleccionada, diaSeleccionado, estadoSesion);
-            
+
             try {
-                operacionesSesion.actualizarSesion(sesionCreada);
+                operacionesSesion.actualizarSesionSinTratamiento(sesionCreada);
                 JOptionPane.showMessageDialog(this, "Se actualizo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al actualizar la sesion");
             }
-            
-        
-        } else{
-            
+
+        } else {
+
             Masajista masajistaSeleccionado = (Masajista) jcombo_masajista.getSelectedItem();
             String productoSeleccionado = (String) jcb_producto.getSelectedItem();
             tratamientoElegido.setProductos(productoSeleccionado);
@@ -777,27 +771,26 @@ public class Sesiones extends javax.swing.JInternalFrame {
             int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
             DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
             boolean estadoSesion = true;
-            
+
             Sesion sesionCreada = new Sesion(codigoSesion, fechaCasteada, horaInicio, horaFin, tratamientoElegido, masajistaSeleccionado, instalacionSeleccionada, diaSeleccionado, estadoSesion);
             try {
                 operacionesSesion.actualizarSesion(sesionCreada);
                 JOptionPane.showMessageDialog(this, "Se actualizo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al actualizar la sesion");
+
             } catch (NumberFormatException e) {
-        // (¡Necesitas esta excepción! Ver punto 2)
-        JOptionPane.showMessageDialog(this, "Error al actualizar, verifique los datos ingresados", "Error de Formato", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e_general) {
-        JOptionPane.showMessageDialog(this, "Error inesperado al buscar: " + e_general.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-            
-        }
-        
-        this.dispose();
-        
+                // (¡Necesitas esta excepción! Ver punto 2)
+                JOptionPane.showMessageDialog(this, "Error al actualizar, verifique los datos ingresados", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e_general) {
+                JOptionPane.showMessageDialog(this, "Error inesperado al buscar: " + e_general.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            this.dispose();
+
         
     }//GEN-LAST:event_btn_actualizarActionPerformed
-
+    }
     private void jcombo_tratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcombo_tratamientoActionPerformed
         
         

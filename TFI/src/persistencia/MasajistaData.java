@@ -178,7 +178,10 @@ public class MasajistaData {
                 m.setEstado(rs.getBoolean("estado"));
                 
             }
-            System.out.println(m.toString());
+           if (m != null) {
+                System.out.println(m.toString());
+            }
+
             
             
         } catch (SQLException ex) {

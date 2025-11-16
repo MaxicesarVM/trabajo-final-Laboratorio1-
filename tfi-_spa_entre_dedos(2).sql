@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2025 a las 23:54:01
+-- Tiempo de generación: 17-11-2025 a las 00:28:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -235,7 +235,8 @@ INSERT INTO `sesion` (`codSesion`, `fecha`, `hora_inicio`, `hora_fin`, `codTrata
 (1, '2025-11-13', '11:00:00', '12:30:00', 3, 102, 1, 1, 3),
 (2, '2025-11-15', '12:00:00', '14:00:00', 4, 201, 3, 1, 3),
 (3, '2025-11-15', '10:00:00', '11:00:00', 10, 101, 4, 1, 0),
-(4, '2025-11-15', '11:00:00', '12:00:00', 0, NULL, 4, 1, 2);
+(4, '2025-11-15', '11:00:00', '12:00:00', 0, NULL, 4, 1, 2),
+(5, '2025-11-15', '08:00:00', '09:00:00', 0, NULL, 3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -347,7 +348,7 @@ ALTER TABLE `instalacion`
 -- AUTO_INCREMENT de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `codSesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `codSesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
