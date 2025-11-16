@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2025 a las 22:58:37
+-- Tiempo de generación: 16-11-2025 a las 23:54:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -22,6 +22,85 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `tfi- spa entre dedos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `tfi- spa entre dedos`;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `instalacionesMasSolicitadas` (IN `fecha_inicio` DATE, IN `fecha_fin` DATE)   BEGIN
+   
+    SELECT
+        i.codInstalacion ,
+        i.nombre,
+        i.detalle,
+        i.precio,
+        i.estado,
+        COUNT(s.codInstalacion) AS cantidad
+    FROM
+        sesion s
+    JOIN
+        instalacion i ON s.codInstalacion = i.codInstalacion
+    WHERE
+       
+        s.fecha BETWEEN fecha_inicio AND fecha_fin
+        AND i.codInstalacion != 0 
+    GROUP BY
+        i.codInstalacion, i.nombre
+    ORDER BY
+        cantidad DESC;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tratamientoMasSolicitados` (IN `fecha_inicio` DATE, IN `fecha_fin` DATE)   BEGIN
+    SELECT
+        t.codTratamiento,          -- 1. Añadido para el código
+        t.nombre,                  -- 2. Añadido/Modificado
+        t.tipo,                    -- 3. Añadido para el tipo
+        t.detalle,                 -- 4. Añadido para el detalle
+        t.producto,                -- 5. Añadido para el producto
+        t.duracion,                -- 6. Añadido para la duración
+        t.costo,                   -- 7. Añadido para el costo
+        t.estado,                  -- 8. Añadido para el estado
+        COUNT(s.codSesion) AS Cantidad -- Columna de la cuenta
+    FROM
+        sesion s
+    JOIN
+        tratamiento t ON s.codTratamiento = t.codTratamiento
+    WHERE
+        s.fecha BETWEEN fecha_inicio AND fecha_fin
+        AND t.codTratamiento != 0
+    GROUP BY
+        t.codTratamiento, t.nombre, t.tipo, t.detalle, t.producto, t.duracion, t.costo, t.estado -- Agrupar por todos los campos
+    ORDER BY
+        Cantidad DESC;
+
+END$$
+
+--
+-- Funciones
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `verificarSuperposicionSesion` (`p_fecha` DATE, `p_hora_inicio` TIME, `p_hora_fin` TIME) RETURNS TINYINT(1)  BEGIN
+    DECLARE superposicion_existente INT DEFAULT 0;
+
+    SELECT COUNT(*)
+    INTO superposicion_existente
+    FROM `sesion`
+    WHERE `fecha` = p_fecha
+      AND `estado` = 1
+     
+      AND (
+        (p_hora_inicio < hora_fin) AND (p_hora_fin > hora_inicio)
+      );
+
+    
+    IF superposicion_existente > 0 THEN
+        RETURN TRUE; 
+    ELSE
+        RETURN FALSE; 
+    END IF;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -45,7 +124,8 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`codCliente`, `dni`, `nombre_completo`, `telefono`, `edad`, `afecciones`, `estado`) VALUES
 (1, 39393939, 'Maxi Velazquez', 11321231, 29, 'ninguna', 1),
-(2, 4747474, 'alejandro peralta', 131341323, 20, 'agarra la pala', 1);
+(2, 4747474, 'alejandro peralta', 131341323, 20, 'agarra la pala', 1),
+(3, 39397051, 'Daniela Mestre', 2657568923, 29, 'Me hace mal los olores fuertes', 1);
 
 -- --------------------------------------------------------
 
@@ -68,7 +148,8 @@ CREATE TABLE `dia_de_spa` (
 
 INSERT INTO `dia_de_spa` (`codPack`, `fecha`, `preferencias`, `codCli`, `estado`, `monto`) VALUES
 (1, '2025-11-13', 'faciales', 1, 1, 0),
-(3, '2025-11-15', 'esteticos', 2, 1, 0);
+(3, '2025-11-15', 'esteticos', 2, 1, 0),
+(4, '2025-11-15', 'Con sahumerios', 3, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -152,7 +233,9 @@ CREATE TABLE `sesion` (
 
 INSERT INTO `sesion` (`codSesion`, `fecha`, `hora_inicio`, `hora_fin`, `codTratamiento`, `codMasajista`, `codPack`, `estado`, `codInstalacion`) VALUES
 (1, '2025-11-13', '11:00:00', '12:30:00', 3, 102, 1, 1, 3),
-(2, '2025-11-15', '12:00:00', '14:00:00', 4, 201, 3, 1, 3);
+(2, '2025-11-15', '12:00:00', '14:00:00', 4, 201, 3, 1, 3),
+(3, '2025-11-15', '10:00:00', '11:00:00', 10, 101, 4, 1, 0),
+(4, '2025-11-15', '11:00:00', '12:00:00', 0, NULL, 4, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -246,13 +329,13 @@ ALTER TABLE `tratamiento`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `codCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `codCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `dia_de_spa`
 --
 ALTER TABLE `dia_de_spa`
-  MODIFY `codPack` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `codPack` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `instalacion`
@@ -264,7 +347,7 @@ ALTER TABLE `instalacion`
 -- AUTO_INCREMENT de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `codSesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `codSesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`

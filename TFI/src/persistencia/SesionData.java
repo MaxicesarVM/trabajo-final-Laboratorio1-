@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -32,7 +33,35 @@ public class SesionData {
 
     }
 
-    public void crearSesion(Sesion s) throws SQLException {
+    public boolean verificadorDeHora(LocalDate fecha, LocalTime hora_inicio, LocalTime hora_fin) {
+        String sql = "SELECT verificarSuperposicionSesion(?, ?, ?) ;";
+        boolean validador_hora = false;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, java.sql.Date.valueOf(fecha));
+            ps.setTime(2, java.sql.Time.valueOf(hora_inicio));
+            ps.setTime(3, java.sql.Time.valueOf(hora_fin));
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                validador_hora = rs.getBoolean(1);
+            }
+
+            ps.close();
+            System.out.println("verificacion hecha");
+
+        } catch (SQLException ex) {
+
+            System.out.println("Error al verificar: " + ex);
+
+        }
+
+        return validador_hora;
+
+    }
+
+    public void crearSesionCompleta(Sesion s) throws SQLException {
 
         String sql = "INSERT into sesion (fecha, hora_inicio, hora_fin, codTratamiento, codMasajista, codPack, estado, codInstalacion) VALUES(?,?,?,?,?,?,?,?)";
 
@@ -48,6 +77,43 @@ public class SesionData {
             ps.setInt(6, s.getDiaDeSpa().getCodPack());
             ps.setBoolean(7, s.isEstado());
             ps.setInt(8, s.getInstalaciones().getCodInstal());
+
+            int creacion = ps.executeUpdate();
+            System.out.println(creacion);
+            ResultSet rs = ps.getGeneratedKeys();
+
+            if (rs.next()) {
+
+                s.setCodSesion(rs.getInt(1));
+                System.out.println("Sesion agendada exitosamente");
+
+            } else {
+
+                System.out.println("Error al agendar la sesion");
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error de conexion: " + ex);
+        }
+
+    }
+
+    public void crearSesionSinTratamiento(Sesion s) throws SQLException {
+
+        String sql = "INSERT into sesion (fecha, hora_inicio, hora_fin, codTratamiento, codPack, estado, codInstalacion) VALUES(?,?,?,?,?,?,?)";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            ps.setDate(1, Date.valueOf(s.getFecha()));
+            ps.setTime(2, Time.valueOf(s.getHoraInicio()));
+            ps.setTime(3, Time.valueOf(s.getHoraFin()));
+            ps.setInt(4, 0);
+            ps.setInt(5, s.getDiaDeSpa().getCodPack());
+            ps.setBoolean(6, s.isEstado());
+            ps.setInt(7, s.getInstalaciones().getCodInstal());
 
             int creacion = ps.executeUpdate();
             System.out.println(creacion);
@@ -101,6 +167,31 @@ public class SesionData {
             ps.setTime(3, Time.valueOf(s.getHoraFin()));
             ps.setInt(4, s.getTratamiento().getCodTratam());
             ps.setInt(5, s.getMasajista().getMatricula());
+            ps.setInt(6, s.getDiaDeSpa().getCodPack());
+            ps.setBoolean(7, s.isEstado());
+            ps.setInt(8, s.getInstalaciones().getCodInstal());
+            ps.setInt(9, s.getCodSesion());
+
+            ps.executeUpdate();
+            ps.close();
+            System.out.println("Sesion actualizada correctamente");
+
+        } catch (SQLException ex) {
+            System.out.println("Error al actualizar la sesion: " + ex);
+        }
+    }
+
+    public void actualizarSesionSinTratamiento(Sesion s) throws SQLException {
+
+        String sql = "UPDATE sesion SET fecha = ?, hora_inicio = ?, hora_fin = ?, codTratamiento = ?, codPack = ?, estado = ?, codInstalacion = ? WHERE codSesion = ?";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(s.getFecha()));
+            ps.setTime(2, Time.valueOf(s.getHoraInicio()));
+            ps.setTime(3, Time.valueOf(s.getHoraFin()));
+            ps.setInt(4, 0);
             ps.setInt(6, s.getDiaDeSpa().getCodPack());
             ps.setBoolean(7, s.isEstado());
             ps.setInt(8, s.getInstalaciones().getCodInstal());
@@ -358,8 +449,14 @@ public class SesionData {
 
                 Tratamiento ta = td.buscarTratamiento(rs.getInt("codTratamiento"));
                 s.setTratamiento(ta);
-                Masajista ma = md.buscarMasajista(rs.getInt("codMasajista"));
-                s.setMasajista(ma);
+                int codMasajista = rs.getInt("codMasajista");
+                if (codMasajista > 0) {
+                    Masajista ma = md.buscarMasajista(codMasajista);
+                    s.setMasajista(ma);
+                } else {
+                    
+                    s.setMasajista(null);
+                }
                 DiaDeSpa ds = dd.buscarDia(rs.getInt("codPack"));
                 s.setDiaDeSpa(ds);
                 s.setEstado(rs.getBoolean("estado"));
