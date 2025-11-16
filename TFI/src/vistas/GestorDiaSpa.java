@@ -314,7 +314,10 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo valido", "Codigo invalido", JOptionPane.ERROR_MESSAGE);
             
-        }
+        }catch (Exception e){
+        
+        JOptionPane.showMessageDialog(this, "Error al buscar el Día de Spa en la base de datos. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
         
     }//GEN-LAST:event_btn_buscarCodActionPerformed
@@ -350,7 +353,11 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar una fecha valida", "Error: Fecha invalida", JOptionPane.ERROR_MESSAGE);
             
-        }
+        }catch (Exception e) { 
+        
+        JOptionPane.showMessageDialog(this, "Error al guardar la reserva en la base de datos. Revise la conexión. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
         
         
@@ -371,7 +378,10 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar una reserva valida", "Error: Reserva invalida", JOptionPane.ERROR_MESSAGE);
         
-        }   
+        }   catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al eliminar la reserva. Revise si existen sesiones asociadas. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btn_borrarDiaActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
