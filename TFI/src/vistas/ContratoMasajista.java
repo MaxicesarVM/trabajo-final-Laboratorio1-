@@ -266,7 +266,11 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
-        }
+        } catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al buscar el masajista. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
 
 
     }//GEN-LAST:event_btn_buscarMasajistaActionPerformed
@@ -287,7 +291,11 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         
     } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
-        }
+        } catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al guardar el masajista. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
 
       
     }//GEN-LAST:event_btn_guardarMasajistaActionPerformed
@@ -302,7 +310,11 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
-        }
+        } catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al borrar el masajista. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
 
 
 
@@ -324,7 +336,11 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         
         }catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
-        }
+        } catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al actualizarr el masajista. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
 
     
@@ -357,7 +373,11 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         
         }catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
-        }
+        } catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al dar de baja el masajista. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
 
        
     }//GEN-LAST:event_btn_bajaLogicaMasajistaActionPerformed
@@ -379,7 +399,11 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         
         }catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
-        }
+        } catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al dar de alta el masajista. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
 
 
 
