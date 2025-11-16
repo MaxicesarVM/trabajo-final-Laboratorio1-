@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2025 a las 21:20:42
+-- Tiempo de generación: 16-11-2025 a las 22:09:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -30,7 +30,11 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `instalacionesMasSolicitadas` (IN `fecha_inicio` DATE, IN `fecha_fin` DATE)   BEGIN
    
     SELECT
-        i.nombre AS nombreInstalacion,
+        i.codInstalacion ,
+        i.nombre,
+        i.detalle,
+        i.precio,
+        i.estado,
         COUNT(s.codInstalacion) AS cantidad
     FROM
         sesion s
@@ -49,21 +53,24 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `tratamientoMasSolicitados` (IN `fecha_inicio` DATE, IN `fecha_fin` DATE)   BEGIN
     SELECT
-        t.nombre AS Nombre_Tratamiento,
-        COUNT(s.codSesion) AS Cantidad
+        t.codTratamiento,          -- 1. Añadido para el código
+        t.nombre,                  -- 2. Añadido/Modificado
+        t.tipo,                    -- 3. Añadido para el tipo
+        t.detalle,                 -- 4. Añadido para el detalle
+        t.producto,                -- 5. Añadido para el producto
+        t.duracion,                -- 6. Añadido para la duración
+        t.costo,                   -- 7. Añadido para el costo
+        t.estado,                  -- 8. Añadido para el estado
+        COUNT(s.codSesion) AS Cantidad -- Columna de la cuenta
     FROM
         sesion s
     JOIN
-        -- Unimos con la tabla tratamiento para obtener el nombre
         tratamiento t ON s.codTratamiento = t.codTratamiento
     WHERE
-       
         s.fecha BETWEEN fecha_inicio AND fecha_fin
-        
-       
         AND t.codTratamiento != 0
     GROUP BY
-        t.codTratamiento, t.nombre
+        t.codTratamiento, t.nombre, t.tipo, t.detalle, t.producto, t.duracion, t.costo, t.estado -- Agrupar por todos los campos
     ORDER BY
         Cantidad DESC;
 
