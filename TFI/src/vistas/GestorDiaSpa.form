@@ -73,10 +73,8 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="btn_limpiarCampos" max="32767" attributes="0"/>
                               <Component id="btn_borrarDia" pref="209" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btn_reservarDia" alignment="1" pref="209" max="32767" attributes="0"/>
-                                  <Component id="btn_buscarCod" alignment="1" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="btn_reservarDia" alignment="1" pref="209" max="32767" attributes="0"/>
+                              <Component id="btn_buscarCod" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
