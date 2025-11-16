@@ -705,7 +705,12 @@ public class Sesiones extends javax.swing.JInternalFrame {
                 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al guardar la sesion");
-            }
+            } catch (NumberFormatException e) {
+        // (¡Necesitas esta excepción! Ver punto 2)
+        JOptionPane.showMessageDialog(this, "Su sesion no se pudo guardar, verifique los datos ingresados!", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error inesperado al buscar: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
             
         }
          
@@ -779,7 +784,12 @@ public class Sesiones extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Se actualizo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al actualizar la sesion");
-            }
+            } catch (NumberFormatException e) {
+        // (¡Necesitas esta excepción! Ver punto 2)
+        JOptionPane.showMessageDialog(this, "Error al actualizar, verifique los datos ingresados", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e_general) {
+        JOptionPane.showMessageDialog(this, "Error inesperado al buscar: " + e_general.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
             
         }
         
@@ -880,6 +890,8 @@ public class Sesiones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_duracionMasajistaActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+
+    try {
         
         int codigoSesion = Integer.valueOf(txt_codSesion.getText());
         
@@ -935,7 +947,13 @@ public class Sesiones extends javax.swing.JInternalFrame {
             
             
             
-        }
+        } 
+    } catch (NumberFormatException e) {
+        // (¡Necesitas esta excepción! Ver punto 2)
+        JOptionPane.showMessageDialog(this, "Error al buscar, datos incorrectos", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e_general) {
+        JOptionPane.showMessageDialog(this, "Error inesperado al buscar: " + e_general.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
         
         
         
