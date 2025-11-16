@@ -398,7 +398,11 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar un cliente valido", "Faltan datos del cliente", JOptionPane.ERROR_MESSAGE);
             
-        }
+        }catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al dar de baja el cliente. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
         
         
@@ -422,7 +426,11 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
     } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar un cliente valido", "Faltan datos del cliente", JOptionPane.ERROR_MESSAGE);
             
-        }
+        }catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al dar de alta el cliente. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
         
         
@@ -444,7 +452,11 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
            
            JOptionPane.showMessageDialog(this, "El codigo de cliente tiene que ser un numero", "Error codigo cliente", JOptionPane.ERROR_MESSAGE);
            
-       }         // TODO add your handling code here:
+       }  catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al buscar el cliente en la base de datos. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btn_buscarCliActionPerformed
 
     private void btn_regisCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regisCliActionPerformed
@@ -464,7 +476,11 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
        } catch (NumberFormatException e) {
            
           JOptionPane.showMessageDialog(this,  "Error:Documento, telefono y edad tienen que ser numeros validos", "Error de campos",  JOptionPane.ERROR_MESSAGE);
-       }
+       }catch (Exception e) { 
+        
+        JOptionPane.showMessageDialog(this, "Error al registrar el cliente. Revise si el DNI ya existe. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btn_regisCliActionPerformed
 
     private void btn_actuCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actuCliActionPerformed
@@ -486,7 +502,11 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
            
            JOptionPane.showMessageDialog(this, "Error: Documento, telefono y edad tienen que ser numeros validos", "Error en campos", JOptionPane.ERROR_MESSAGE);
            
-       }    
+       }    catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al actualizar el cliente. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btn_actuCliActionPerformed
 
     private void btn_borrarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarCliActionPerformed
@@ -499,7 +519,11 @@ public class ClienteRegistro extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo de cliente valido", "Codigo de cliente incorrecto", JOptionPane.ERROR_MESSAGE);
             
-        }
+        }catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al eliminar el cliente. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btn_borrarCliActionPerformed
 
     private void btn_limpiarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarCliActionPerformed
