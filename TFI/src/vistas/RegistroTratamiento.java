@@ -378,7 +378,10 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        } 
+        } catch (Exception e) { 
+            
+           JOptionPane.showMessageDialog(this, "Error al buscar el tratamiento en la base de datos. Detalles: " + e.getMessage(), "Error SQL", JOptionPane.ERROR_MESSAGE);
+    }
         
         
         
@@ -409,7 +412,11 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        }
+        }catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(this, "Error al guardar el tratamiento. Revise si el código ya existe. Detalles: " + e.getMessage(), 
+                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
         
         
@@ -435,7 +442,10 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo valido", "Error: Codigo invalido", JOptionPane.ERROR_MESSAGE);
         
-        }   
+        }   catch (Exception e) { 
+       
+           JOptionPane.showMessageDialog(this, "Error al eliminar el tratamiento. Revise si está asociado a otras tablas. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
     }//GEN-LAST:event_btn_borrarTratActionPerformed
 
@@ -464,7 +474,10 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        }
+        }catch (Exception e) { 
+        
+         JOptionPane.showMessageDialog(this, "Error al actualizar el tratamiento. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
         
     }//GEN-LAST:event_btn_actuTratActionPerformed
@@ -494,7 +507,10 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        } 
+        } catch (Exception e) { 
+        
+        JOptionPane.showMessageDialog(this, "Error al dar de baja el tratamiento. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
     }//GEN-LAST:event_btn_bajaTratActionPerformed
 
@@ -523,7 +539,10 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar datos valido", "Error: Datos invalidos", JOptionPane.ERROR_MESSAGE);
             
-        }
+        }catch (Exception e) { 
+        
+        JOptionPane.showMessageDialog(this, "Error al dar de alta el tratamiento. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+    }
         
     }//GEN-LAST:event_btn_altaTratActionPerformed
 
