@@ -26,63 +26,73 @@ import persistencia.TratamientoData;
  */
 public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
 
+    
     private DefaultTableModel modeloTabla;
-
+    
     Conexion con = new Conexion();
-
+    
     DiaDeSpaData operacionesDiaSpa = new DiaDeSpaData(con);
     TratamientoData operacionesTratamiento = new TratamientoData(con);
     MasajistaData operacionesMasajista = new MasajistaData(con);
     InstalacionData operacionesInstalaciones = new InstalacionData(con);
     SesionData operacionesSesion = new SesionData(con);
-
+    
     private ArrayList<Sesion> listaS;
-
+    
+    
+    
     public ListadoSesionesPorDia() {
         initComponents();
-
+        
         modeloTabla = new DefaultTableModel();
-
+        
         cargarColumnasTablas();
-
+        
+        
+        
     }
 
-    private void cargarListadoSesiones() {
-
+    private void cargarListadoSesiones(){
+    
         borrarFilaTabla();
-
+        
         Date fechaSesion = jcd_buscar_dia.getDate();
-
+        
         LocalDate fechaCasteada = fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
+        
+        
         listaS = (ArrayList<Sesion>) operacionesSesion.listarSesionesPorFecha(fechaCasteada);
-
-        for (Sesion sesion : listaS) {
-            String masajistaNonulo;
-            if (sesion.getMasajista() != null) {
-                masajistaNonulo = String.valueOf(sesion.getMasajista().getNombre_completo());
-
-            }else{
-                masajistaNonulo="No aplica";
-            }
+        
+        for(Sesion sesion: listaS){
+            
             modeloTabla.addRow(new Object[]{
-                sesion.getCodSesion(),
-                sesion.getHoraInicio(),
-                sesion.getHoraFin(),
-                operacionesTratamiento.buscarTratamiento(sesion.getTratamiento().getCodTratam()).getNombre(),
-                masajistaNonulo,
-                operacionesDiaSpa.buscarDia(sesion.getDiaDeSpa().getCodPack()),
-                operacionesInstalaciones.buscarInstalacion(sesion.getInstalaciones().getCodInstal()).getNombre(),
-                operacionesSesion.calculodeCosto(sesion.getDiaDeSpa().getCodPack())
-
+            
+            sesion.getCodSesion(),
+            sesion.getHoraInicio(),
+            sesion.getHoraFin(),
+            operacionesTratamiento.buscarTratamiento(sesion.getTratamiento().getCodTratam()).getNombre(),
+            operacionesMasajista.buscarMasajista(sesion.getMasajista().getMatricula()).getNombre_completo(),
+            operacionesDiaSpa.buscarDia(sesion.getDiaDeSpa().getCodPack()),
+            operacionesInstalaciones.buscarInstalacion(sesion.getInstalaciones().getCodInstal()).getNombre(),
+            operacionesSesion.calculodeCosto(sesion.getDiaDeSpa().getCodPack())
+            
+                
+            
+            
             });
-
+            
+            
+            
         }
-
+        
+        
+    
     }
-
-    private void cargarColumnasTablas() {
-
+    
+    
+    
+    private void cargarColumnasTablas(){
+        
         ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("Codigo Sesion");
         filaCabecera.add("Hora Inicio");
@@ -92,24 +102,30 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
         filaCabecera.add("Codigo Dia Spa");
         filaCabecera.add("Instalacion");
         filaCabecera.add("Costo Total");
-        for (Object it : filaCabecera) {
+        for(Object it: filaCabecera){
             modeloTabla.addColumn(it);
         }
         jTable_sesiones.setModel(modeloTabla);
-
-    }
-
-    private void borrarFilaTabla() {
-
+        
+    }    
+    
+    
+    
+    private void borrarFilaTabla(){
+        
         int indice = modeloTabla.getRowCount() - 1;
-        for (int i = indice; i >= 0; i--) {
-
+        for(int i = indice; i >= 0 ; i-- ){
+        
             modeloTabla.removeRow(i);
-
+            
+        
         }
-
+         
     }
-
+    
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -120,9 +136,9 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_sesiones = new javax.swing.JTable();
         lbl_sesionesDia = new javax.swing.JLabel();
-        btn_buscarSesion = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         lbl_buscarDia1 = new javax.swing.JLabel();
-        btn_anularSesion = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -158,26 +174,26 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
         lbl_sesionesDia.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_sesionesDia.setText("Sesiones del dia");
 
-        btn_buscarSesion.setBackground(new java.awt.Color(0, 102, 102));
-        btn_buscarSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_buscarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
-        btn_buscarSesion.setText("Buscar");
-        btn_buscarSesion.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(0, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarSesionActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
         lbl_buscarDia1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_buscarDia1.setText("Elija una sesion en caso de querer cancelarla");
 
-        btn_anularSesion.setBackground(new java.awt.Color(0, 102, 102));
-        btn_anularSesion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_anularSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
-        btn_anularSesion.setText("Anular Sesion");
-        btn_anularSesion.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(new java.awt.Color(0, 102, 102));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        jButton2.setText("Anular Sesion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_anularSesionActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -203,9 +219,9 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
                 .addGap(167, 167, 167)
                 .addComponent(jcd_buscar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_buscarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_anularSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(215, 215, 215))
         );
         jPanel1Layout.setVerticalGroup(
@@ -219,8 +235,8 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcd_buscar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_buscarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_anularSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42)
                 .addComponent(lbl_sesionesDia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -244,41 +260,34 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
 
     private void jcd_buscar_diaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jcd_buscar_diaPropertyChange
 
-
+        
     }//GEN-LAST:event_jcd_buscar_diaPropertyChange
 
     private void jcd_buscar_diaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcd_buscar_diaFocusLost
-
+        
     }//GEN-LAST:event_jcd_buscar_diaFocusLost
 
-    private void btn_buscarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarSesionActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         cargarListadoSesiones();
-    }//GEN-LAST:event_btn_buscarSesionActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btn_anularSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_anularSesionActionPerformed
-
-<<<<<<< Updated upstream
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
          try{ 
         int filaSeleccionada = jTable_sesiones.getSelectedRow();
               
               
-=======
-        int filaSeleccionada = jTable_sesiones.getSelectedRow();
-
->>>>>>> Stashed changes
         if (filaSeleccionada != -1) {
-
+        
             int codigoSesionSeleccionado = (int) modeloTabla.getValueAt(filaSeleccionada, 0);
-
+        
             operacionesSesion.eliminarSesion(codigoSesionSeleccionado);
-
+     
             JOptionPane.showMessageDialog(this, "Sesion borrada correctamente");
-
+            
             cargarListadoSesiones();
-
+            
+           
         }
-<<<<<<< Updated upstream
       
     } catch (NumberFormatException e) {
         
@@ -296,16 +305,11 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
-=======
-
-
-    }//GEN-LAST:event_btn_anularSesionActionPerformed
->>>>>>> Stashed changes
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_anularSesion;
-    private javax.swing.JButton btn_buscarSesion;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_sesiones;

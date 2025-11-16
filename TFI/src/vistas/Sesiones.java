@@ -28,257 +28,315 @@ import persistencia.MasajistaData;
 import persistencia.SesionData;
 import persistencia.TratamientoData;
 
+
 public class Sesiones extends javax.swing.JInternalFrame {
 
+    
     private DefaultTableModel modeloTabla;
-
+    
     Conexion con = new Conexion();
-
+    
     DiaDeSpaData operacionesDiaSpa = new DiaDeSpaData(con);
     TratamientoData operacionesTratamiento = new TratamientoData(con);
     MasajistaData operacionesMasajista = new MasajistaData(con);
     InstalacionData operacionesInstalaciones = new InstalacionData(con);
     SesionData operacionesSesion = new SesionData(con);
-
+    
+    
     ArrayList<DiaDeSpa> listad = (ArrayList<DiaDeSpa>) operacionesDiaSpa.listarDiaSpa();
     ArrayList<Tratamiento> listat = (ArrayList<Tratamiento>) operacionesTratamiento.listarTratamientos();
     ArrayList<Masajista> listam = (ArrayList<Masajista>) operacionesMasajista.listarMasajistas();
     ArrayList<String> listap = (ArrayList<String>) operacionesTratamiento.listarProductos();
     ArrayList<Instalacion> listainst = (ArrayList<Instalacion>) operacionesInstalaciones.listarInstalacion();
-
+    
+    
+    
     public Sesiones() {
         initComponents();
         modeloTabla = new DefaultTableModel();
-
+        
         cargarColumnasTablas();
-
+        
         cargarDiaSpa();
         cargarTratamientos();
         cargarInstalaciones();
-
+        
     }
 
-    private void cargarDiaSpa() {
-
-        for (DiaDeSpa diaspa : listad) {
-
-            jcb_codPack.addItem(diaspa.getCodPack());
-
+    
+    private void cargarDiaSpa(){
+        
+            for(DiaDeSpa diaspa: listad){
+            
+                
+                jcb_codPack.addItem(diaspa.getCodPack());
+                
+            
         }
-
+        
+        
     }
-
-    private void cargarProductos() {
-
-        for (String producto : listap) {
-
-            jcb_producto.addItem(producto);
-
+    
+    
+    
+    private void cargarProductos(){
+        
+            for(String producto: listap){
+            
+                
+                jcb_producto.addItem(producto);
+                
+            
         }
-
+        
+        
     }
-
-    private void cargarTratamientos() {
-
-        for (Tratamiento tratamiento : listat) {
-
-            jcombo_tratamiento.addItem(tratamiento);
-
+    
+    
+    private void cargarTratamientos(){
+        
+            
+            
+        
+            for(Tratamiento tratamiento: listat){
+            
+                
+                jcombo_tratamiento.addItem(tratamiento);
+                
+            
         }
-
+        
+        
     }
-
-    private void cargarInstalaciones() {
-
-        for (Instalacion instalacion : listainst) {
-
-            jcb_instalacion.addItem(instalacion);
-
+    
+    private void cargarInstalaciones(){
+        
+            
+            for(Instalacion instalacion: listainst){
+            
+                
+                
+                jcb_instalacion.addItem(instalacion);
+                
+            
         }
-
+        
+        
     }
-
-    private void cargarDuraciones() {
-
+    
+    
+    private void cargarDuraciones(){
+        
+        
         Tratamiento tratamientoSeleccionado = (Tratamiento) jcombo_tratamiento.getSelectedItem();
-
+        
         if (tratamientoSeleccionado != null) {
             txt_duracionMasajista.setText(String.valueOf(tratamientoSeleccionado.getDuracion()));
         } else {
-
-            txt_duracionMasajista.setText("");
+        
+            txt_duracionMasajista.setText(""); 
         }
-
+        
+            
+        
     }
+    
 
-    private void cargarMasajistas() {
-
-        for (Masajista masajista : listam) {
-
-            jcombo_masajista.addItem(masajista);
-
+   
+    private void cargarMasajistas(){
+        
+            
+        
+            
+            
+            for(Masajista masajista: listam){
+            
+                
+                
+                jcombo_masajista.addItem(masajista);
+                
+            
         }
-
+        
+        
     }
-
-    private void cargarColumnasTablas() {
-
+    
+    
+    
+    
+     private void cargarColumnasTablas(){
+        
         ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("Hora inicio");
         filaCabecera.add("Hora fin");
-        for (Object it : filaCabecera) {
+        for(Object it: filaCabecera){
             modeloTabla.addColumn(it);
         }
         tbl_horarios.setModel(modeloTabla);
-
+        
     }
-
-    private void borrarFilaTabla() {
-
+    
+    
+    private void borrarFilaTabla(){
+        
         int indice = modeloTabla.getRowCount() - 1;
-        for (int i = indice; i >= 0; i--) {
-
+        for(int i = indice; i >= 0 ; i-- ){
+        
             modeloTabla.removeRow(i);
-
+            
+        
         }
-
+         
     }
-
+     
+    
     private void limpiarCombosDependientes() {
-
+    
         jcb_producto.removeAllItems();
-
+        
+    
         jcombo_masajista.removeAllItems();
     }
-
-    private void generarHorariosSesionSoloTratamiento30() {
-
+    
+    
+    private void generarHorariosSesionSoloTratamiento30(){
+        
         borrarFilaTabla();
-
+        
         String[] horariosInicio = {
             "08:00", "08:30", "09:00", "09:30", "10:00", "10:30",
             "11:00", "11:30", "12:00", "12:30", "13:00", "13:30"
         };
 
         String[] horariosFin = {
-            "08:30", "09:00", "09:30", "10:00", "10:30", "11:00",
+            
+            "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", 
             "11:30", "12:00", "12:30", "13:00", "13:30", "14:00"
-
+            
         };
-
-        for (int i = 0; i < horariosInicio.length; i++) {
-
+        
+        for(int i = 0; i < horariosInicio.length; i++){
+            
             modeloTabla.addRow(new Object[]{
                 horariosInicio[i],
                 horariosFin[i]
-
+                   
             });
-
+  
         }
-
+        
     }
-
-    private void generarHorariosSesionSoloTratamiento30ConIns() {
-
+    
+    private void generarHorariosSesionSoloTratamiento30ConIns(){
+        
         borrarFilaTabla();
-
+        
         String[] horariosInicio = {
             "08:00", "09:30", "11:00", "12:30"
         };
 
         String[] horariosFin = {
+            
             "09:30", "11:00", "12:30", "14:00"
-
+            
         };
-
-        for (int i = 0; i < horariosInicio.length; i++) {
-
+        
+        for(int i = 0; i < horariosInicio.length; i++){
+            
             modeloTabla.addRow(new Object[]{
                 horariosInicio[i],
                 horariosFin[i]
-
+                   
             });
-
+  
         }
-
+        
     }
-
-    private void generarHorariosSesionSoloTratamiento60ConIns() {
-
+    
+    private void generarHorariosSesionSoloTratamiento60ConIns(){
+        
         borrarFilaTabla();
-
+        
         String[] horariosInicio = {
             "08:00", "10:00", "12:00"
         };
 
         String[] horariosFin = {
+            
             "10:00", "12:00", "14:00"
-
+            
         };
-
-        for (int i = 0; i < horariosInicio.length; i++) {
-
+        
+        for(int i = 0; i < horariosInicio.length; i++){
+            
             modeloTabla.addRow(new Object[]{
                 horariosInicio[i],
                 horariosFin[i]
-
+                   
             });
-
+  
         }
-
+        
     }
-
-    private void generarHorariosSesionSoloTratamiento60() {
-
+    
+    private void generarHorariosSesionSoloTratamiento60(){
+        
         borrarFilaTabla();
-
+        
         String[] horariosInicio = {
             "08:00", "09:00", "10:00", "11:00", "12:00", "13:00",
             "14:00"
         };
 
         String[] horariosFin = {
-            "09:00", "10:00", "11:00", "12:00", "13:00", "14:00",
+            
+            "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", 
             "15:00"
-
+            
         };
-
-        for (int i = 0; i < horariosInicio.length; i++) {
-
+        
+        for(int i = 0; i < horariosInicio.length; i++){
+            
             modeloTabla.addRow(new Object[]{
                 horariosInicio[i],
                 horariosFin[i]
-
+                   
             });
-
+  
         }
-
+        
     }
+    
+    private void verificarHorarios(){
+     Instalacion instalacionParaElegir = (Instalacion) jcb_instalacion.getSelectedItem();
+     Tratamiento tratamientoElegido = (Tratamiento) jcombo_tratamiento.getSelectedItem();
+     
+     
 
-    private void verificarHorarios() {
-        Instalacion instalacionParaElegir = (Instalacion) jcb_instalacion.getSelectedItem();
-        Tratamiento tratamientoElegido = (Tratamiento) jcombo_tratamiento.getSelectedItem();
+     if(txt_duracionMasajista.getText().equalsIgnoreCase("30") && instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")){
+         generarHorariosSesionSoloTratamiento30(); // 30 min SIN instalación
+         
+     } else if(txt_duracionMasajista.getText().equalsIgnoreCase("60") && instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")){
+         generarHorariosSesionSoloTratamiento60(); // 60 min SIN instalación
+         
+     } else if(txt_duracionMasajista.getText().equalsIgnoreCase("30") && !instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")){
+         generarHorariosSesionSoloTratamiento30ConIns(); // 30 min CON instalación
+         
+     } else if(tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno") && !instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")){
+         
+         generarHorariosSesionSoloTratamiento60();
+         
+     } else if(txt_duracionMasajista.getText().equalsIgnoreCase("60") && !instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")){
+         generarHorariosSesionSoloTratamiento60ConIns(); 
+         
+     } 
+     
+     
+     
+}
+    
 
-        if (txt_duracionMasajista.getText().equalsIgnoreCase("30") && instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")) {
-            generarHorariosSesionSoloTratamiento30(); // 30 min SIN instalación
-
-        } else if (txt_duracionMasajista.getText().equalsIgnoreCase("60") && instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")) {
-            generarHorariosSesionSoloTratamiento60(); // 60 min SIN instalación
-
-        } else if (txt_duracionMasajista.getText().equalsIgnoreCase("30") && !instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")) {
-            generarHorariosSesionSoloTratamiento30ConIns(); // 30 min CON instalación
-
-        } else if (tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno") && !instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")) {
-
-            generarHorariosSesionSoloTratamiento60();
-
-        } else if (txt_duracionMasajista.getText().equalsIgnoreCase("60") && !instalacionParaElegir.getNombre().equalsIgnoreCase("Ninguno")) {
-            generarHorariosSesionSoloTratamiento60ConIns();
-
-        }
-
-    }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -309,7 +367,6 @@ public class Sesiones extends javax.swing.JInternalFrame {
         txt_matriculaMasj = new javax.swing.JTextField();
         txt_duracionMasajista = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
-        lbl_instalacion1 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -444,10 +501,6 @@ public class Sesiones extends javax.swing.JInternalFrame {
             }
         });
 
-        lbl_instalacion1.setFont(new java.awt.Font("Alef", 1, 12)); // NOI18N
-        lbl_instalacion1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_instalacion1.setText("*Las instalaciones son por una hora");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -463,18 +516,16 @@ public class Sesiones extends javax.swing.JInternalFrame {
                                 .addComponent(jcb_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 86, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jcl_fechas)
-                                        .addGap(35, 35, 35))
+                                        .addGap(0, 143, Short.MAX_VALUE)
+                                        .addComponent(jcl_fechas))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lbl_instalacion)
-                                        .addGap(18, 18, 18)))
-                                .addComponent(jcb_instalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lbl_instalacion)))
                                 .addGap(18, 18, 18)
-                                .addComponent(lbl_instalacion1)
-                                .addGap(90, 90, 90)))
+                                .addComponent(jcb_instalacion, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(296, 296, 296)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btm_guardarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -507,7 +558,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
                                     .addComponent(txt_codSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(36, 36, 36)
                                 .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 38, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(111, 111, 111))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -562,8 +613,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_instalacion)
-                            .addComponent(jcb_instalacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_instalacion1))
+                            .addComponent(jcb_instalacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jcl_fechas, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -592,50 +642,54 @@ public class Sesiones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btm_guardarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_guardarReservaActionPerformed
-
+        
         Date fechaSesion = jdc_fecha.getDate();
-
+        
         LocalDate fechaCasteada = fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
 
         int filaSeleccionada = tbl_horarios.getSelectedRow();
-
-        if (filaSeleccionada == -1) {
-            JOptionPane.showMessageDialog(this, "Seleccione un horario por favor");
-        }
+        
         LocalTime horaInicio = null;
         LocalTime horaFin = null;
-        String horarioInicio = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
-        String horarioFin = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
-
-        horaInicio = LocalTime.parse(horarioInicio);
-        horaFin = LocalTime.parse(horarioFin);
-
-        boolean validador = operacionesSesion.verificadorDeHora(fechaCasteada, horaInicio, horaFin);
-        if (validador) {
-            JOptionPane.showMessageDialog(this, "El horario que eligio esta ocupado, por favor eliga otro horario");
-            return;
+                
+                
+        if (filaSeleccionada != -1) {
+        
+            String horarioInicio = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+        
+            String horarioFin = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
+        
+            horaInicio = LocalTime.parse(horarioInicio);
+            horaFin = LocalTime.parse(horarioFin);
+        
+            
+            
+           
         }
-
+        
+        
         Tratamiento tratamientoElegido = (Tratamiento) jcombo_tratamiento.getSelectedItem();
-
-        if (tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno")) {
-
+        
+        if(tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno")){
+            
             Instalacion instalacionSeleccionada = (Instalacion) jcb_instalacion.getSelectedItem();
             int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
             DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
             boolean estadoSesion = true;
-
+        
             Sesion sesionCreada = new Sesion(fechaCasteada, horaInicio, horaFin, tratamientoElegido, instalacionSeleccionada, diaSeleccionado, estadoSesion);
-
+            
             try {
-                operacionesSesion.crearSesionSinTratamiento(sesionCreada);
+                operacionesSesion.crearSesion(sesionCreada);
                 JOptionPane.showMessageDialog(this, "Se creo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al guardar la sesion");
             }
-
-        } else {
-
+            
+        
+        } else{
+            
             Masajista masajistaSeleccionado = (Masajista) jcombo_masajista.getSelectedItem();
             String productoSeleccionado = (String) jcb_producto.getSelectedItem();
             tratamientoElegido.setProductos(productoSeleccionado);
@@ -643,15 +697,14 @@ public class Sesiones extends javax.swing.JInternalFrame {
             int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
             DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
             boolean estadoSesion = true;
-
+            
             Sesion sesionCreada = new Sesion(fechaCasteada, horaInicio, horaFin, tratamientoElegido, masajistaSeleccionado, instalacionSeleccionada, diaSeleccionado, estadoSesion);
             try {
-                operacionesSesion.crearSesionCompleta(sesionCreada);
+                operacionesSesion.crearSesion(sesionCreada);
                 JOptionPane.showMessageDialog(this, "Se creo la sesion correctamente");
-
+                
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al guardar la sesion");
-<<<<<<< Updated upstream
             } catch (NumberFormatException e) {
         // (¡Necesitas esta excepción! Ver punto 2)
         JOptionPane.showMessageDialog(this, "Su sesion no se pudo guardar, verifique los datos ingresados!", "Error de Formato", JOptionPane.ERROR_MESSAGE);
@@ -659,66 +712,64 @@ public class Sesiones extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Error inesperado al buscar: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
             
-=======
-            }
-
->>>>>>> Stashed changes
         }
-
+         
         this.dispose();
-
-
+        
+        
     }//GEN-LAST:event_btm_guardarReservaActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-
+        
+        
         int codigoSesion = Integer.valueOf(txt_codSesion.getText());
         Date fechaSesion = jdc_fecha.getDate();
-
+        
         LocalDate fechaCasteada = fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
 
         int filaSeleccionada = tbl_horarios.getSelectedRow();
-
+        
         LocalTime horaInicio = null;
         LocalTime horaFin = null;
-
-        if (filaSeleccionada == -1) {
-            JOptionPane.showMessageDialog(this, "Seleccione un horario por favor");
-
+                
+                
+        if (filaSeleccionada != -1) {
+        
+            String horarioInicio = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+        
+            String horarioFin = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
+        
+            horaInicio = LocalTime.parse(horarioInicio);
+            horaFin = LocalTime.parse(horarioFin);
+        
+            
+            
+           
         }
-        String horarioInicio = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
-
-        String horarioFin = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
-
-        horaInicio = LocalTime.parse(horarioInicio);
-        horaFin = LocalTime.parse(horarioFin);
-
-        boolean validador = operacionesSesion.verificadorDeHora(fechaCasteada, horaInicio, horaFin);
-        if (validador) {
-            JOptionPane.showMessageDialog(this, "El horario que eligio esta ocupado, por favor eliga otro horario");
-            return;
-        }
-
+        
+        
         Tratamiento tratamientoElegido = (Tratamiento) jcombo_tratamiento.getSelectedItem();
-
-        if (tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno")) {
-
+        
+        if(tratamientoElegido.getNombre().equalsIgnoreCase("Ninguno")){
+            
             Instalacion instalacionSeleccionada = (Instalacion) jcb_instalacion.getSelectedItem();
             int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
             DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
             boolean estadoSesion = true;
-
+        
             Sesion sesionCreada = new Sesion(codigoSesion, fechaCasteada, horaInicio, horaFin, tratamientoElegido, instalacionSeleccionada, diaSeleccionado, estadoSesion);
-
+            
             try {
-                operacionesSesion.actualizarSesionSinTratamiento(sesionCreada);
+                operacionesSesion.actualizarSesion(sesionCreada);
                 JOptionPane.showMessageDialog(this, "Se actualizo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al actualizar la sesion");
             }
-
-        } else {
-
+            
+        
+        } else{
+            
             Masajista masajistaSeleccionado = (Masajista) jcombo_masajista.getSelectedItem();
             String productoSeleccionado = (String) jcb_producto.getSelectedItem();
             tratamientoElegido.setProductos(productoSeleccionado);
@@ -726,14 +777,13 @@ public class Sesiones extends javax.swing.JInternalFrame {
             int codigoSeleccionadoDiaSpa = (int) jcb_codPack.getSelectedItem();
             DiaDeSpa diaSeleccionado = (DiaDeSpa) operacionesDiaSpa.buscarDia(codigoSeleccionadoDiaSpa);
             boolean estadoSesion = true;
-
+            
             Sesion sesionCreada = new Sesion(codigoSesion, fechaCasteada, horaInicio, horaFin, tratamientoElegido, masajistaSeleccionado, instalacionSeleccionada, diaSeleccionado, estadoSesion);
             try {
                 operacionesSesion.actualizarSesion(sesionCreada);
                 JOptionPane.showMessageDialog(this, "Se actualizo la sesion correctamente");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Se encontro un error al actualizar la sesion");
-<<<<<<< Updated upstream
             } catch (NumberFormatException e) {
         // (¡Necesitas esta excepción! Ver punto 2)
         JOptionPane.showMessageDialog(this, "Error al actualizar, verifique los datos ingresados", "Error de Formato", JOptionPane.ERROR_MESSAGE);
@@ -741,23 +791,20 @@ public class Sesiones extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Error inesperado al buscar: " + e_general.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
             
-=======
-            }
-
->>>>>>> Stashed changes
         }
-
+        
         this.dispose();
-
-
+        
+        
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void jcombo_tratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcombo_tratamientoActionPerformed
-
+        
+        
         Tratamiento tratamientoSeleccionado = (Tratamiento) jcombo_tratamiento.getSelectedItem();
         String condicion = tratamientoSeleccionado.getNombre();
-        if (tratamientoSeleccionado != null && !"Ninguno".equalsIgnoreCase(condicion)) {
-
+        if(tratamientoSeleccionado != null && !"Ninguno".equalsIgnoreCase(condicion)){
+            
             jcb_producto.setEnabled(true);
             jcombo_masajista.setEnabled(true);
             txt_matriculaMasj.setEnabled(true);
@@ -767,94 +814,108 @@ public class Sesiones extends javax.swing.JInternalFrame {
             cargarProductos();
             cargarDuraciones();
             verificarHorarios();
+            
 
-        } else {
-
+            
+        } else{
+            
             jcb_producto.setEnabled(false);
             jcombo_masajista.setEnabled(false);
             txt_matriculaMasj.setEnabled(false);
             txt_duracionMasajista.setEnabled(false);
             limpiarCombosDependientes();
-
+            
             txt_matriculaMasj.setText("");
             txt_duracionMasajista.setText("");
             borrarFilaTabla();
-
+            
         }
-
-
+        
+        
+          
     }//GEN-LAST:event_jcombo_tratamientoActionPerformed
 
     private void jcombo_masajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcombo_masajistaActionPerformed
-
+        
         Masajista masajistaSeleccionado = (Masajista) jcombo_masajista.getSelectedItem();
-
+        
         if (masajistaSeleccionado != null) {
             txt_matriculaMasj.setText(String.valueOf(masajistaSeleccionado.getMatricula()));
         } else {
-
-            txt_matriculaMasj.setText("");
+        
+            txt_matriculaMasj.setText(""); 
         }
-
-
+        
+ 
+        
     }//GEN-LAST:event_jcombo_masajistaActionPerformed
 
     private void jcb_instalacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_instalacionActionPerformed
-
+        
+       
+        
+        
         Tratamiento tratamientoSeleccionado = (Tratamiento) jcombo_tratamiento.getSelectedItem();
-
+    
+    
         boolean duracionLlena = !txt_duracionMasajista.getText().isEmpty();
-
+    
+    
         boolean esTratamientoNinguno = (tratamientoSeleccionado != null && tratamientoSeleccionado.getNombre().equalsIgnoreCase("Ninguno"));
-
+    
+    
         if (duracionLlena || esTratamientoNinguno) {
             verificarHorarios();
         }
-
-
+        
+        
+        
+        
     }//GEN-LAST:event_jcb_instalacionActionPerformed
 
     private void jcb_codPackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_codPackActionPerformed
-
+        
         int seleccionCodigo = (int) jcb_codPack.getSelectedItem();
-
+        
         LocalDate fechaCreada = operacionesDiaSpa.buscarDia(seleccionCodigo).getFecha();
         java.util.Date fechaCasteada = java.util.Date.from(fechaCreada.atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
-
+        
+        
         jdc_fecha.setDate(fechaCasteada);
-
+        
     }//GEN-LAST:event_jcb_codPackActionPerformed
 
     private void txt_duracionMasajistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_duracionMasajistaActionPerformed
-
+        
     }//GEN-LAST:event_txt_duracionMasajistaActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
 
-<<<<<<< Updated upstream
     try {
         
-=======
->>>>>>> Stashed changes
         int codigoSesion = Integer.valueOf(txt_codSesion.getText());
-
+        
         Sesion sesionBuscada = operacionesSesion.buscarSesion(codigoSesion);
         System.out.println("ESTO BUSCAS");
         System.out.println(sesionBuscada.getTratamiento());
-
+        
+        
         txt_codSesion.setText(String.valueOf(sesionBuscada.getCodSesion()));
-
+        
         Tratamiento tratamientoEncontrado = sesionBuscada.getTratamiento();
         Instalacion instalacionEncontrada = sesionBuscada.getInstalaciones();
         LocalDate fecha = sesionBuscada.getFecha();
         Date fechaCasteada = Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant());
         DiaDeSpa codigoEncontrado = sesionBuscada.getDiaDeSpa();
-
+        
+        
         jcombo_tratamiento.setSelectedItem(tratamientoEncontrado);
         jcb_codPack.setSelectedItem(codigoEncontrado.getCodPack());
-
-        if (tratamientoEncontrado.getNombre().equalsIgnoreCase("Ninguno")) {
-
+        
+        
+        if(tratamientoEncontrado.getNombre().equalsIgnoreCase("Ninguno")){
+            
+            
             jcb_producto.setEnabled(false);
             jcombo_masajista.setEnabled(false);
             txt_matriculaMasj.setEnabled(false);
@@ -863,21 +924,24 @@ public class Sesiones extends javax.swing.JInternalFrame {
             txt_duracionMasajista.setText("");
             jcb_instalacion.setSelectedItem(instalacionEncontrada);
             jdc_fecha.setDate(fechaCasteada);
-
-        } else {
-
+            
+            
+            
+            
+        } else{
+            
             jcb_producto.setEnabled(true);
             jcombo_masajista.setEnabled(true);
             txt_matriculaMasj.setEnabled(true);
             txt_duracionMasajista.setEnabled(true);
-
+            
+            
             jcb_producto.setSelectedItem(sesionBuscada.getTratamiento().getProductos());
             jcombo_masajista.setSelectedItem(sesionBuscada.getMasajista());
             txt_matriculaMasj.setText(String.valueOf(sesionBuscada.getMasajista().getMatricula()));
             txt_duracionMasajista.setText(String.valueOf(sesionBuscada.getTratamiento().getDuracion()));
             jcb_instalacion.setSelectedItem(instalacionEncontrada);
             jdc_fecha.setDate(fechaCasteada);
-<<<<<<< Updated upstream
             
             
             
@@ -898,12 +962,6 @@ public class Sesiones extends javax.swing.JInternalFrame {
         
         
         
-=======
-
-        }
-
-
->>>>>>> Stashed changes
     }//GEN-LAST:event_btn_buscarActionPerformed
 
 
@@ -928,7 +986,6 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_duracion;
     private javax.swing.JLabel lbl_horariosLista;
     private javax.swing.JLabel lbl_instalacion;
-    private javax.swing.JLabel lbl_instalacion1;
     private javax.swing.JLabel lbl_matriculaMasj;
     private javax.swing.JTable tbl_horarios;
     private javax.swing.JTextField txt_codSesion;
@@ -937,3 +994,7 @@ public class Sesiones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txt_productoTitulo;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+
