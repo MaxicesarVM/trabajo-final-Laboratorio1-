@@ -46,28 +46,41 @@
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lbl_codigoCliente" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="lbl_preferencias" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_codPack" min="-2" pref="154" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lbl_codigoCliente1" min="-2" pref="141" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Component id="lbl_titulo" min="-2" pref="215" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="txt_codPack" min="-2" pref="272" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lbl_codigoCliente" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Component id="lbl_preferencias" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_codPack" min="-2" pref="154" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lbl_codigoCliente1" min="-2" pref="141" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                          <Component id="txt_codPack" min="-2" pref="272" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txt_nombre" min="-2" pref="272" max="-2" attributes="0"/>
+                                      <Component id="dt_fecha" min="-2" pref="272" max="-2" attributes="0"/>
+                                      <Component id="jcb_codCliente" alignment="0" min="-2" pref="272" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Component id="txt_nombre" min="-2" pref="272" max="-2" attributes="0"/>
-                              <Component id="dt_fecha" min="-2" pref="272" max="-2" attributes="0"/>
-                              <Component id="jcb_codCliente" alignment="0" min="-2" pref="272" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                                  <Component id="jb_notaCodCli" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace pref="287" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -76,11 +89,6 @@
                               <Component id="btn_reservarDia" alignment="1" pref="209" max="32767" attributes="0"/>
                               <Component id="btn_buscarCod" alignment="1" max="32767" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="lbl_titulo" min="-2" pref="215" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
@@ -111,7 +119,9 @@
                               <Component id="txt_codPack" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
                               <Component id="lbl_codPack" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jb_notaCodCli" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                           <Component id="lbl_preferencias" min="-2" pref="78" max="-2" attributes="0"/>
                           <EmptySpace pref="87" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -326,6 +336,14 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_limpiarCamposActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jb_notaCodCli">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*Para reservar este campo debe estar vacio"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

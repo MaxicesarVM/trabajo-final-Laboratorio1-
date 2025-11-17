@@ -69,64 +69,40 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         btn_altaTrat = new javax.swing.JButton();
         ck_estadoTratamiento = new javax.swing.JCheckBox();
         btn_buscarTratamiento = new javax.swing.JButton();
+        jb_notaCodCli = new javax.swing.JLabel();
 
         setClosable(true);
 
         pnl_RegistroTrat.setBackground(new java.awt.Color(0, 153, 153));
 
         lbl_titulovista.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_titulovista.setForeground(new java.awt.Color(0, 0, 0));
         lbl_titulovista.setText("Registro Tratamientos");
 
         lbl_codTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_codTrat.setForeground(new java.awt.Color(0, 0, 0));
         lbl_codTrat.setText("Codigo Tratamiento");
 
         lbl_nombreTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_nombreTrat.setForeground(new java.awt.Color(0, 0, 0));
         lbl_nombreTrat.setText("Nombre Tratamiento");
 
         lbl_tipotrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_tipotrat.setForeground(new java.awt.Color(0, 0, 0));
         lbl_tipotrat.setText("Tipo Tratamiento");
 
         lbl_detalleTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_detalleTrat.setForeground(new java.awt.Color(0, 0, 0));
         lbl_detalleTrat.setText("Detalle Tratamiento");
 
         lbl_productosTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_productosTrat.setForeground(new java.awt.Color(0, 0, 0));
         lbl_productosTrat.setText("Productos ");
 
         lbl_duracionTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_duracionTrat.setForeground(new java.awt.Color(0, 0, 0));
         lbl_duracionTrat.setText("Duracion");
 
         lbl_costoTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_costoTrat.setForeground(new java.awt.Color(0, 0, 0));
         lbl_costoTrat.setText("Costo");
 
         lbl_estadoTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbl_estadoTrat.setForeground(new java.awt.Color(0, 0, 0));
         lbl_estadoTrat.setText("Activo");
 
-        txt_codTrat.setForeground(new java.awt.Color(0, 0, 0));
-
-        txt_nombreTrat.setForeground(new java.awt.Color(0, 0, 0));
-
-        txt_tipoTrat.setForeground(new java.awt.Color(0, 0, 0));
-
-        txt_detalleTrat.setForeground(new java.awt.Color(0, 0, 0));
-
-        jcb_productosTrat.setForeground(new java.awt.Color(0, 0, 0));
-
-        txt_duracionTrat.setForeground(new java.awt.Color(0, 0, 0));
-
-        txt_costoTrat.setForeground(new java.awt.Color(0, 0, 0));
-
-        btn_guardarTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_guardarTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_guardarTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_guardarTrat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registro.png"))); // NOI18N
         btn_guardarTrat.setText("Guardar");
         btn_guardarTrat.addActionListener(new java.awt.event.ActionListener() {
@@ -135,9 +111,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_borrarTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_borrarTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_borrarTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_borrarTrat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         btn_borrarTrat.setText("Borrar");
         btn_borrarTrat.addActionListener(new java.awt.event.ActionListener() {
@@ -146,9 +120,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_actuTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_actuTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_actuTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_actuTrat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-actualizar-50.png"))); // NOI18N
         btn_actuTrat.setText("Actualizar");
         btn_actuTrat.addActionListener(new java.awt.event.ActionListener() {
@@ -157,9 +129,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_limpiarTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_limpiarTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_limpiarTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_limpiarTrat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-escoba-50.png"))); // NOI18N
         btn_limpiarTrat.setText("Limpiar");
         btn_limpiarTrat.addActionListener(new java.awt.event.ActionListener() {
@@ -168,9 +138,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_bajaTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_bajaTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_bajaTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_bajaTrat.setText("Baja Logica");
         btn_bajaTrat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,9 +146,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
             }
         });
 
-        btn_altaTrat.setBackground(new java.awt.Color(255, 255, 255));
         btn_altaTrat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_altaTrat.setForeground(new java.awt.Color(0, 0, 0));
         btn_altaTrat.setText("Alta Logica");
         btn_altaTrat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,9 +157,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
         ck_estadoTratamiento.setBackground(new java.awt.Color(255, 255, 255));
         ck_estadoTratamiento.setForeground(new java.awt.Color(0, 153, 255));
 
-        btn_buscarTratamiento.setBackground(new java.awt.Color(255, 255, 255));
         btn_buscarTratamiento.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btn_buscarTratamiento.setForeground(new java.awt.Color(0, 0, 0));
         btn_buscarTratamiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
         btn_buscarTratamiento.setText("Buscar");
         btn_buscarTratamiento.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +165,9 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                 btn_buscarTratamientoActionPerformed(evt);
             }
         });
+
+        jb_notaCodCli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jb_notaCodCli.setText("*Para registrar este campo debe estar vacio");
 
         javax.swing.GroupLayout pnl_RegistroTratLayout = new javax.swing.GroupLayout(pnl_RegistroTrat);
         pnl_RegistroTrat.setLayout(pnl_RegistroTratLayout);
@@ -259,8 +226,13 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                 .addComponent(btn_altaTrat)
                 .addGap(218, 218, 218))
             .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
-                .addGap(315, 315, 315)
-                .addComponent(lbl_titulovista)
+                .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
+                        .addGap(315, 315, 315)
+                        .addComponent(lbl_titulovista))
+                    .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
+                        .addGap(288, 288, 288)
+                        .addComponent(jb_notaCodCli)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_RegistroTratLayout.setVerticalGroup(
@@ -270,7 +242,9 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
                 .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_RegistroTratLayout.createSequentialGroup()
                         .addComponent(lbl_titulovista, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_notaCodCli)
+                        .addGap(4, 4, 4)
                         .addGroup(pnl_RegistroTratLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_codTrat)
                             .addComponent(txt_codTrat, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -572,6 +546,7 @@ public class RegistroTratamiento extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_guardarTrat;
     private javax.swing.JButton btn_limpiarTrat;
     private javax.swing.JCheckBox ck_estadoTratamiento;
+    private javax.swing.JLabel jb_notaCodCli;
     private javax.swing.JComboBox<String> jcb_productosTrat;
     private javax.swing.JLabel lbl_codTrat;
     private javax.swing.JLabel lbl_costoTrat;

@@ -54,6 +54,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
         btn_bajaLogicaMasajista = new javax.swing.JButton();
         btn_altaLogicaMasajista = new javax.swing.JButton();
         check_ActivoMas = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -147,6 +148,9 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("*completar solo con 'Estetico', 'Corporal', 'Facial'");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,8 +165,13 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lbl_activo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(check_ActivoMas))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(check_ActivoMas))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(48, 48, 48)
+                                        .addComponent(jLabel1))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lbl_nombreCompleto)
                                 .addGap(18, 18, 18)
@@ -223,7 +232,9 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_especialidad)
                             .addComponent(txt_especialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(check_ActivoMas))
                     .addComponent(lbl_activo))
                 .addGap(18, 18, 18)
@@ -232,7 +243,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
                     .addComponent(btn_borrarMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_actualizarMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_limpiarMasajista, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_bajaLogicaMasajista)
                     .addComponent(btn_altaLogicaMasajista))
@@ -268,7 +279,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error: Matricula y telefono tienen que ser numeros validos", "Error: Datos faltantes o incorrectos", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
         
-        JOptionPane.showMessageDialog(this, "Error al buscar el masajista. Detalles: " + e.getMessage(), 
+        JOptionPane.showMessageDialog(this, "Error al buscar el masajista. Detalles: Esa matricula no se encuentra en nuestra base de datos, en caso de ser un error comunicar a sistemas este error: " + e.getMessage(), 
                                       "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
     }
 
@@ -420,6 +431,7 @@ public class ContratoMasajista extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_guardarMasajista;
     private javax.swing.JButton btn_limpiarMasajista;
     private javax.swing.JCheckBox check_ActivoMas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_activo;
     private javax.swing.JLabel lbl_especialidad;

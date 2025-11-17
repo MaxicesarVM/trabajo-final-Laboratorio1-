@@ -55,6 +55,7 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         txt_preferencias = new javax.swing.JTextField();
         lbl_codigoCliente1 = new javax.swing.JLabel();
         btn_limpiarCampos = new javax.swing.JButton();
+        jb_notaCodCli = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -141,6 +142,9 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
             }
         });
 
+        jb_notaCodCli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jb_notaCodCli.setText("*Para reservar este campo debe estar vacio");
+
         javax.swing.GroupLayout pnl_gestorDiaSpaLayout = new javax.swing.GroupLayout(pnl_gestorDiaSpa);
         pnl_gestorDiaSpa.setLayout(pnl_gestorDiaSpaLayout);
         pnl_gestorDiaSpaLayout.setHorizontalGroup(
@@ -149,35 +153,39 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21)
                 .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                        .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_codigoCliente)
-                            .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbl_preferencias)
-                                .addComponent(lbl_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_codigoCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)))
-                        .addGap(18, 18, 18)
+                        .addGap(6, 6, 6)
+                        .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
                         .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(txt_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcb_codCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_codigoCliente)
+                                    .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_preferencias)
+                                        .addComponent(lbl_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbl_codigoCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(txt_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcb_codCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
+                                .addGap(216, 216, 216)
+                                .addComponent(jb_notaCodCli)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
                         .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_limpiarCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_borrarDia, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                            .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btn_reservarDia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                                .addComponent(btn_buscarCod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(pnl_gestorDiaSpaLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(btn_reservarDia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                            .addComponent(btn_buscarCod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(159, 159, 159))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_gestorDiaSpaLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
@@ -200,7 +208,9 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
                         .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_codPack, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_notaCodCli)
+                        .addGap(7, 7, 7)
                         .addComponent(lbl_preferencias, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                         .addGroup(pnl_gestorDiaSpaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,6 +428,7 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_reservarDia;
     private com.toedter.calendar.JDateChooser dt_fecha;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jb_notaCodCli;
     private javax.swing.JComboBox<Cliente> jcb_codCliente;
     private javax.swing.JLabel lbl_codPack;
     private javax.swing.JLabel lbl_codigoCliente;
