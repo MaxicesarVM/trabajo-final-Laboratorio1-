@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DiaDeSpa;
 import modelo.Sesion;
@@ -190,8 +191,21 @@ public class ListadoDiasDeSpa extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_buscarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarDiaActionPerformed
+       try{
+           cargarListadoDiaSpa();
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Error: El código de sesión seleccionado no es un número válido.",
+                    "Error de Formato", JOptionPane.ERROR_MESSAGE);
+
+    }                                          
+    catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Error: eliga una fecha valida", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Error: eliga una fecha valida", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+        } 
         
-        cargarListadoDiaSpa();
         
         
         

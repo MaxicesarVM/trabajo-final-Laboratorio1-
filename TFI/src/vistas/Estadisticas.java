@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DiaDeSpa;
 import modelo.Instalacion;
@@ -27,53 +28,45 @@ public class Estadisticas extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modeloTablaInstalacion;
     private DefaultTableModel modeloTablaTratamiento;
-    
+
     Conexion con = new Conexion();
-    
+
     DiaDeSpaData operacionesDiaSpa = new DiaDeSpaData(con);
     TratamientoData operacionesTratamiento = new TratamientoData(con);
     MasajistaData operacionesMasajista = new MasajistaData(con);
     InstalacionData operacionesInstalaciones = new InstalacionData(con);
     SesionData operacionesSesion = new SesionData(con);
-    
+
     private ArrayList<Instalacion> listaI;
     private ArrayList<Tratamiento> listaT;
-    
-    
-    
-    
-    
-    
+
     public Estadisticas() {
         initComponents();
-        
+
         modeloTablaInstalacion = new DefaultTableModel();
         modeloTablaTratamiento = new DefaultTableModel();
-        
+
         cargarColumnasTablasInstalacion();
         cargarColumnasTablasTratamiento();
-        
-        
-        
+
     }
 
-    
-    private void cargarColumnasTablasInstalacion(){
-        
+    private void cargarColumnasTablasInstalacion() {
+
         ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("Codigo Instalacion");
         filaCabecera.add("Nombre");
         filaCabecera.add("Detalle");
         filaCabecera.add("Precio x hora");
-        for(Object it: filaCabecera){
+        for (Object it : filaCabecera) {
             modeloTablaInstalacion.addColumn(it);
         }
         tbl_instalacionesSolicitadas.setModel(modeloTablaInstalacion);
-        
-    }  
-    
-    private void cargarColumnasTablasTratamiento(){
-        
+
+    }
+
+    private void cargarColumnasTablasTratamiento() {
+
         ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("Codigo Tratamiento");
         filaCabecera.add("Nombre");
@@ -81,115 +74,89 @@ public class Estadisticas extends javax.swing.JInternalFrame {
         filaCabecera.add("Detalle");
         filaCabecera.add("Duracion");
         filaCabecera.add("Costo");
-        for(Object it: filaCabecera){
+        for (Object it : filaCabecera) {
             modeloTablaTratamiento.addColumn(it);
         }
         tbl_tratamientosSolicitados.setModel(modeloTablaTratamiento);
-        
-    }  
-    
-    private void borrarFilaTablaInstalacion(){
-        
+
+    }
+
+    private void borrarFilaTablaInstalacion() {
+
         int indice = modeloTablaInstalacion.getRowCount() - 1;
-        for(int i = indice; i >= 0 ; i-- ){
-        
+        for (int i = indice; i >= 0; i--) {
+
             modeloTablaInstalacion.removeRow(i);
-            
-        
+
         }
-         
+
     }
-    
-    private void borrarFilaTablaTratamiento(){
-        
+
+    private void borrarFilaTablaTratamiento() {
+
         int indice = modeloTablaTratamiento.getRowCount() - 1;
-        for(int i = indice; i >= 0 ; i-- ){
-        
+        for (int i = indice; i >= 0; i--) {
+
             modeloTablaTratamiento.removeRow(i);
-            
-        
+
         }
-         
+
     }
-    
-    
-    private void cargarListadoInstalacion(){
-    
+
+    private void cargarListadoInstalacion() {
+
         borrarFilaTablaInstalacion();
-        
+
         Date fechaSesionInicio = jdc_primerafechaInstalacion.getDate();
         Date fechaSesionFin = jdc_segundafechaInstalacion.getDate();
-        
+
         LocalDate fechaCasteadaInicio = fechaSesionInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate fechaCasteadaFin = fechaSesionFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        
+
         listaI = (ArrayList<Instalacion>) operacionesSesion.instalacionesMassolicitadas(fechaCasteadaInicio, fechaCasteadaFin);
-        
-        for(Instalacion instalacion: listaI){
-            
+
+        for (Instalacion instalacion : listaI) {
+
             modeloTablaInstalacion.addRow(new Object[]{
-            
-            instalacion.getCodInstal(),
-            instalacion.getNombre(),
-            instalacion.getDetalleUso(),
-            instalacion.getPrecio30m()
-                
-                
-             
-            
+                instalacion.getCodInstal(),
+                instalacion.getNombre(),
+                instalacion.getDetalleUso(),
+                instalacion.getPrecio30m()
+
             });
-            
-            
-            
+
         }
-        
-        
-    
+
     }
-    
-    private void cargarListadoTratamiento(){
-    
+
+    private void cargarListadoTratamiento() {
+
         borrarFilaTablaTratamiento();
-        
+
         Date fechaSesionInicio = jdc_primeraFechaTratamientos.getDate();
         Date fechaSesionFin = jdc_segundaFechaTratamientos.getDate();
-        
+
         LocalDate fechaCasteadaInicio = fechaSesionInicio.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate fechaCasteadaFin = fechaSesionFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        
+
         listaT = (ArrayList<Tratamiento>) operacionesSesion.tratamientoMasSolicitados(fechaCasteadaInicio, fechaCasteadaFin);
-        
-        for(Tratamiento tratamiento: listaT){
-            
+
+        for (Tratamiento tratamiento : listaT) {
+
             modeloTablaTratamiento.addRow(new Object[]{
-            
-            tratamiento.getCodTratam(),
-            tratamiento.getNombre(),
-            tratamiento.getTipo(),
-            tratamiento.getDetalle(),
-            tratamiento.getDuracion(),
-            tratamiento.getCosto()
-            
-                
-                
-             
-            
+                tratamiento.getCodTratam(),
+                tratamiento.getNombre(),
+                tratamiento.getTipo(),
+                tratamiento.getDetalle(),
+                tratamiento.getDuracion(),
+                tratamiento.getCosto()
+
             });
-            
-            
-            
+
         }
-        
-        
-    
+
     }
-    
-    
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -357,11 +324,35 @@ public class Estadisticas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_instalacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_instalacionesActionPerformed
-        cargarListadoInstalacion();
+        try {
+            cargarListadoInstalacion();
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Error: El código de sesión seleccionado no es un número válido.",
+                    "Error de Formato", JOptionPane.ERROR_MESSAGE);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Error: eliga una fecha valida", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Error: eliga una fecha valida", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_instalacionesActionPerformed
 
     private void btn_tratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tratamientosActionPerformed
-        cargarListadoTratamiento();
+        try {
+            cargarListadoTratamiento();
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Error: El código de sesión seleccionado no es un número válido.",
+                    "Error de Formato", JOptionPane.ERROR_MESSAGE);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Error: eliga una fecha valida", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Error: eliga una fecha valida", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_tratamientosActionPerformed
 
 

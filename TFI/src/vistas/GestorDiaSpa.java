@@ -13,6 +13,7 @@ import modelo.DiaDeSpa;
 import persistencia.ClienteData;
 import persistencia.Conexion;
 import persistencia.DiaDeSpaData;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,22 +21,19 @@ import persistencia.DiaDeSpaData;
  */
 public class GestorDiaSpa extends javax.swing.JInternalFrame {
 
-    
     Conexion con = new Conexion();
-    
+
     DiaDeSpaData operacionesDiaSpa = new DiaDeSpaData(con);
     ClienteData operacionesClientes = new ClienteData(con);
-    
+
     ArrayList<Cliente> listac = (ArrayList<Cliente>) operacionesClientes.listarClientes();
-    
-    
+
     public GestorDiaSpa() {
         initComponents();
         cargarClientes();
-     
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -252,166 +250,164 @@ public class GestorDiaSpa extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cargarClientes(){
-        
-        for(Cliente cliente: listac){
-            
-                
-                jcb_codCliente.addItem(cliente);
-                
-            
+    private void cargarClientes() {
+
+        for (Cliente cliente : listac) {
+
+            jcb_codCliente.addItem(cliente);
+
         }
-        
-        
-        
+
     }
-    
-    
+
+
     private void btn_buscarCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarCodActionPerformed
-        
-        try { 
-        
-        int seleccion = Integer.parseInt(txt_codPack.getText());
-        
-        DiaDeSpa diaEncontrado = operacionesDiaSpa.buscarDia(seleccion);
-        
-        txt_codPack.setText(String.valueOf(operacionesDiaSpa.buscarDia(seleccion).getCodPack()));
-        txt_preferencias.setText(operacionesDiaSpa.buscarDia(seleccion).getPreferencias());
-        
-        LocalDate fechaDia = operacionesDiaSpa.buscarDia(seleccion).getFecha();
-        
-        // esto para casteo
-        java.util.Date fechaCasteada = java.util.Date.from(fechaDia.atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
-        
-        dt_fecha.setDate(fechaCasteada);
-        
-        //
-        
-        int codClienteBuscar = diaEncontrado.getCliente().getCodCli();
-        
-        Cliente clienteParaSeleccionar = null;
-        
-        for (int i = 0; i < jcb_codCliente.getItemCount(); i++) {
-            Cliente itemCliente = jcb_codCliente.getItemAt(i);
-            
-            if (itemCliente.getCodCli() == codClienteBuscar) {
-                clienteParaSeleccionar = itemCliente;
-                break; 
+
+        try {
+
+            int seleccion = Integer.parseInt(txt_codPack.getText());
+
+            DiaDeSpa diaEncontrado = operacionesDiaSpa.buscarDia(seleccion);
+
+            txt_codPack.setText(String.valueOf(operacionesDiaSpa.buscarDia(seleccion).getCodPack()));
+            txt_preferencias.setText(operacionesDiaSpa.buscarDia(seleccion).getPreferencias());
+
+            LocalDate fechaDia = operacionesDiaSpa.buscarDia(seleccion).getFecha();
+
+            // esto para casteo
+            java.util.Date fechaCasteada = java.util.Date.from(fechaDia.atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
+
+            dt_fecha.setDate(fechaCasteada);
+
+            //
+            int codClienteBuscar = diaEncontrado.getCliente().getCodCli();
+
+            Cliente clienteParaSeleccionar = null;
+
+            for (int i = 0; i < jcb_codCliente.getItemCount(); i++) {
+                Cliente itemCliente = jcb_codCliente.getItemAt(i);
+
+                if (itemCliente.getCodCli() == codClienteBuscar) {
+                    clienteParaSeleccionar = itemCliente;
+                    break;
+                }
             }
-        }
-        
-        jcb_codCliente.setSelectedItem(clienteParaSeleccionar);
-        
-        
-        
-        //
-        
-        Cliente clienteSeleccionado = (Cliente) jcb_codCliente.getSelectedItem();
-        
-        txt_nombre.setText(clienteSeleccionado.getNombreCompleto());
-        
-        } catch (NumberFormatException e){
-            
+
+            jcb_codCliente.setSelectedItem(clienteParaSeleccionar);
+
+            //
+            Cliente clienteSeleccionado = (Cliente) jcb_codCliente.getSelectedItem();
+
+            txt_nombre.setText(clienteSeleccionado.getNombreCompleto());
+
+        } catch (NumberFormatException e) {
+
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar un codigo valido", "Codigo invalido", JOptionPane.ERROR_MESSAGE);
-            
-        }catch (Exception e){
-        
-        JOptionPane.showMessageDialog(this, "Error al buscar el Día de Spa en la base de datos. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
-    }
-        
-        
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Error al buscar el Día de Spa en la base de datos. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_btn_buscarCodActionPerformed
 
     private void btn_reservarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reservarDiaActionPerformed
-        
+
         try {
-            
-        
-        
-        Date fechaSeleccionada = dt_fecha.getDate();
-        String preferenciasSeleccionadas = txt_preferencias.getText();
-        Cliente clienteSeleccionado = (Cliente) jcb_codCliente.getSelectedItem();
-        
-        // esto para casteo
-        java.time.LocalDate fechaCasteada = fechaSeleccionada.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
-        
-        
-        DiaDeSpa diaCreado = new DiaDeSpa(fechaCasteada, preferenciasSeleccionadas, clienteSeleccionado, true, 0);
-        
-        operacionesDiaSpa.agregarDiaSpa(diaCreado);
-        
-        
-        Sesiones vistaSesiones = new Sesiones();
-        vistaSesiones.setVisible(true);
-        
-        
-        } catch (NumberFormatException e){
-            
-            JOptionPane.showMessageDialog(this, "Error: Debe ingresar una fecha valida", "Error: Fecha invalida", JOptionPane.ERROR_MESSAGE);
-            
+            Date fechaSeleccionada = dt_fecha.getDate();
+            String preferenciasSeleccionadas = txt_preferencias.getText();
+            Cliente clienteSeleccionado = (Cliente) jcb_codCliente.getSelectedItem();
+
+           
+            java.time.LocalDate fechaCasteada = fechaSeleccionada.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
+           
+            if (fechaSeleccionada == null) {
+                throw new NullPointerException("La fecha no puede estar vacía");
+            }
+
+            DiaDeSpa diaCreado = new DiaDeSpa(fechaCasteada, preferenciasSeleccionadas, clienteSeleccionado, true, 0);
+
+            operacionesDiaSpa.agregarDiaSpa(diaCreado); 
+
+            JOptionPane.showMessageDialog(this, "Se reservo ese dia para usted, dirijase a 'modificar sesion' para continuar");
+
+            Sesiones vistaSesiones = new Sesiones();
+            vistaSesiones.setVisible(true);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar un número válido", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+
         } catch (NullPointerException a) {
-            
-            JOptionPane.showMessageDialog(this, "Error: Debe ingresar una fecha valida", "Error: Fecha invalida", JOptionPane.ERROR_MESSAGE);
-            
-        }catch (Exception e) { 
-        
-        JOptionPane.showMessageDialog(this, "Error al guardar la reserva en la base de datos. Revise la conexión. Detalles: " + e.getMessage(), 
-                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
-    }
-        
-        
-        
-        
+          
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar una fecha válida", "Error: Fecha inválida", JOptionPane.ERROR_MESSAGE);
+
+
+        } catch (SQLException ex) {
+
+           
+            if (ex.getErrorCode() == 1062) {
+                JOptionPane.showMessageDialog(this, "Error: Este cliente ya tiene una reserva para esta fecha.", "Reserva Duplicada", JOptionPane.ERROR_MESSAGE);
+
+            } else {
+               
+                JOptionPane.showMessageDialog(this, "Error de base de datos: " + ex.getMessage(), "Error Inesperado", JOptionPane.ERROR_MESSAGE);
+            }
+
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error General", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_btn_reservarDiaActionPerformed
 
     private void btn_borrarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarDiaActionPerformed
-       
+
         try {
-        
-        int seleccion = Integer.parseInt(txt_codPack.getText());
-        
-        operacionesDiaSpa.eliminarDiadeSpa(seleccion);
-        
-        JOptionPane.showMessageDialog(this, "Se elimino el dia de spa correctamente");
-        
-        } catch (NumberFormatException e){
-            
+
+            int seleccion = Integer.parseInt(txt_codPack.getText());
+
+            operacionesDiaSpa.eliminarDiadeSpa(seleccion);
+
+            JOptionPane.showMessageDialog(this, "Se elimino el dia de spa correctamente");
+
+        } catch (NumberFormatException e) {
+
             JOptionPane.showMessageDialog(this, "Error: Debe ingresar una reserva valida", "Error: Reserva invalida", JOptionPane.ERROR_MESSAGE);
-        
-        }   catch (Exception e) {
-        
-        JOptionPane.showMessageDialog(this, "Error al eliminar la reserva. Revise si existen sesiones asociadas. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
-    }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Error al eliminar la reserva. Revise si existen sesiones asociadas. Detalles: " + e.getMessage(), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_borrarDiaActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
-        
+
     }//GEN-LAST:event_txt_nombreActionPerformed
 
     private void txt_preferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_preferenciasActionPerformed
-        
+
     }//GEN-LAST:event_txt_preferenciasActionPerformed
 
     private void jcb_codClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_codClienteActionPerformed
-        
+
         Cliente clienteSeleccionado = (Cliente) jcb_codCliente.getSelectedItem();
-        
+
         txt_nombre.setText(clienteSeleccionado.getNombreCompleto());
-        
-        
-        
+
+
     }//GEN-LAST:event_jcb_codClienteActionPerformed
 
     private void btn_limpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarCamposActionPerformed
-        
+
         txt_codPack.setText("");
-        txt_preferencias.setText("");      
+        txt_preferencias.setText("");
         dt_fecha.setDate(null);
-        txt_nombre.setText("");  
-        
-        
-        
-        
+        txt_nombre.setText("");
+
+
     }//GEN-LAST:event_btn_limpiarCamposActionPerformed
 
 

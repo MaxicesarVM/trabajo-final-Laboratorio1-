@@ -23,7 +23,7 @@ public class DiaDeSpaData {
 
     }
 
-    public void agregarDiaSpa(DiaDeSpa ds) {
+    public void agregarDiaSpa(DiaDeSpa ds) throws SQLException {
 
         String sql = "INSERT into dia_de_spa (fecha, preferencias, codCli, estado, monto) VALUES(?,?,?,?,?)";
 
@@ -52,6 +52,7 @@ public class DiaDeSpaData {
 
         } catch (SQLException ex) {
             System.out.println("Error de conexion: " + ex);
+            throw ex;
         }
 
     }

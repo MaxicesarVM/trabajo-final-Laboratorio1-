@@ -96,7 +96,7 @@ public class MasajistaData {
         
         Masajista m = null;
         List<Masajista> masajistas = new ArrayList<>();
-        String sql = "SELECT * from masajista";
+        String sql = "SELECT * from masajista where estado = 1";
         
         try{
             

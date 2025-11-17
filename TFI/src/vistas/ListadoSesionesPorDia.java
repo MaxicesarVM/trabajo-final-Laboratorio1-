@@ -26,51 +26,45 @@ import persistencia.TratamientoData;
  */
 public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
 
-    
     private DefaultTableModel modeloTabla;
-    
+
     Conexion con = new Conexion();
-    
+
     DiaDeSpaData operacionesDiaSpa = new DiaDeSpaData(con);
     TratamientoData operacionesTratamiento = new TratamientoData(con);
     MasajistaData operacionesMasajista = new MasajistaData(con);
     InstalacionData operacionesInstalaciones = new InstalacionData(con);
     SesionData operacionesSesion = new SesionData(con);
-    
+
     private ArrayList<Sesion> listaS;
-    
-    
-    
+
     public ListadoSesionesPorDia() {
         initComponents();
-        
+
         modeloTabla = new DefaultTableModel();
-        
+
         cargarColumnasTablas();
-        
-        
-        
+
     }
 
-    private void cargarListadoSesiones(){
-    
+    private void cargarListadoSesiones() {
+
         borrarFilaTabla();
-        
+
         Date fechaSesion = jcd_buscar_dia.getDate();
-        
+
         LocalDate fechaCasteada = fechaSesion.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        
+
         listaS = (ArrayList<Sesion>) operacionesSesion.listarSesionesPorFecha(fechaCasteada);
-        
-        for(Sesion sesion: listaS){
-            
+
+        for (Sesion sesion : listaS) {
+
             String masajistaNonulo;
             if (sesion.getMasajista() != null) {
                 masajistaNonulo = String.valueOf(sesion.getMasajista().getNombre_completo());
 
-            }else{
-                masajistaNonulo="No aplica";
+            } else {
+                masajistaNonulo = "No aplica";
             }
             modeloTabla.addRow(new Object[]{
                 sesion.getCodSesion(),
@@ -83,20 +77,13 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
                 operacionesSesion.calculodeCosto(sesion.getDiaDeSpa().getCodPack())
 
             });
-            
-            
-            
-            
+
         }
-        
-        
-    
+
     }
-    
-    
-    
-    private void cargarColumnasTablas(){
-        
+
+    private void cargarColumnasTablas() {
+
         ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("Codigo Sesion");
         filaCabecera.add("Hora Inicio");
@@ -106,30 +93,24 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
         filaCabecera.add("Codigo Dia Spa");
         filaCabecera.add("Instalacion");
         filaCabecera.add("Costo Total");
-        for(Object it: filaCabecera){
+        for (Object it : filaCabecera) {
             modeloTabla.addColumn(it);
         }
         jTable_sesiones.setModel(modeloTabla);
-        
-    }    
-    
-    
-    
-    private void borrarFilaTabla(){
-        
-        int indice = modeloTabla.getRowCount() - 1;
-        for(int i = indice; i >= 0 ; i-- ){
-        
-            modeloTabla.removeRow(i);
-            
-        
-        }
-         
+
     }
-    
-    
-    
-    
+
+    private void borrarFilaTabla() {
+
+        int indice = modeloTabla.getRowCount() - 1;
+        for (int i = indice; i >= 0; i--) {
+
+            modeloTabla.removeRow(i);
+
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -140,9 +121,9 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_sesiones = new javax.swing.JTable();
         lbl_sesionesDia = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_buscar = new javax.swing.JButton();
         lbl_buscarDia1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_anular = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -178,26 +159,26 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
         lbl_sesionesDia.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_sesionesDia.setText("Sesiones del dia");
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 102));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar.setBackground(new java.awt.Color(0, 102, 102));
+        btn_buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/busqueda_1.png"))); // NOI18N
+        btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_buscarActionPerformed(evt);
             }
         });
 
         lbl_buscarDia1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_buscarDia1.setText("Elija una sesion en caso de querer cancelarla");
 
-        jButton2.setBackground(new java.awt.Color(0, 102, 102));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
-        jButton2.setText("Anular Sesion");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_anular.setBackground(new java.awt.Color(0, 102, 102));
+        btn_anular.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_anular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        btn_anular.setText("Anular Sesion");
+        btn_anular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_anularActionPerformed(evt);
             }
         });
 
@@ -223,9 +204,9 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
                 .addGap(167, 167, 167)
                 .addComponent(jcd_buscar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_anular, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(215, 215, 215))
         );
         jPanel1Layout.setVerticalGroup(
@@ -239,8 +220,8 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcd_buscar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_anular, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42)
                 .addComponent(lbl_sesionesDia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -264,56 +245,65 @@ public class ListadoSesionesPorDia extends javax.swing.JInternalFrame {
 
     private void jcd_buscar_diaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jcd_buscar_diaPropertyChange
 
-        
+
     }//GEN-LAST:event_jcd_buscar_diaPropertyChange
 
     private void jcd_buscar_diaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcd_buscar_diaFocusLost
-        
+
     }//GEN-LAST:event_jcd_buscar_diaFocusLost
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        cargarListadoSesiones();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         try{ 
-        int filaSeleccionada = jTable_sesiones.getSelectedRow();
-              
-              
-        if (filaSeleccionada != -1) {
-        
-            int codigoSesionSeleccionado = (int) modeloTabla.getValueAt(filaSeleccionada, 0);
-        
-            operacionesSesion.eliminarSesion(codigoSesionSeleccionado);
-     
-            JOptionPane.showMessageDialog(this, "Sesion borrada correctamente");
-            
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        try {
             cargarListadoSesiones();
-            
-           
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Error: El código de sesión seleccionado no es un número válido.",
+                    "Error de Formato", JOptionPane.ERROR_MESSAGE);
+
+    }//GEN-LAST:event_btn_buscarActionPerformed
+    catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Error: eliga una fecha valida", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Error al anular la sesión en la base de datos. Detalles: " + e.getMessage(),
+                    "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
         }
-      
-    } catch (NumberFormatException e) {
-        
-        JOptionPane.showMessageDialog(this, "Error: El código de sesión seleccionado no es un número válido.", 
-                                      "Error de Formato", JOptionPane.ERROR_MESSAGE);
-                                      
-    }catch (Exception e) {
-        
-        JOptionPane.showMessageDialog(this, "Error al anular la sesión en la base de datos. Detalles: " + e.getMessage(), 
-                                      "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
     }
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btn_anularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_anularActionPerformed
+        try {
+            int filaSeleccionada = jTable_sesiones.getSelectedRow();
+
+            if (filaSeleccionada != -1) {
+
+                int codigoSesionSeleccionado = (int) modeloTabla.getValueAt(filaSeleccionada, 0);
+
+                operacionesSesion.eliminarSesion(codigoSesionSeleccionado);
+
+                JOptionPane.showMessageDialog(this, "Sesion borrada correctamente");
+
+                cargarListadoSesiones();
+
+            }
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Error: El código de sesión seleccionado no es un número válido.",
+                    "Error de Formato", JOptionPane.ERROR_MESSAGE);
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Error: eliga una fecha valida", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Error al anular la sesión en la base de datos. Detalles: " + e.getMessage(),
+                    "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_btn_anularActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_anular;
+    private javax.swing.JButton btn_buscar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_sesiones;

@@ -19,7 +19,7 @@ public class ClienteData {
         
     }
     
-        public void agregarCliente(Cliente c){
+        public void agregarCliente(Cliente c)throws SQLException{
         
         String sql = "INSERT into cliente (dni, nombre_completo, telefono, edad, afecciones, estado) VALUES(?,?,?,?,?,?)";
         
@@ -50,6 +50,7 @@ public class ClienteData {
                   
         } catch(SQLException ex){
             System.out.println("Error de conexion: " + ex);
+            throw ex;
         }
               
     }
@@ -142,7 +143,7 @@ public class ClienteData {
         
         Cliente c = null;
         List<Cliente> clientes = new ArrayList<>();
-        String sql = "SELECT * from cliente";
+        String sql = "SELECT * from cliente where estado = 1";
         
         try{
             
