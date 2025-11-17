@@ -132,7 +132,7 @@ public class InstalacionData {
         
         Instalacion i = null;
         List<Instalacion> instalaciones = new ArrayList<>();
-        String sql = "SELECT * from instalacion WHERE estado = 1";
+        String sql = "SELECT * from instalacion WHERE estado = 1 AND codInstalacion <> 0";
         
         try{
             
