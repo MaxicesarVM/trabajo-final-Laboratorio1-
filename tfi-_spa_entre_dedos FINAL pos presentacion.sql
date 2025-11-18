@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2025 a las 22:09:19
+-- Tiempo de generación: 18-11-2025 a las 01:48:52
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -76,6 +76,30 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `tratamientoMasSolicitados` (IN `fec
 
 END$$
 
+--
+-- Funciones
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `verificarSuperposicionSesion` (`p_fecha` DATE, `p_hora_inicio` TIME, `p_hora_fin` TIME) RETURNS TINYINT(1)  BEGIN
+    DECLARE superposicion_existente INT DEFAULT 0;
+
+    SELECT COUNT(*)
+    INTO superposicion_existente
+    FROM `sesion`
+    WHERE `fecha` = p_fecha
+      AND `estado` = 1
+     
+      AND (
+        (p_hora_inicio < hora_fin) AND (p_hora_fin > hora_inicio)
+      );
+
+    
+    IF superposicion_existente > 0 THEN
+        RETURN TRUE; 
+    ELSE
+        RETURN FALSE; 
+    END IF;
+END$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -100,7 +124,11 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`codCliente`, `dni`, `nombre_completo`, `telefono`, `edad`, `afecciones`, `estado`) VALUES
 (1, 39393939, 'Maxi Velazquez', 11321231, 29, 'ninguna', 1),
-(2, 4747474, 'alejandro peralta', 131341323, 20, 'agarra la pala', 1);
+(2, 4747474, 'alejandro peralta', 131341323, 20, 'agarra la pala', 1),
+(3, 39397051, 'Daniela Mestre', 2657568923, 29, 'Me hace mal los olores fuertes', 1),
+(4, 40518896, 'Alan jaciuk', 2657568923, 20, 'sufro de dolores de espalda', 1),
+(10, 12345678, 'yagara yuyara', 2657262525, 20, '123', 0),
+(11, 28184893, 'Juan Saez', 2664848952, 25, 'Alergia al trabajo', 1);
 
 -- --------------------------------------------------------
 
@@ -123,7 +151,12 @@ CREATE TABLE `dia_de_spa` (
 
 INSERT INTO `dia_de_spa` (`codPack`, `fecha`, `preferencias`, `codCli`, `estado`, `monto`) VALUES
 (1, '2025-11-13', 'faciales', 1, 1, 0),
-(3, '2025-11-15', 'esteticos', 2, 1, 0);
+(3, '2025-11-15', 'esteticos', 2, 1, 0),
+(4, '2025-11-15', 'Con sahumerios', 3, 1, 0),
+(6, '2025-11-24', 'ninguno', 10, 1, 0),
+(9, '2025-11-25', '', 10, 1, 0),
+(10, '2025-11-25', 'sda', 3, 1, 0),
+(11, '2025-11-16', 'Ninguno ', 11, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -181,7 +214,8 @@ INSERT INTO `masajista` (`matricula`, `nombre_completo`, `telefono`, `especialid
 (203, 'Valeria Gómez', 2664334455, 'estetico', 1),
 (301, 'Jorge Paez', 2657456789, 'corporales', 1),
 (302, 'Marcos Sosa', 2664556677, 'corporales', 1),
-(303, 'Diego Castro', 2657567890, 'corporales', 1);
+(303, 'Diego Castro', 2657567890, 'corporales', 1),
+(402, 'Daniela Mestre ', 2657238589, 'Facial', 1);
 
 -- --------------------------------------------------------
 
@@ -206,8 +240,13 @@ CREATE TABLE `sesion` (
 --
 
 INSERT INTO `sesion` (`codSesion`, `fecha`, `hora_inicio`, `hora_fin`, `codTratamiento`, `codMasajista`, `codPack`, `estado`, `codInstalacion`) VALUES
-(1, '2025-11-13', '11:00:00', '12:30:00', 3, 102, 1, 1, 3),
-(2, '2025-11-15', '12:00:00', '14:00:00', 4, 201, 3, 1, 3);
+(2, '2025-11-15', '12:00:00', '14:00:00', 4, 201, 3, 1, 3),
+(3, '2025-11-15', '10:00:00', '11:00:00', 10, 101, 4, 1, 0),
+(4, '2025-11-15', '11:00:00', '12:00:00', 0, NULL, 4, 1, 2),
+(5, '2025-11-15', '08:00:00', '09:00:00', 0, NULL, 3, 1, 2),
+(6, '2025-11-25', '12:30:00', '14:00:00', 5, 101, 9, 1, 4),
+(7, '2025-11-25', '12:00:00', '12:30:00', 5, 101, 10, 1, 0),
+(8, '2025-11-16', '12:00:00', '14:00:00', 1, 101, 11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -245,7 +284,9 @@ INSERT INTO `tratamiento` (`codTratamiento`, `nombre`, `tipo`, `detalle`, `produ
 (11, 'Vacumterapia', 'corporal', 'Es una succión corporal que mejora la circulación sanguínea y el drenaje linfático.', 'Aceite Drenante (de origen vegetal)', 30, 5000, 1),
 (12, 'Manicura', 'estetico', 'Cuidado y embellecimiento de las uñas de las manos.', 'Esmalte y Loción Hidratante', 30, 2500, 1),
 (13, 'Pedicura', 'estetico', 'Cuidado y embellecimiento de las uñas de los pies.', 'Crema Callicida y Esmalte', 30, 3000, 1),
-(14, 'Tratamiento capilar', 'estetico', 'Procedimientos para mejorar la salud y apariencia del cabello.', 'Ampolla Reestructurante', 60, 5500, 1);
+(14, 'Tratamiento capilar', 'estetico', 'Procedimientos para mejorar la salud y apariencia del cabello.', 'Ampolla Reestructurante', 60, 5500, 1),
+(16, 'Facial completo', 'facial', 'igual que el basico solo que con mayor detalle y limpieza de poros y vapor ', 'Sérum Antiedad (acido hialuronico)', 60, 5500, 0),
+(17, 'Facial completo', 'Facial', 'ees igual al basico pero adiciona un helado despues de la sesion', 'Crema humectante', 30, 5200, 0);
 
 --
 -- Índices para tablas volcadas
@@ -263,6 +304,7 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `dia_de_spa`
   ADD PRIMARY KEY (`codPack`),
+  ADD UNIQUE KEY `uc_cliente_por_dia` (`codCli`,`fecha`),
   ADD KEY `codCli` (`codCli`);
 
 --
@@ -301,13 +343,13 @@ ALTER TABLE `tratamiento`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `codCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `codCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `dia_de_spa`
 --
 ALTER TABLE `dia_de_spa`
-  MODIFY `codPack` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `codPack` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `instalacion`
@@ -319,13 +361,13 @@ ALTER TABLE `instalacion`
 -- AUTO_INCREMENT de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `codSesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `codSesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
 --
 ALTER TABLE `tratamiento`
-  MODIFY `codTratamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `codTratamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas
